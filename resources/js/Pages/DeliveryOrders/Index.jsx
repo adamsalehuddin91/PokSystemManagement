@@ -146,9 +146,9 @@ export default function Index({ auth, deliveryOrders, filters }) {
                                         Showing {deliveryOrders.from} to {deliveryOrders.to} of {deliveryOrders.total} results
                                     </div>
                                     <div className="flex gap-1">
-                                        {deliveryOrders.links.map((link, index) => (
+                                        {deliveryOrders.links.map((link) => (
                                             <Link
-                                                key={index}
+                                                key={link.label}
                                                 href={link.url || '#'}
                                                 className={`px-3 py-1 rounded text-sm ${link.active
                                                     ? 'bg-blue-600 text-white'

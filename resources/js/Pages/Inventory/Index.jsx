@@ -161,9 +161,9 @@ export default function Index({ auth, skus, categories, filters, summary }) {
                                         Showing {skus.from} to {skus.to} of {skus.total} results
                                     </div>
                                     <div className="flex gap-1">
-                                        {skus.links.map((link, index) => (
+                                        {skus.links.map((link) => (
                                             <Link
-                                                key={index}
+                                                key={link.label}
                                                 href={link.url || '#'}
                                                 className={`px-3 py-1 rounded ${link.active
                                                         ? 'bg-blue-600 text-white'

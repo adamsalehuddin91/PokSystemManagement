@@ -18,32 +18,27 @@ class DashboardController extends Controller
 
     public function index()
     {
-        // Finance Metrics (Current Month)
         $financeSummary = $this->financeService->getMonthlySummary(now()->format('Y-m'));
 
-        // Inventory Metrics
-        $totalSkus = Sku::count();
-        $lowStockCount = Sku::whereColumn('current_stock', '<=', 'min_stock_level')->count();
-        $outOfStockCount = Sku::where('current_stock', '<=', 0)->count();
-
-        // Pending Actions
-        $pendingPOs = PurchaseOrder::where('status', 'pending')->count();
-        $unpaidInvoices = Invoice::where('payment_status', 'unpaid')->count();
-        $overdueInvoices = Invoice::where('payment_status', '!=', 'paid')
-            ->where('due_date', '<', now())
-            ->count();
+        $skuMetrics = Sku::selectRaw('
+            COUNT(*) as total,
+            SUM(CASE WHEN current_stock <= min_stock_level THEN 1 ELSE 0 END) as low_stock,
+            SUM(CASE WHEN current_stock <= 0 THEN 1 ELSE 0 END) as out_of_stock
+        ')->first();
 
         return Inertia::render('Dashboard', [
             'finance' => $financeSummary,
             'inventory' => [
-                'total' => $totalSkus,
-                'low_stock' => $lowStockCount,
-                'out_of_stock' => $outOfStockCount,
+                'total' => (int) $skuMetrics->total,
+                'low_stock' => (int) $skuMetrics->low_stock,
+                'out_of_stock' => (int) $skuMetrics->out_of_stock,
             ],
             'actions' => [
-                'pending_pos' => $pendingPOs,
-                'unpaid_invoices' => $unpaidInvoices,
-                'overdue_invoices' => $overdueInvoices,
+                'pending_pos' => PurchaseOrder::where('status', 'pending')->count(),
+                'unpaid_invoices' => Invoice::where('payment_status', 'unpaid')->count(),
+                'overdue_invoices' => Invoice::where('payment_status', '!=', 'paid')
+                    ->where('due_date', '<', now())
+                    ->count(),
             ],
         ]);
     }

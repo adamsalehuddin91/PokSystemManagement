@@ -29,7 +29,7 @@ export default function Create({ auth, customers, skus, deliveryOrder }) {
                 notes: `Invoice for Delivery Order #${deliveryOrder.do_number}`,
             }));
         }
-    }, [deliveryOrder]);
+    }, [deliveryOrder, setData]);
 
     const addItem = () => {
         setData('items', [...data.items, { sku_id: '', quantity: 1, unit_price: 0, description: '' }]);

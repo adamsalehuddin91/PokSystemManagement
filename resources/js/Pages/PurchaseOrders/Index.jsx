@@ -160,9 +160,9 @@ export default function Index({ auth, purchaseOrders, suppliers, filters, summar
                                         Showing {purchaseOrders.from} to {purchaseOrders.to} of {purchaseOrders.total} results
                                     </div>
                                     <div className="flex gap-1">
-                                        {purchaseOrders.links.map((link, index) => (
+                                        {purchaseOrders.links.map((link) => (
                                             <Link
-                                                key={index}
+                                                key={link.label}
                                                 href={link.url || '#'}
                                                 className={`px-3 py-1 rounded ${link.active
                                                         ? 'bg-blue-600 text-white'

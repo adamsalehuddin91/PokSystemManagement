@@ -2,13 +2,20 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, Link } from '@inertiajs/react';
 
 export default function Dashboard({ auth, finance, inventory, actions }) {
+    const colorMap = {
+        blue: 'bg-blue-500',
+        green: 'bg-green-500',
+        red: 'bg-red-500',
+        yellow: 'bg-yellow-500',
+        orange: 'bg-orange-500',
+    };
+
     const StatCard = ({ title, value, subtext, color = "blue", link, linkText }) => (
         <div className="overflow-hidden rounded-lg bg-white shadow">
             <div className="p-5">
                 <div className="flex items-center">
                     <div className="flex-shrink-0">
-                        {/* Icon placeholder or color strip */}
-                        <div className={`h-12 w-1 bg-${color}-500 rounded-md`}></div>
+                        <div className={`h-12 w-1 rounded-md ${colorMap[color] || 'bg-blue-500'}`}></div>
                     </div>
                     <div className="ml-5 w-0 flex-1">
                         <dl>

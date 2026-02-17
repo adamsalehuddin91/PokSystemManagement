@@ -108,9 +108,9 @@ export default function Index({ auth, suppliers, filters }) {
                             {metaLinks.length > 0 && (
                                 <div className="mt-4">
                                     <div className="flex justify-center flex-wrap gap-2">
-                                        {metaLinks.map((link, i) => (
+                                        {metaLinks.map((link) => (
                                             <Link
-                                                key={i}
+                                                key={link.label}
                                                 href={link.url || '#'}
                                                 className={`px-3 py-1 border rounded text-sm ${link.active ? 'bg-indigo-600 text-white' : 'bg-white text-gray-700'} ${!link.url ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-50'}`}
                                                 dangerouslySetInnerHTML={{ __html: link.label }}

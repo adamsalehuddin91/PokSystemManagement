@@ -25,7 +25,7 @@ export default function Create({ auth, customers, skus, purchaseOrder }) {
                 notes: `Delivery for PO #${purchaseOrder.po_number}`
             }));
         }
-    }, [purchaseOrder]);
+    }, [purchaseOrder, setData]);
 
     const addItem = () => {
         setData('items', [...data.items, { sku_id: '', quantity: 1, unit_price: 0 }]);

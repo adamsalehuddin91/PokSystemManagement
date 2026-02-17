@@ -116,9 +116,9 @@ export default function Transactions({ auth, transactions, filters }) {
                                         Showing {transactions.from} to {transactions.to} of {transactions.total} results
                                     </div>
                                     <div className="flex gap-1">
-                                        {transactions.links.map((link, index) => (
+                                        {transactions.links.map((link) => (
                                             <Link
-                                                key={index}
+                                                key={link.label}
                                                 href={link.url || '#'}
                                                 className={`px-3 py-1 rounded ${link.active
                                                         ? 'bg-blue-600 text-white'

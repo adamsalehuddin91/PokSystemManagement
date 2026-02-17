@@ -146,9 +146,9 @@ export default function Index({ auth, invoices, filters }) {
                                         Showing {invoices.from} to {invoices.to} of {invoices.total} results
                                     </div>
                                     <div className="flex gap-1">
-                                        {invoices.links.map((link, index) => (
+                                        {invoices.links.map((link) => (
                                             <Link
-                                                key={index}
+                                                key={link.label}
                                                 href={link.url || '#'}
                                                 className={`px-3 py-1 rounded text-sm ${link.active
                                                     ? 'bg-blue-600 text-white'
