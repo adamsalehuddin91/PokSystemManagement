@@ -2,140 +2,131 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, Link, router } from '@inertiajs/react';
 import { useState } from 'react';
 
-export default function Index({ auth, invoices, filters }) {
-    const [search, setSearch] = useState(filters.search || '');
-    const [paymentStatus, setPaymentStatus] = useState(filters.payment_status || '');
+export default function Index({ auth, supplierInvoices, filters }) {
+    const [search, setSearch] = useState(filters?.search || '');
+    const [statusFilter, setStatusFilter] = useState(filters?.status || '');
 
     const handleSearch = (e) => {
         e.preventDefault();
-        router.get(route('invoices.index'), { search, payment_status: paymentStatus }, { preserveState: true });
+        router.get(route('supplier-invoices.index'), { search, status: statusFilter }, { preserveState: true });
     };
 
     const handleFilterChange = (e) => {
-        setPaymentStatus(e.target.value);
-        router.get(route('invoices.index'), { search, payment_status: e.target.value }, { preserveState: true });
+        setStatusFilter(e.target.value);
+        router.get(route('supplier-invoices.index'), { search, status: e.target.value }, { preserveState: true });
     };
 
     const getStatusBadge = (status) => {
         const badges = {
-            paid: 'bg-green-100 text-green-800',
-            partial: 'bg-yellow-100 text-yellow-800',
-            unpaid: 'bg-red-100 text-red-800',
+            draft: 'bg-yellow-100 text-yellow-800',
+            confirmed: 'bg-green-100 text-green-800',
         };
-
-        return <span className={`px-2 py-1 text-xs font-semibold rounded-full ${badges[status] || 'bg-gray-100'}`}>
-            {status.toUpperCase()}
-        </span>;
+        return (
+            <span className={`px-2 py-1 text-xs font-semibold rounded-full ${badges[status] || 'bg-gray-100'}`}>
+                {status.toUpperCase()}
+            </span>
+        );
     };
 
     return (
         <AuthenticatedLayout
             user={auth.user}
-            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Invoices</h2>}
+            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Supplier Invoices</h2>}
         >
-            <Head title="Invoices" />
+            <Head title="Supplier Invoices" />
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6">
-                            {/* Header Actions */}
                             <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
                                 <form onSubmit={handleSearch} className="flex gap-2 w-full md:w-auto">
                                     <input
                                         type="text"
                                         value={search}
                                         onChange={(e) => setSearch(e.target.value)}
-                                        placeholder="Search invoice, quotation or customer..."
+                                        placeholder="Search SI number, supplier ref, supplier..."
                                         className="px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 w-full"
                                     />
                                     <select
-                                        value={paymentStatus}
+                                        value={statusFilter}
                                         onChange={handleFilterChange}
                                         className="px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                                     >
-                                        <option value="">All Payments</option>
-                                        <option value="paid">Paid</option>
-                                        <option value="partial">Partial</option>
-                                        <option value="unpaid">Unpaid</option>
+                                        <option value="">All Status</option>
+                                        <option value="draft">Draft</option>
+                                        <option value="confirmed">Confirmed</option>
                                     </select>
-                                    <button
-                                        type="submit"
-                                        className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700"
-                                    >
+                                    <button type="submit" className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700">
                                         Search
                                     </button>
                                 </form>
 
                                 <Link
-                                    href={route('invoices.create')}
+                                    href={route('supplier-invoices.create')}
                                     className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 w-full md:w-auto text-center"
                                 >
-                                    + Create Invoice
+                                    + New Supplier Invoice
                                 </Link>
                             </div>
 
-                            {/* Invoice Table */}
                             <div className="overflow-x-auto">
                                 <table className="min-w-full divide-y divide-gray-200">
                                     <thead className="bg-gray-50">
                                         <tr>
-                                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Invoice Number</th>
-                                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Customer</th>
-                                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Ref</th>
-                                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Total Amount</th>
-                                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Due Date</th>
-                                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Payment</th>
+                                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">SI Number</th>
+                                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Supplier Ref</th>
+                                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Supplier</th>
+                                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">PO Ref</th>
+                                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Total</th>
+                                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Date</th>
+                                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
                                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody className="bg-white divide-y divide-gray-200">
-                                        {invoices.data.length > 0 ? (
-                                            invoices.data.map((invoice) => (
-                                                <tr key={invoice.id} className="hover:bg-gray-50">
+                                        {supplierInvoices.data?.length > 0 ? (
+                                            supplierInvoices.data.map((si) => (
+                                                <tr key={si.id} className="hover:bg-gray-50">
                                                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                                        {invoice.invoice_number}
-                                                    </td>
-                                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                                        {invoice.customer?.name}
-                                                    </td>
-                                                    <td className="px-6 py-4 whitespace-nowrap text-sm">
-                                                        {invoice.quotation ? (
-                                                            <Link href={route('quotations.show', invoice.quotation.id)} className="text-purple-600 hover:text-purple-900">
-                                                                {invoice.quotation.quotation_number}
-                                                            </Link>
-                                                        ) : invoice.delivery_order ? (
-                                                            <Link href={route('delivery-orders.show', invoice.delivery_order.id)} className="text-blue-600 hover:text-blue-900">
-                                                                {invoice.delivery_order.do_number}
-                                                            </Link>
-                                                        ) : <span className="text-gray-400">Direct</span>}
-                                                    </td>
-                                                    <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                                                        RM {parseFloat(invoice.total_amount).toFixed(2)}
+                                                        {si.supplier_invoice_number}
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                        {new Date(invoice.due_date).toLocaleDateString()}
+                                                        {si.supplier_ref_number || '-'}
+                                                    </td>
+                                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                        {si.supplier?.company_name || si.supplier?.name}
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-sm">
-                                                        {getStatusBadge(invoice.payment_status)}
+                                                        {si.purchase_order ? (
+                                                            <Link href={route('purchase-orders.show', si.purchase_order.id)} className="text-blue-600 hover:text-blue-900">
+                                                                {si.purchase_order.po_number}
+                                                            </Link>
+                                                        ) : <span className="text-gray-400">-</span>}
+                                                    </td>
+                                                    <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                                                        RM {parseFloat(si.total_amount).toFixed(2)}
+                                                    </td>
+                                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                        {new Date(si.invoice_date).toLocaleDateString()}
+                                                    </td>
+                                                    <td className="px-6 py-4 whitespace-nowrap text-sm">
+                                                        {getStatusBadge(si.status)}
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                                         <Link
-                                                            href={route('invoices.show', invoice.id)}
-                                                            className="text-blue-600 hover:text-blue-900 mr-3"
+                                                            href={route('supplier-invoices.show', si.id)}
+                                                            className="text-blue-600 hover:text-blue-900"
                                                         >
                                                             View
                                                         </Link>
-                                                        <a href={route('invoices.pdf', invoice.id)} target="_blank" className="text-gray-600 hover:text-gray-900">
-                                                            PDF
-                                                        </a>
                                                     </td>
                                                 </tr>
                                             ))
                                         ) : (
                                             <tr>
-                                                <td colSpan="7" className="px-6 py-4 text-center text-gray-500">
-                                                    No invoices found.
+                                                <td colSpan="8" className="px-6 py-4 text-center text-gray-500">
+                                                    No supplier invoices found.
                                                 </td>
                                             </tr>
                                         )}
@@ -143,14 +134,13 @@ export default function Index({ auth, invoices, filters }) {
                                 </table>
                             </div>
 
-                            {/* Pagination */}
-                            {invoices.links && (
+                            {supplierInvoices.links && (
                                 <div className="mt-4 flex justify-between items-center">
                                     <div className="text-sm text-gray-700">
-                                        Showing {invoices.from} to {invoices.to} of {invoices.total} results
+                                        Showing {supplierInvoices.from} to {supplierInvoices.to} of {supplierInvoices.total} results
                                     </div>
                                     <div className="flex gap-1">
-                                        {invoices.links.map((link) => (
+                                        {supplierInvoices.links.map((link) => (
                                             <Link
                                                 key={link.label}
                                                 href={link.url || '#'}

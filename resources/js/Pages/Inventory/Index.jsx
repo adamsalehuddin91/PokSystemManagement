@@ -95,7 +95,10 @@ export default function Index({ auth, skus, categories, filters, summary }) {
                                                 Stock
                                             </th>
                                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Unit Price
+                                                Cost Price
+                                            </th>
+                                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Sell Price
                                             </th>
                                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 Status
@@ -122,6 +125,9 @@ export default function Index({ auth, skus, categories, filters, summary }) {
                                                         <span className="font-semibold">{sku.current_stock}</span>
                                                         {getStockBadge(sku)}
                                                     </div>
+                                                </td>
+                                                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                    RM {parseFloat(sku.cost_price).toFixed(2)}
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                                     RM {parseFloat(sku.unit_price).toFixed(2)}

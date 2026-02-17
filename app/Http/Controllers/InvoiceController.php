@@ -24,9 +24,18 @@ class InvoiceController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Invoice::with(['customer', 'deliveryOrder', 'items'])
+        $query = Invoice::with(['customer', 'deliveryOrder', 'quotation', 'items'])
             ->when($request->search, function ($q) use ($request) {
-                $q->where('invoice_number', 'like', "%{$request->search}%");
+                $q->where(function ($sub) use ($request) {
+                    $sub->where('invoice_number', 'ilike', "%{$request->search}%")
+                        ->orWhereHas('quotation', function ($qr) use ($request) {
+                            $qr->where('quotation_number', 'ilike', "%{$request->search}%");
+                        })
+                        ->orWhereHas('customer', function ($c) use ($request) {
+                            $c->where('name', 'ilike', "%{$request->search}%")
+                              ->orWhere('company_name', 'ilike', "%{$request->search}%");
+                        });
+                });
             })
             ->when($request->payment_status, function ($q) use ($request) {
                 $q->where('payment_status', $request->payment_status);

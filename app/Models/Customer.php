@@ -35,6 +35,11 @@ class Customer extends Model
         return $this->hasMany(Invoice::class);
     }
 
+    public function quotations(): HasMany
+    {
+        return $this->hasMany(Quotation::class);
+    }
+
     /**
      * Get total sales amount to this customer
      */

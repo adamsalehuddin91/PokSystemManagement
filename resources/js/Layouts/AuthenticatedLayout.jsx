@@ -3,13 +3,35 @@ import Dropdown from '@/Components/Dropdown';
 import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link, usePage } from '@inertiajs/react';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 export default function AuthenticatedLayout({ header, children }) {
     const user = usePage().props.auth.user;
 
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
+    const [showSalesDropdown, setShowSalesDropdown] = useState(false);
+    const [showPurchasingDropdown, setShowPurchasingDropdown] = useState(false);
+    const [showMobileSales, setShowMobileSales] = useState(false);
+    const [showMobilePurchasing, setShowMobilePurchasing] = useState(false);
+    const salesRef = useRef(null);
+    const purchasingRef = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (salesRef.current && !salesRef.current.contains(e.target)) {
+                setShowSalesDropdown(false);
+            }
+            if (purchasingRef.current && !purchasingRef.current.contains(e.target)) {
+                setShowPurchasingDropdown(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
+    const isSalesActive = route().current('quotations.*') || route().current('invoices.*');
+    const isPurchasingActive = route().current('purchase-orders.*') || route().current('supplier-invoices.*');
 
     return (
         <div className="min-h-screen bg-gray-100">
@@ -36,24 +58,84 @@ export default function AuthenticatedLayout({ header, children }) {
                                 >
                                     Inventory
                                 </NavLink>
-                                <NavLink
-                                    href={route('purchase-orders.index')}
-                                    active={route().current('purchase-orders.*')}
-                                >
-                                    Purchase Orders
-                                </NavLink>
+                                <div className="relative" ref={purchasingRef}>
+                                    <button
+                                        type="button"
+                                        onClick={() => setShowPurchasingDropdown(!showPurchasingDropdown)}
+                                        className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium leading-5 transition duration-150 ease-in-out focus:outline-none ${
+                                            isPurchasingActive
+                                                ? 'border-indigo-400 text-gray-900 focus:border-indigo-700'
+                                                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:text-gray-700 focus:border-gray-300'
+                                        }`}
+                                    >
+                                        Purchasing
+                                        <svg className="ml-1 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                                        </svg>
+                                    </button>
+                                    {showPurchasingDropdown && (
+                                        <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50">
+                                            <div className="py-1">
+                                                <Link
+                                                    href={route('purchase-orders.index')}
+                                                    className={`block px-4 py-2 text-sm ${route().current('purchase-orders.*') ? 'bg-gray-100 text-gray-900' : 'text-gray-700 hover:bg-gray-50'}`}
+                                                    onClick={() => setShowPurchasingDropdown(false)}
+                                                >
+                                                    Purchase Orders
+                                                </Link>
+                                                <Link
+                                                    href={route('supplier-invoices.index')}
+                                                    className={`block px-4 py-2 text-sm ${route().current('supplier-invoices.*') ? 'bg-gray-100 text-gray-900' : 'text-gray-700 hover:bg-gray-50'}`}
+                                                    onClick={() => setShowPurchasingDropdown(false)}
+                                                >
+                                                    Supplier Invoices
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
                                 <NavLink
                                     href={route('delivery-orders.index')}
                                     active={route().current('delivery-orders.*')}
                                 >
                                     Delivery Orders
                                 </NavLink>
-                                <NavLink
-                                    href={route('invoices.index')}
-                                    active={route().current('invoices.*')}
-                                >
-                                    Invoices
-                                </NavLink>
+                                <div className="relative" ref={salesRef}>
+                                    <button
+                                        type="button"
+                                        onClick={() => setShowSalesDropdown(!showSalesDropdown)}
+                                        className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium leading-5 transition duration-150 ease-in-out focus:outline-none ${
+                                            isSalesActive
+                                                ? 'border-indigo-400 text-gray-900 focus:border-indigo-700'
+                                                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:text-gray-700 focus:border-gray-300'
+                                        }`}
+                                    >
+                                        Sales
+                                        <svg className="ml-1 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                                        </svg>
+                                    </button>
+                                    {showSalesDropdown && (
+                                        <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50">
+                                            <div className="py-1">
+                                                <Link
+                                                    href={route('quotations.index')}
+                                                    className={`block px-4 py-2 text-sm ${route().current('quotations.*') ? 'bg-gray-100 text-gray-900' : 'text-gray-700 hover:bg-gray-50'}`}
+                                                    onClick={() => setShowSalesDropdown(false)}
+                                                >
+                                                    Quotations
+                                                </Link>
+                                                <Link
+                                                    href={route('invoices.index')}
+                                                    className={`block px-4 py-2 text-sm ${route().current('invoices.*') ? 'bg-gray-100 text-gray-900' : 'text-gray-700 hover:bg-gray-50'}`}
+                                                    onClick={() => setShowSalesDropdown(false)}
+                                                >
+                                                    Invoices
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
                                 <NavLink
                                     href={route('suppliers.index')}
                                     active={route().current('suppliers.*')}
@@ -188,24 +270,70 @@ export default function AuthenticatedLayout({ header, children }) {
                         >
                             Inventory
                         </ResponsiveNavLink>
-                        <ResponsiveNavLink
-                            href={route('purchase-orders.index')}
-                            active={route().current('purchase-orders.*')}
+                        <button
+                            onClick={() => setShowMobilePurchasing(!showMobilePurchasing)}
+                            className={`w-full flex items-center justify-between ps-3 pe-4 py-2 border-l-4 text-start text-base font-medium transition duration-150 ease-in-out ${
+                                isPurchasingActive
+                                    ? 'border-indigo-400 text-indigo-700 bg-indigo-50'
+                                    : 'border-transparent text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300'
+                            }`}
                         >
-                            Purchase Orders
-                        </ResponsiveNavLink>
+                            Purchasing
+                            <svg className={`h-4 w-4 transition-transform ${showMobilePurchasing ? 'rotate-180' : ''}`} fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                            </svg>
+                        </button>
+                        {showMobilePurchasing && (
+                            <div className="pl-4">
+                                <ResponsiveNavLink
+                                    href={route('purchase-orders.index')}
+                                    active={route().current('purchase-orders.*')}
+                                >
+                                    Purchase Orders
+                                </ResponsiveNavLink>
+                                <ResponsiveNavLink
+                                    href={route('supplier-invoices.index')}
+                                    active={route().current('supplier-invoices.*')}
+                                >
+                                    Supplier Invoices
+                                </ResponsiveNavLink>
+                            </div>
+                        )}
                         <ResponsiveNavLink
                             href={route('delivery-orders.index')}
                             active={route().current('delivery-orders.*')}
                         >
                             Delivery Orders
                         </ResponsiveNavLink>
-                        <ResponsiveNavLink
-                            href={route('invoices.index')}
-                            active={route().current('invoices.*')}
+                        <button
+                            onClick={() => setShowMobileSales(!showMobileSales)}
+                            className={`w-full flex items-center justify-between ps-3 pe-4 py-2 border-l-4 text-start text-base font-medium transition duration-150 ease-in-out ${
+                                isSalesActive
+                                    ? 'border-indigo-400 text-indigo-700 bg-indigo-50'
+                                    : 'border-transparent text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300'
+                            }`}
                         >
-                            Invoices
-                        </ResponsiveNavLink>
+                            Sales
+                            <svg className={`h-4 w-4 transition-transform ${showMobileSales ? 'rotate-180' : ''}`} fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                            </svg>
+                        </button>
+                        {showMobileSales && (
+                            <div className="pl-4">
+                                <ResponsiveNavLink
+                                    href={route('quotations.index')}
+                                    active={route().current('quotations.*')}
+                                >
+                                    Quotations
+                                </ResponsiveNavLink>
+                                <ResponsiveNavLink
+                                    href={route('invoices.index')}
+                                    active={route().current('invoices.*')}
+                                >
+                                    Invoices
+                                </ResponsiveNavLink>
+                            </div>
+                        )}
                         <ResponsiveNavLink
                             href={route('suppliers.index')}
                             active={route().current('suppliers.*')}

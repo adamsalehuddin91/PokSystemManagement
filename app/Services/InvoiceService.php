@@ -21,21 +21,23 @@ class InvoiceService
      */
     public function generateInvoiceNumber(): string
     {
-        $year = now()->year;
-        $prefix = "INV-{$year}-";
+        $prefix = config('company.doc_prefix', 'ZAS');
+        $yy = now()->format('y');
+        $mm = now()->format('m');
+        $docPrefix = "{$prefix}{$yy}{$mm}/";
 
-        $lastInvoice = Invoice::where('invoice_number', 'like', "{$prefix}%")
-            ->orderBy('invoice_number', 'desc')
+        $lastInvoice = Invoice::where('invoice_number', 'like', "{$docPrefix}%")
+            ->orderByRaw("CAST(SUBSTRING(invoice_number FROM LENGTH(?) + 1) AS INTEGER) DESC", [$docPrefix])
             ->first();
 
         if ($lastInvoice) {
-            $lastNumber = (int) substr($lastInvoice->invoice_number, -4);
+            $lastNumber = (int) substr($lastInvoice->invoice_number, strlen($docPrefix));
             $newNumber = $lastNumber + 1;
         } else {
             $newNumber = 1;
         }
 
-        return $prefix . str_pad($newNumber, 4, '0', STR_PAD_LEFT);
+        return $docPrefix . $newNumber;
     }
 
     /**
@@ -121,20 +123,22 @@ class InvoiceService
      */
     public function generateReceiptNumber(): string
     {
-        $year = now()->year;
-        $prefix = "RCP-{$year}-";
+        $prefix = config('company.doc_prefix', 'ZAS');
+        $yy = now()->format('y');
+        $mm = now()->format('m');
+        $docPrefix = "{$prefix}R{$yy}{$mm}/";
 
-        $lastReceipt = Receipt::where('receipt_number', 'like', "{$prefix}%")
-            ->orderBy('receipt_number', 'desc')
+        $lastReceipt = Receipt::where('receipt_number', 'like', "{$docPrefix}%")
+            ->orderByRaw("CAST(SUBSTRING(receipt_number FROM LENGTH(?) + 1) AS INTEGER) DESC", [$docPrefix])
             ->first();
 
         if ($lastReceipt) {
-            $lastNumber = (int) substr($lastReceipt->receipt_number, -4);
+            $lastNumber = (int) substr($lastReceipt->receipt_number, strlen($docPrefix));
             $newNumber = $lastNumber + 1;
         } else {
             $newNumber = 1;
         }
 
-        return $prefix . str_pad($newNumber, 4, '0', STR_PAD_LEFT);
+        return $docPrefix . $newNumber;
     }
 }

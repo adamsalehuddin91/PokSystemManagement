@@ -257,7 +257,7 @@
                 <table class="info-table">
                     <tr>
                         <td class="right-label">No.:</td>
-                        <td><span class="doc-no">INV - {{ $invoice->invoice_number }}</span></td>
+                        <td><span class="doc-no">{{ $invoice->invoice_number }}</span></td>
                     </tr>
                     <tr>
                         <td class="right-label">Date:</td>

@@ -43,6 +43,16 @@ Route::middleware('auth')->group(function () {
         Route::delete('/{category}', [App\Http\Controllers\CategoryController::class, 'destroy'])->name('destroy');
     });
 
+    // Supplier Invoices
+    Route::prefix('supplier-invoices')->name('supplier-invoices.')->group(function () {
+        Route::get('/', [App\Http\Controllers\SupplierInvoiceController::class, 'index'])->name('index');
+        Route::get('/create', [App\Http\Controllers\SupplierInvoiceController::class, 'create'])->name('create');
+        Route::post('/', [App\Http\Controllers\SupplierInvoiceController::class, 'store'])->name('store');
+        Route::get('/{supplierInvoice}', [App\Http\Controllers\SupplierInvoiceController::class, 'show'])->name('show');
+        Route::post('/{supplierInvoice}/confirm', [App\Http\Controllers\SupplierInvoiceController::class, 'confirm'])->name('confirm');
+        Route::delete('/{supplierInvoice}', [App\Http\Controllers\SupplierInvoiceController::class, 'destroy'])->name('destroy');
+    });
+
     // Purchase Orders
     Route::prefix('purchase-orders')->name('purchase-orders.')->group(function () {
         Route::get('/', [App\Http\Controllers\PurchaseOrderController::class, 'index'])->name('index');
@@ -72,6 +82,20 @@ Route::middleware('auth')->group(function () {
     // Customers
     Route::resource('customers', App\Http\Controllers\CustomerController::class)->except(['show']);
 
+
+    // Quotations
+    Route::prefix('quotations')->name('quotations.')->group(function () {
+        Route::get('/', [App\Http\Controllers\QuotationController::class, 'index'])->name('index');
+        Route::get('/create', [App\Http\Controllers\QuotationController::class, 'create'])->name('create');
+        Route::post('/', [App\Http\Controllers\QuotationController::class, 'store'])->name('store');
+        Route::get('/{quotation}', [App\Http\Controllers\QuotationController::class, 'show'])->name('show');
+        Route::get('/{quotation}/edit', [App\Http\Controllers\QuotationController::class, 'edit'])->name('edit');
+        Route::put('/{quotation}', [App\Http\Controllers\QuotationController::class, 'update'])->name('update');
+        Route::post('/{quotation}/convert', [App\Http\Controllers\QuotationController::class, 'convert'])->name('convert');
+        Route::patch('/{quotation}/status', [App\Http\Controllers\QuotationController::class, 'updateStatus'])->name('status');
+        Route::get('/{quotation}/pdf', [App\Http\Controllers\QuotationController::class, 'pdf'])->name('pdf');
+        Route::delete('/{quotation}', [App\Http\Controllers\QuotationController::class, 'destroy'])->name('destroy');
+    });
 
     // Delivery Orders
     Route::prefix('delivery-orders')->name('delivery-orders.')->group(function () {

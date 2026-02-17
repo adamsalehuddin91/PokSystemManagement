@@ -243,7 +243,7 @@
                 <table class="info-table">
                     <tr>
                         <td class="right-label">No.:</td>
-                        <td class="right-value"><span class="doc-no">DO - {{ $deliveryOrder->do_number }}</span></td>
+                        <td class="right-value"><span class="doc-no">{{ $deliveryOrder->do_number }}</span></td>
                     </tr>
                     <tr>
                         <td class="right-label">Date:</td>

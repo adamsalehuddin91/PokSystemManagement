@@ -14,21 +14,23 @@ class PurchaseOrderService
      */
     public function generatePoNumber(): string
     {
-        $year = now()->year;
-        $prefix = "PO-{$year}-";
+        $prefix = config('company.doc_prefix', 'ZAS');
+        $yy = now()->format('y');
+        $mm = now()->format('m');
+        $docPrefix = "{$prefix}P{$yy}{$mm}/";
 
-        $lastPo = PurchaseOrder::where('po_number', 'like', "{$prefix}%")
-            ->orderBy('po_number', 'desc')
+        $lastPo = PurchaseOrder::where('po_number', 'like', "{$docPrefix}%")
+            ->orderByRaw("CAST(SUBSTRING(po_number FROM LENGTH(?) + 1) AS INTEGER) DESC", [$docPrefix])
             ->first();
 
         if ($lastPo) {
-            $lastNumber = (int) substr($lastPo->po_number, -4);
+            $lastNumber = (int) substr($lastPo->po_number, strlen($docPrefix));
             $newNumber = $lastNumber + 1;
         } else {
             $newNumber = 1;
         }
 
-        return $prefix . str_pad($newNumber, 4, '0', STR_PAD_LEFT);
+        return $docPrefix . $newNumber;
     }
 
     /**

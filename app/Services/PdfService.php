@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\PurchaseOrder;
 use App\Models\Invoice;
 use App\Models\DeliveryOrder;
+use App\Models\Quotation;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class PdfService
@@ -30,6 +31,19 @@ class PdfService
         $invoice->load(['customer', 'items.sku', 'deliveryOrder', 'receipts']);
 
         $pdf = Pdf::loadView('pdf.invoice', ['invoice' => $invoice])
+            ->setPaper('a4', 'portrait');
+
+        return $pdf;
+    }
+
+    /**
+     * Generate Quotation PDF
+     */
+    public function generateQuotationPdf(Quotation $quotation)
+    {
+        $quotation->load(['customer', 'items.sku', 'creator']);
+
+        $pdf = Pdf::loadView('pdf.quotation', ['quotation' => $quotation])
             ->setPaper('a4', 'portrait');
 
         return $pdf;

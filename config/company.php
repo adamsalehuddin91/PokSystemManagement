@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'doc_prefix' => env('COMPANY_DOC_PREFIX', 'ZAS'),
     'name' => env('COMPANY_NAME', 'ZAS GLOBAL RESOURCES'),
     'reg_no' => env('COMPANY_REG', 'TR0155402-T'),
     'tin' => env('COMPANY_TIN', 'IG28934332010'),
