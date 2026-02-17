@@ -67,7 +67,7 @@ class PdfService
      */
     public function streamPdf($pdf, string $filename)
     {
-        return $pdf->stream($filename);
+        return $pdf->stream(str_replace(['/', '\\'], '-', $filename));
     }
 
     /**
@@ -75,6 +75,6 @@ class PdfService
      */
     public function downloadPdf($pdf, string $filename)
     {
-        return $pdf->download($filename);
+        return $pdf->download(str_replace(['/', '\\'], '-', $filename));
     }
 }
