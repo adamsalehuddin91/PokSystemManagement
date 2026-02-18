@@ -3,7 +3,7 @@ import { Head, useForm } from '@inertiajs/react';
 
 export default function Show({ auth, invoice }) {
     const { data, setData, post, processing, errors, reset } = useForm({
-        payment_method: 'bank_transfer',
+        payment_method: 'transfer',
         amount_paid: invoice.total_amount - (invoice.receipts?.reduce((sum, r) => sum + parseFloat(r.amount_paid), 0) || 0),
         payment_date: new Date().toISOString().split('T')[0],
         notes: '',
@@ -11,7 +11,7 @@ export default function Show({ auth, invoice }) {
 
     const handlePayment = (e) => {
         e.preventDefault();
-        post(route('invoices.payments.store', invoice.id), {
+        post(route('invoices.payment', invoice.id), {
             onSuccess: () => reset(),
         });
     };
@@ -130,9 +130,9 @@ export default function Show({ auth, invoice }) {
                                             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                                         >
                                             <option value="cash">Cash</option>
-                                            <option value="bank_transfer">Bank Transfer</option>
-                                            <option value="check">Check</option>
-                                            <option value="credit_card">Credit Card</option>
+                                            <option value="card">Card</option>
+                                            <option value="transfer">Bank Transfer</option>
+                                            <option value="qr">QR Payment</option>
                                         </select>
                                     </div>
                                     <div>
