@@ -49,7 +49,7 @@ export default function Index({ auth, purchaseOrders, suppliers, filters, summar
                         </div>
                         <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
                             <div className="text-gray-500 text-sm">Total Value</div>
-                            <div className="text-3xl font-bold text-gray-900">RM {summary.total_value.toFixed(2)}</div>
+                            <div className="text-3xl font-bold text-gray-900">RM {parseFloat(summary.total_value || 0).toFixed(2)}</div>
                         </div>
                     </div>
 
