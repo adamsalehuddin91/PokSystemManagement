@@ -1,0 +1,329 @@
+# HAIDA MUSLIMAH SALON  
+## Digital Salon Ecosystem (Web App) — Full Project Brief + Tech & Security
+
+---
+
+## 1) Executive Overview
+
+**HAIDA MUSLIMAH SALON** will implement a **web-based Salon Management System** that unifies core daily operations into a single ecosystem:
+
+- POS / Sales (receipt, payments)
+- Booking + Deposit
+- Customer Database (~8,000 customers)
+- Loyalty Points (Admin-controlled)
+- Commission (by service, assigned to stylist selected in POS)
+- Inventory (stock in/out/adjust, low stock alert)
+- Reporting (Admin only)
+
+This system is intended to be **demo-ready quickly** and **scalable for production**.
+
+---
+
+## 2) Business Goals
+
+1. **One system** for all salon operations (reduce Excel/manual errors).
+2. Faster daily execution (POS & booking).
+3. Accurate and transparent commission by service.
+4. Controlled and auditable customer points.
+5. Inventory visibility (low stock alerts, movement history).
+6. Owner/Admin dashboards & reports to monitor performance.
+
+---
+
+## 3) System Scope (Modules)
+
+### 3.1 POS / Sales
+- Create sales quickly (service + retail items)
+- Payment methods: Cash / QR / Bank
+- Print / WhatsApp receipt (phase-based)
+- Customer search by phone
+- **Stylist selection per sale item** (important for commission accuracy)
+- Auto calculations:
+  - commission
+  - points
+  - inventory deduction (retail)
+
+---
+
+### 3.2 Booking & Deposit
+- Booking calendar + list view
+- Deposit collection & status
+- Convert booking → sale (deposit auto-deducted)
+- Edit stylist assignment during conversion to POS
+
+---
+
+### 3.3 Customers & Loyalty Points
+- Central customer profile (name, phone, history)
+- Points earned from paid sales
+- Points redeem for discount
+- **Admin-only points adjustment** with required reason
+- Points ledger for auditability
+
+---
+
+### 3.4 Commission System (By Service)
+- Commission rate defined per service (not per staff login)
+- Commission assigned to stylist selected during POS
+- Monthly commission summary
+- Optional “lock month” to freeze finalized commission
+
+---
+
+### 3.5 Inventory System
+- Item master (retail + consumables)
+- Stock in (admin only)
+- Stock out / usage
+- Stock adjustment (admin only + reason required)
+- Low stock alerts (reorder threshold)
+- Retail sale auto-deducts inventory stock
+- Inventory movement report
+
+---
+
+### 3.6 Reports & Dashboard (Admin Only)
+- Daily sales summary
+- Monthly sales summary
+- Commission report by stylist
+- Points report / redemption report
+- Cash flow overview
+- Inventory movement + low stock report
+
+---
+
+## 4) User Roles (Strictly 2 Roles Only)
+
+### 4.1 Admin (Owner/Management)
+**Full system access**
+- Services + pricing + commission rates
+- Points rules & adjustment
+- Inventory item master, stock in/out/adjust, cost visibility
+- View all reports & dashboards
+- Lock month (optional)
+- Settings
+
+### 4.2 Staff (Cashier/Front desk)
+**Limited operational access**
+- POS / Sales
+- Booking & Deposit
+- Inventory: view-only or usage-only (no cost, no adjust)
+- Can select stylist during POS
+- View customer points (read-only)
+
+**Staff restrictions**
+- Cannot adjust points
+- Cannot edit commission rates
+- Cannot access admin reports or settings
+- Cannot do stock adjustments
+- Cannot view inventory cost price
+
+> Admin-only actions must be **hidden** (not disabled) for staff users.
+
+---
+
+## 5) Key Operational Logic
+
+### 5.1 Stylist Selection & Commission Logic (Core)
+- Logged-in staff user is NOT used for commission calculation.
+- During POS, each sale item (service) requires a **stylist selector**.
+- Commission rate comes from service configuration.
+
+**Commission formula**
+commission_amount = item_net_total × service_commission_rate
+**Commission assigned to**
+- `sale_item.stylist_id` (selected stylist)
+
+---
+
+### 5.2 Loyalty Points Logic (Ledger-Based)
+Admin defines rules:
+- Earn rule (example): RM1 = 1 point
+- Redeem rule (example): 100 points = RM5
+- Optional: max redeem per sale
+
+**Earn points**
+- Only on successful paid sales
+- Insert ledger record: `+points`
+
+**Redeem points**
+- During POS checkout
+- Validate point balance
+- Insert ledger record: `-points`
+- Apply discount
+
+**Admin adjust points**
+- Admin only
+- Reason required
+- Insert ledger record (+/-)
+- Fully auditable
+
+**Why ledger-based?**
+- Audit trail
+- Dispute handling
+- Prevent manipulation
+- Industry standard practice
+
+---
+
+### 5.3 Inventory Logic (Stock Ledger)
+All stock changes are recorded as **stock movements**:
+- IN
+- OUT
+- ADJUST (admin only + reason)
+
+Retail product sale → auto create OUT movement.
+
+---
+
+## 6) Technology (Recommended Demo Stack)
+
+### 6.1 Primary Stack (Fast + Free Demo)
+- **Frontend**: Next.js (App Router) + React
+- **UI**: Tailwind CSS (custom UI following Google Stitch design)
+- **Backend/DB/Auth**: Supabase (PostgreSQL + Auth + Storage)
+- **Hosting**: Vercel (free tier for demo)
+- **Optional**: TypeScript for safer dev
+
+This stack is chosen because:
+- Minimal infrastructure
+- Fast deployment
+- Free for demo
+- Scales to production if needed
+
+---
+
+## 7) Supabase Keys & Environment Security
+
+Environment variables typically used:
+- `NEXT_PUBLIC_SUPABASE_URL` (public)
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY` (public by design)
+- `SUPABASE_SERVICE_ROLE_KEY` (secret, server-side only)
+
+### 7.1 Why `NEXT_PUBLIC_*` is safe?
+Supabase anon key is designed to be public.
+Security is enforced by **Row Level Security (RLS)** and server-side checks.
+
+### 7.2 Service Role Key (Critical)
+- Must NEVER be exposed to client/browser
+- Use only in:
+  - server routes (`/app/api/*`)
+  - server actions
+  - background jobs
+- Never use inside React components rendered in the browser
+
+### 7.3 Git Safety
+- `.env.local` must be in `.gitignore`
+- Never commit secrets into the repo
+
+---
+
+## 8) Database Security Model (RLS + RBAC)
+
+### 8.1 Role Definition
+There are only two roles stored on user profile:
+- `admin`
+- `staff`
+
+### 8.2 Security Enforcement
+Security is enforced using:
+1) Supabase Auth (who are you?)
+2) RLS policies (what can you access?)
+3) Server-side API guards (what actions are allowed?)
+
+### 8.3 Recommended Rules
+- Staff can read and write only operational tables for POS/Booking.
+- Staff cannot access settings, admin reports, cost price.
+- Admin can access everything.
+- Sensitive operations require server-side endpoints:
+  - points adjustment
+  - stock adjustment
+  - commission lock
+
+### 8.4 Audit Logging
+Admin-only actions should be logged:
+- user id
+- action type
+- timestamp
+- before/after values (optional)
+- reason (required for points/stock adjustment)
+
+---
+
+## 9) Data Migration (~8,000 Customers)
+
+### 9.1 Migration Approach (Safe)
+1) Export current customer database to CSV
+2) Import to staging table
+3) Normalize phone format (Malaysia)
+4) Detect duplicates by phone
+5) Insert into main customers table
+6) If existing points exist, insert as opening ledger balance
+
+### 9.2 Search Performance
+- Index on `phone_canonical` (unique)
+- Index on `full_name` (optional)
+- Use standardized phone format for fast matching
+
+---
+
+## 10) Deployment Plan (Demo → Production)
+
+### 10.1 Demo (Free)
+- Deploy Next.js to Vercel (free)
+- Use Supabase free tier
+- Provide demo login for owner:
+  - Admin account
+  - Staff account
+
+### 10.2 Production (Later)
+- Upgrade Supabase if usage grows (not required for 8k customers)
+- Add backups, monitoring
+- Harden RLS policies
+- Add more reports / export
+- Add WhatsApp receipt integration (optional)
+
+---
+
+## 11) Deliverables
+
+1. UI/UX based on Google Stitch design
+2. Working demo:
+   - POS
+   - Booking + deposit
+   - Customer search + points balance
+   - Commission by service (stylist assignment)
+   - Inventory basic (items list + low stock)
+3. Admin & staff role separation
+4. Documentation:
+   - Setup guide
+   - Database schema
+   - RLS policies
+
+---
+
+## 12) Approval Request
+
+We request owner approval to:
+- Confirm the proposed salon ecosystem modules
+- Approve the UI/UX direction and role controls
+- Proceed with development of the demo and migration plan
+
+---
+
+## 13) Next Actions (After Approval)
+
+1) Finalize UI screens (POS, Booking, Customers, Inventory)
+2) Implement DB schema + RLS
+3) Create Admin & Staff accounts
+4) Import customer data sample (then full)
+5) Deliver demo URL for owner review
+6) Iterate improvements based on feedback
+
+---
+
+**Prepared for:**  
+HAIDA MUSLIMAH SALON (Owner & Management)
+
+**Purpose:**  
+Owner approval — ecosystem scope + technical direction + security approach
+passwordsupabase - goldbrutal@1991

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Loyalty Points Configuration | Muslimah Salon</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7de830",
+                        "background-light": "#f7f8f6",
+                        "background-dark": "#182111",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-[#141811] dark:text-white">
+<div class="flex h-screen overflow-hidden">
+<!-- Side Navigation Bar -->
+<aside class="w-72 bg-white dark:bg-[#1f2916] border-r border-[#e0e5dc] dark:border-[#2d3a24] flex flex-col">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-10">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Logo showing abstract floral design" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCAaVNUc01jj8tWAnua4_RmIizXwsB5Ba6lSICRYd7kQ2DIjiftdFptR_rNVZaahea9hQYbJusmpaqK_o7wQYxb0v61yWAcdUnm2h8thhgQAnSoaBwnPCf9xKd6yY3cr0y4iSehIl0jWyrRzLV7HmPLWoqa0AtXwHozRcVH1IR4tbO2FoQpq--Sa7CEt6gt1ksDGavICed18lUTmF2jokds7Kvtu-4_bbwsAMVEr9ytm5Oy1XHceZxVJuXeC85Qowdls-eybMNPUpiv");'></div>
+<div class="flex flex-col">
+<h1 class="text-[#141811] dark:text-white text-base font-bold leading-none">Muslimah Salon</h1>
+<p class="text-[#728863] dark:text-gray-400 text-xs font-medium mt-1">Premium Management</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#728863] hover:bg-[#f2f4f0] dark:hover:bg-[#2d3a24] rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-semibold">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#728863] hover:bg-[#f2f4f0] dark:hover:bg-[#2d3a24] rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="text-sm font-semibold">Appointments</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#728863] hover:bg-[#f2f4f0] dark:hover:bg-[#2d3a24] rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">content_cut</span>
+<span class="text-sm font-semibold">Services</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#728863] hover:bg-[#f2f4f0] dark:hover:bg-[#2d3a24] rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-semibold">Customers</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 bg-primary/20 text-[#141811] dark:text-primary rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">card_membership</span>
+<span class="text-sm font-bold">Loyalty Program</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#728863] hover:bg-[#f2f4f0] dark:hover:bg-[#2d3a24] rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-semibold">Settings</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6 border-t border-[#e0e5dc] dark:border-[#2d3a24]">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-primary/30 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">account_circle</span>
+</div>
+<div class="flex flex-col">
+<p class="text-xs font-bold">Admin Panel</p>
+<p class="text-[10px] text-[#728863]">v9.0.10</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark">
+<div class="max-w-5xl mx-auto px-8 py-10">
+<!-- Breadcrumbs -->
+<div class="flex flex-wrap gap-2 mb-4">
+<a class="text-[#728863] text-sm font-medium hover:text-[#141811] transition-colors" href="#">Settings</a>
+<span class="text-[#728863] text-sm font-medium">/</span>
+<span class="text-[#141811] dark:text-white text-sm font-medium">Loyalty Configuration</span>
+</div>
+<!-- Page Heading -->
+<div class="flex flex-wrap justify-between items-end gap-4 mb-8">
+<div class="flex flex-col gap-2">
+<h1 class="text-[#141811] dark:text-white text-4xl font-black leading-tight tracking-tight">Loyalty Points Configuration</h1>
+<p class="text-[#728863] dark:text-gray-400 text-base font-normal">Manage how your customers earn and redeem rewards across all salon services.</p>
+</div>
+<button class="flex items-center gap-2 cursor-pointer rounded-xl h-12 px-6 bg-white dark:bg-[#1f2916] border border-[#e0e5dc] dark:border-[#2d3a24] text-[#141811] dark:text-white text-sm font-bold shadow-sm hover:bg-[#f2f4f0] transition-all">
+<span class="material-symbols-outlined text-sm">bar_chart</span>
+<span>View Program Stats</span>
+</button>
+</div>
+<!-- Master Toggle Action Panel -->
+<div class="mb-10">
+<div class="flex flex-1 flex-col items-start justify-between gap-4 rounded-xl border border-[#e0e5dc] dark:border-[#2d3a24] bg-white dark:bg-[#1f2916] p-6 sm:flex-row sm:items-center shadow-sm">
+<div class="flex flex-col gap-1">
+<p class="text-[#141811] dark:text-white text-lg font-bold">Enable Loyalty Program</p>
+<p class="text-[#728863] dark:text-gray-400 text-sm">Turn the loyalty reward system on or off for all customers globally.</p>
+</div>
+<label class="relative flex h-[34px] w-[60px] cursor-pointer items-center rounded-full border-none bg-[#f2f4f0] dark:bg-[#2d3a24] p-1 transition-colors has-[:checked]:bg-[#7de830]">
+<input checked="" class="invisible absolute peer" type="checkbox"/>
+<div class="h-full aspect-square rounded-full bg-white shadow-md transition-transform peer-checked:translate-x-[26px]"></div>
+</label>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Earning Rules Section -->
+<div class="flex flex-col gap-6">
+<div>
+<h2 class="text-[#141811] dark:text-white text-xl font-bold mb-1">Earning Rules</h2>
+<p class="text-[#728863] dark:text-gray-400 text-sm">Define how many points customers earn for every spend.</p>
+</div>
+<div class="bg-white dark:bg-[#1f2916] border border-[#e0e5dc] dark:border-[#2d3a24] rounded-xl p-6 shadow-sm">
+<div class="flex flex-col gap-4">
+<label class="text-[#141811] dark:text-white text-sm font-bold">Point Accrual Rate</label>
+<div class="flex items-center gap-4">
+<div class="flex-1">
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="text-[#728863] text-sm">RM</span>
+</div>
+<input class="block w-full pl-10 pr-4 py-3 bg-[#f2f4f0] dark:bg-[#2d3a24] border-none rounded-lg text-[#141811] dark:text-white focus:ring-2 focus:ring-primary text-sm font-medium" type="number" value="1"/>
+</div>
+<p class="mt-2 text-[11px] text-[#728863]">Spent by customer</p>
+</div>
+<div class="text-[#728863]">
+<span class="material-symbols-outlined">equal</span>
+</div>
+<div class="flex-1">
+<div class="relative">
+<input class="block w-full px-4 py-3 bg-[#f2f4f0] dark:bg-[#2d3a24] border-none rounded-lg text-[#141811] dark:text-white focus:ring-2 focus:ring-primary text-sm font-medium text-right" type="number" value="10"/>
+<div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+<span class="text-[#728863] text-sm ml-2">Points</span>
+</div>
+</div>
+<p class="mt-2 text-[11px] text-[#728863] text-right">Earned by customer</p>
+</div>
+</div>
+<div class="mt-4 p-4 rounded-lg bg-primary/5 border border-primary/20">
+<p class="text-xs text-[#141811] dark:text-gray-300 italic">
+<span class="font-bold">Example:</span> A customer spending RM 150 on a treatment will earn 1,500 points.
+                                </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Redemption Rules Section -->
+<div class="flex flex-col gap-6">
+<div>
+<h2 class="text-[#141811] dark:text-white text-xl font-bold mb-1">Redemption Rules</h2>
+<p class="text-[#728863] dark:text-gray-400 text-sm">Define the monetary value of accumulated points.</p>
+</div>
+<div class="bg-white dark:bg-[#1f2916] border border-[#e0e5dc] dark:border-[#2d3a24] rounded-xl p-6 shadow-sm">
+<div class="flex flex-col gap-4">
+<label class="text-[#141811] dark:text-white text-sm font-bold">Conversion Value</label>
+<div class="flex items-center gap-4">
+<div class="flex-1">
+<div class="relative">
+<input class="block w-full px-4 py-3 bg-[#f2f4f0] dark:bg-[#2d3a24] border-none rounded-lg text-[#141811] dark:text-white focus:ring-2 focus:ring-primary text-sm font-medium" type="number" value="1000"/>
+<div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+<span class="text-[#728863] text-sm">Points</span>
+</div>
+</div>
+</div>
+<div class="text-[#728863]">
+<span class="material-symbols-outlined">equal</span>
+</div>
+<div class="flex-1">
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="text-[#728863] text-sm">RM</span>
+</div>
+<input class="block w-full pl-10 pr-4 py-3 bg-[#f2f4f0] dark:bg-[#2d3a24] border-none rounded-lg text-[#141811] dark:text-white focus:ring-2 focus:ring-primary text-sm font-medium" type="number" value="5"/>
+</div>
+</div>
+</div>
+<hr class="border-[#e0e5dc] dark:border-[#2d3a24] my-2"/>
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<p class="text-[#141811] dark:text-white text-sm font-bold">Max redeem per transaction</p>
+<p class="text-[#728863] text-xs">Cap the maximum discount value</p>
+</div>
+<label class="relative flex h-[28px] w-[48px] cursor-pointer items-center rounded-full border-none bg-[#f2f4f0] dark:bg-[#2d3a24] p-1 transition-colors has-[:checked]:bg-[#7de830]">
+<input checked="" class="invisible absolute peer" type="checkbox"/>
+<div class="h-full aspect-square rounded-full bg-white shadow-sm transition-transform peer-checked:translate-x-[20px]"></div>
+</label>
+</div>
+<div class="mt-2">
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="text-[#728863] text-sm font-bold">RM</span>
+</div>
+<input class="block w-full pl-12 pr-4 py-3 bg-[#f2f4f0] dark:bg-[#2d3a24] border-none rounded-lg text-[#141811] dark:text-white focus:ring-2 focus:ring-primary text-sm font-bold" placeholder="50.00" type="number" value="50"/>
+</div>
+<p class="mt-2 text-xs text-[#728863]">Max discount amount allowed at checkout.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Additional Controls -->
+<div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="bg-white dark:bg-[#1f2916] border border-[#e0e5dc] dark:border-[#2d3a24] rounded-xl p-6 shadow-sm">
+<div class="flex items-start gap-4">
+<div class="p-3 bg-primary/20 rounded-lg text-primary">
+<span class="material-symbols-outlined">hourglass_empty</span>
+</div>
+<div class="flex flex-col gap-4 flex-1">
+<div>
+<h3 class="text-[#141811] dark:text-white text-base font-bold">Points Expiry</h3>
+<p class="text-[#728863] text-sm">Automatically expire points after inactivity.</p>
+</div>
+<select class="block w-full px-4 py-3 bg-[#f2f4f0] dark:bg-[#2d3a24] border-none rounded-lg text-[#141811] dark:text-white focus:ring-2 focus:ring-primary text-sm font-medium appearance-none">
+<option>Never Expire</option>
+<option>6 Months</option>
+<option selected="">12 Months (Recommended)</option>
+<option>24 Months</option>
+</select>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-[#1f2916] border border-[#e0e5dc] dark:border-[#2d3a24] rounded-xl p-6 shadow-sm">
+<div class="flex items-start gap-4">
+<div class="p-3 bg-primary/20 rounded-lg text-primary">
+<span class="material-symbols-outlined">verified_user</span>
+</div>
+<div class="flex flex-col gap-4 flex-1">
+<div>
+<h3 class="text-[#141811] dark:text-white text-base font-bold">Minimum Spend</h3>
+<p class="text-[#728863] text-sm">Minimum purchase value to use points.</p>
+</div>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="text-[#728863] text-sm">RM</span>
+</div>
+<input class="block w-full pl-10 pr-4 py-3 bg-[#f2f4f0] dark:bg-[#2d3a24] border-none rounded-lg text-[#141811] dark:text-white focus:ring-2 focus:ring-primary text-sm font-medium" type="number" value="20"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="mt-12 pt-8 border-t border-[#e0e5dc] dark:border-[#2d3a24] flex items-center justify-between">
+<button class="px-6 py-3 text-[#728863] hover:text-[#141811] font-bold text-sm transition-colors">
+                    Reset to Defaults
+                </button>
+<div class="flex items-center gap-4">
+<button class="px-8 py-3 rounded-xl border border-[#e0e5dc] dark:border-[#2d3a24] text-[#141811] dark:text-white font-bold text-sm hover:bg-white dark:hover:bg-[#2d3a24] transition-all">
+                        Cancel
+                    </button>
+<button class="px-10 py-3 rounded-xl bg-primary text-[#141811] font-bold text-sm shadow-[0_4px_14px_0_rgba(125,232,48,0.39)] hover:scale-[1.02] active:scale-[0.98] transition-all">
+                        Save Configuration
+                    </button>
+</div>
+</div>
+<!-- Footer Message -->
+<div class="mt-10 flex justify-center">
+<div class="flex items-center gap-2 text-[#728863] text-xs">
+<span class="material-symbols-outlined text-sm">lock</span>
+<p>Only account owners and admins can modify loyalty settings. Changes are logged for security.</p>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

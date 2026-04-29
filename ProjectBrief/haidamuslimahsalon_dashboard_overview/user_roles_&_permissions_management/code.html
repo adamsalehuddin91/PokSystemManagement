@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Roles &amp; Permissions Management - Muslimah Salon</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#91cf17",
+                        "background-light": "#f7f8f6",
+                        "background-dark": "#1c2111",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-size: 20px; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-[#171b0e] dark:text-[#f7f8f6]">
+<div class="layout-container flex flex-col min-h-screen">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#eff3e7] dark:border-[#2d361d] px-10 py-3 bg-background-light dark:bg-background-dark sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-[#171b0e] dark:text-[#f7f8f6]">
+<div class="size-6 text-primary">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-tight">Muslimah Salon Admin</h2>
+</div>
+<label class="flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-[#7f974e] flex border-none bg-[#eff3e7] dark:bg-[#2d361d] items-center justify-center pl-4 rounded-l-lg">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-[#eff3e7] dark:bg-[#2d361d] focus:ring-0 text-[#171b0e] dark:text-[#f7f8f6] placeholder:text-[#7f974e] text-sm font-normal px-2 rounded-r-lg" placeholder="Search staff..."/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-6">
+<nav class="flex items-center gap-6">
+<a class="text-[#171b0e] dark:text-[#f7f8f6] text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-[#171b0e] dark:text-[#f7f8f6] text-sm font-medium hover:text-primary transition-colors" href="#">Bookings</a>
+<a class="text-[#171b0e] dark:text-[#f7f8f6] text-sm font-medium hover:text-primary transition-colors border-b-2 border-primary" href="#">Staff</a>
+<a class="text-[#171b0e] dark:text-[#f7f8f6] text-sm font-medium hover:text-primary transition-colors" href="#">Inventory</a>
+<a class="text-[#171b0e] dark:text-[#f7f8f6] text-sm font-medium hover:text-primary transition-colors" href="#">Reports</a>
+</nav>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-[#eff3e7] dark:bg-[#2d361d] text-[#171b0e] dark:text-[#f7f8f6]">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-[#eff3e7] dark:bg-[#2d361d] text-[#171b0e] dark:text-[#f7f8f6]">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="Admin profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCA8MajemGFUFrlY6jG5XmiEyEeCJr5r6SSWFZee-SrjEM1CB_EXSj1ZkouPQst1AI0rcQBzMbgWfScgT7kjQ_WLQxUU7FRX6uvN3tJIk1489Ad55XSMmeOpHmsWtxupr_zcNOHVZZq0ds1QWRaOtb-pXatXe4LJafXeeHzjXA1W2VqA_qDewG_Esong1il8NiRfSFJu0Quo7XFloUeJEW-s7r4O_c_XWKaOiiT_dOLNojwkeFHI-le2RJnd1-UYJg1MZfJ3vXgiaRU");'></div>
+</div>
+</header>
+<main class="flex-1 flex px-10 gap-8 py-6 max-w-[1440px] mx-auto w-full">
+<!-- Side Navigation -->
+<aside class="w-64 shrink-0 flex flex-col gap-6">
+<div class="flex flex-col gap-1">
+<h3 class="text-[#7f974e] text-xs font-bold uppercase tracking-wider">Management</h3>
+<p class="text-[#171b0e] dark:text-[#f7f8f6] text-lg font-bold">Admin Console</p>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#7f974e] hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-semibold">Staff List</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary text-white shadow-sm" href="#">
+<span class="material-symbols-outlined">shield_person</span>
+<span class="text-sm font-semibold">Roles &amp; Permissions</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#7f974e] hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="text-sm font-semibold">Access Logs</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#7f974e] hover:bg-primary/10 transition-colors" href="#">
+<span class="material-symbols-outlined">rule</span>
+<span class="text-sm font-semibold">Security Policy</span>
+</a>
+</nav>
+<div class="mt-auto p-4 bg-primary/10 rounded-xl border border-primary/20">
+<p class="text-[#171b0e] dark:text-[#f7f8f6] text-xs font-bold mb-1">Security Status</p>
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-primary animate-pulse"></div>
+<p class="text-[#7f974e] text-[11px]">System fully protected</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<section class="flex-1 flex flex-col gap-6 overflow-hidden">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-2 text-sm">
+<a class="text-[#7f974e] hover:text-primary" href="#">Settings</a>
+<span class="text-[#7f974e] material-symbols-outlined !text-sm">chevron_right</span>
+<a class="text-[#7f974e] hover:text-primary" href="#">Staff Management</a>
+<span class="text-[#7f974e] material-symbols-outlined !text-sm">chevron_right</span>
+<span class="text-[#171b0e] dark:text-[#f7f8f6] font-medium">Roles &amp; Permissions</span>
+</div>
+<!-- Page Heading -->
+<div class="flex flex-wrap justify-between items-end gap-4">
+<div class="flex flex-col gap-1">
+<h1 class="text-3xl font-black text-[#171b0e] dark:text-[#f7f8f6] tracking-tight">Access Control</h1>
+<p class="text-[#7f974e] text-sm">Define what your team can see and do within the salon management system.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#eff3e7] dark:bg-[#2d361d] text-[#171b0e] dark:text-[#f7f8f6] text-sm font-bold border border-[#dfe7d0] dark:border-[#3a4427]">
+<span class="material-symbols-outlined">restart_alt</span>
+                            Reset Defaults
+                        </button>
+<button class="flex items-center gap-2 px-6 py-2 rounded-lg bg-primary text-white text-sm font-bold shadow-md shadow-primary/20">
+<span class="material-symbols-outlined">add</span>
+                            Create New Role
+                        </button>
+</div>
+</div>
+<!-- Role Selection Tabs -->
+<div class="border-b border-[#dfe7d0] dark:border-[#2d361d]">
+<div class="flex gap-8">
+<button class="border-b-2 border-primary text-[#171b0e] dark:text-[#f7f8f6] pb-3 px-1 text-sm font-bold flex items-center gap-2">
+                            Admin <span class="bg-primary/20 text-primary px-1.5 py-0.5 rounded text-[10px]">2 Users</span>
+</button>
+<button class="border-b-2 border-transparent text-[#7f974e] pb-3 px-1 text-sm font-medium hover:text-[#171b0e] dark:hover:text-[#f7f8f6]">
+                            Manager <span class="bg-[#eff3e7] dark:bg-[#2d361d] text-[#7f974e] px-1.5 py-0.5 rounded text-[10px]">3 Users</span>
+</button>
+<button class="border-b-2 border-transparent text-[#7f974e] pb-3 px-1 text-sm font-medium hover:text-[#171b0e] dark:hover:text-[#f7f8f6]">
+                            Senior Stylist <span class="bg-[#eff3e7] dark:bg-[#2d361d] text-[#7f974e] px-1.5 py-0.5 rounded text-[10px]">8 Users</span>
+</button>
+<button class="border-b-2 border-transparent text-[#7f974e] pb-3 px-1 text-sm font-medium hover:text-[#171b0e] dark:hover:text-[#f7f8f6]">
+                            Junior Staff <span class="bg-[#eff3e7] dark:bg-[#2d361d] text-[#7f974e] px-1.5 py-0.5 rounded text-[10px]">5 Users</span>
+</button>
+</div>
+</div>
+<!-- Content Grid -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+<!-- Permission Matrix (Left/Main) -->
+<div class="xl:col-span-2 flex flex-col gap-6">
+<div class="bg-white dark:bg-[#252b18] rounded-xl border border-[#eff3e7] dark:border-[#2d361d] shadow-sm overflow-hidden">
+<div class="p-4 border-b border-[#eff3e7] dark:border-[#2d361d] bg-[#fafcf8] dark:bg-[#1c2111] flex justify-between items-center">
+<h3 class="font-bold text-[#171b0e] dark:text-[#f7f8f6]">Permission Matrix: Manager Role</h3>
+<span class="text-xs text-[#7f974e]">Last updated 2 days ago</span>
+</div>
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-[#fcfdfa] dark:bg-[#202613] text-[#7f974e] text-[11px] uppercase tracking-widest border-b border-[#eff3e7] dark:border-[#2d361d]">
+<th class="px-6 py-3 font-bold">Module</th>
+<th class="px-4 py-3 font-bold text-center">View</th>
+<th class="px-4 py-3 font-bold text-center">Create</th>
+<th class="px-4 py-3 font-bold text-center">Edit</th>
+<th class="px-4 py-3 font-bold text-center">Delete</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#eff3e7] dark:divide-[#2d361d]">
+<!-- POS Row -->
+<tr class="hover:bg-[#fafcf8] dark:hover:bg-[#2d361d] transition-colors">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-bold">Point of Sale</span>
+<span class="text-[11px] text-[#7f974e]">Transactions, Discounts, Drawer</span>
+</div>
+</td>
+<td class="px-4 py-4 text-center"><input checked="" class="rounded border-[#dfe7d0] text-primary focus:ring-primary h-5 w-5" type="checkbox"/></td>
+<td class="px-4 py-4 text-center"><input checked="" class="rounded border-[#dfe7d0] text-primary focus:ring-primary h-5 w-5" type="checkbox"/></td>
+<td class="px-4 py-4 text-center"><input checked="" class="rounded border-[#dfe7d0] text-primary focus:ring-primary h-5 w-5" type="checkbox"/></td>
+<td class="px-4 py-4 text-center"><input class="rounded border-[#dfe7d0] text-primary focus:ring-primary h-5 w-5" type="checkbox"/></td>
+</tr>
+<!-- Bookings Row -->
+<tr class="hover:bg-[#fafcf8] dark:hover:bg-[#2d361d] transition-colors">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-bold">Bookings</span>
+<span class="text-[11px] text-[#7f974e]">Calendar, Appointments, Clients</span>
+</div>
+</td>
+<td class="px-4 py-4 text-center"><input checked="" class="rounded border-[#dfe7d0] text-primary focus:ring-primary h-5 w-5" type="checkbox"/></td>
+<td class="px-4 py-4 text-center"><input checked="" class="rounded border-[#dfe7d0] text-primary focus:ring-primary h-5 w-5" type="checkbox"/></td>
+<td class="px-4 py-4 text-center"><input checked="" class="rounded border-[#dfe7d0] text-primary focus:ring-primary h-5 w-5" type="checkbox"/></td>
+<td class="px-4 py-4 text-center"><input class="rounded border-[#dfe7d0] text-primary focus:ring-primary h-5 w-5" type="checkbox"/></td>
+</tr>
+<!-- Inventory Row -->
+<tr class="hover:bg-[#fafcf8] dark:hover:bg-[#2d361d] transition-colors">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="text-sm font-bold">Inventory</span>
+<span class="text-[11px] text-[#7f974e]">Products, Stock levels, Suppliers</span>
+</div>
+</td>
+<td class="px-4 py-4 text-center"><input checked="" class="rounded border-[#dfe7d0] text-primary focus:ring-primary h-5 w-5" type="checkbox"/></td>
+<td class="px-4 py-4 text-center"><input checked="" class="rounded border-[#dfe7d0] text-primary focus:ring-primary h-5 w-5" type="checkbox"/></td>
+<td class="px-4 py-4 text-center"><input class="rounded border-[#dfe7d0] text-primary focus:ring-primary h-5 w-5" type="checkbox"/></td>
+<td class="px-4 py-4 text-center"><input class="rounded border-[#dfe7d0] text-primary focus:ring-primary h-5 w-5" type="checkbox"/></td>
+</tr>
+<!-- Reports Row -->
+<tr class="hover:bg-[#fafcf8] dark:hover:bg-[#2d361d] transition-colors">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<div class="flex items-center gap-1">
+<span class="text-sm font-bold">Financial Reports</span>
+<span class="material-symbols-outlined !text-xs text-[#7f974e]" title="Sensitive access">lock</span>
+</div>
+<span class="text-[11px] text-[#7f974e]">Sales analytics, Staff performance</span>
+</div>
+</td>
+<td class="px-4 py-4 text-center"><input checked="" class="rounded border-[#dfe7d0] text-primary focus:ring-primary h-5 w-5" type="checkbox"/></td>
+<td class="px-4 py-4 text-center"><input class="rounded border-[#dfe7d0] text-primary focus:ring-primary h-5 w-5" disabled="" type="checkbox"/></td>
+<td class="px-4 py-4 text-center"><input class="rounded border-[#dfe7d0] text-primary focus:ring-primary h-5 w-5" disabled="" type="checkbox"/></td>
+<td class="px-4 py-4 text-center"><input class="rounded border-[#dfe7d0] text-primary focus:ring-primary h-5 w-5" disabled="" type="checkbox"/></td>
+</tr>
+</tbody>
+</table>
+<div class="p-4 bg-[#eff3e7]/50 dark:bg-[#2d361d]/50 flex justify-end gap-3">
+<button class="px-6 py-2 rounded-lg bg-primary text-white text-sm font-bold shadow-sm">Save Matrix Changes</button>
+</div>
+</div>
+</div>
+<!-- Staff List (Right) -->
+<div class="flex flex-col gap-6">
+<div class="bg-white dark:bg-[#252b18] rounded-xl border border-[#eff3e7] dark:border-[#2d361d] shadow-sm flex flex-col h-full">
+<div class="p-4 border-b border-[#eff3e7] dark:border-[#2d361d] flex flex-col gap-3">
+<h3 class="font-bold text-[#171b0e] dark:text-[#f7f8f6]">Staff Members</h3>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-2 !text-sm text-[#7f974e]">search</span>
+<input class="w-full pl-9 pr-4 py-1.5 rounded-lg bg-[#eff3e7] dark:bg-[#1c2111] border-none text-xs focus:ring-primary" placeholder="Filter by name..." type="text"/>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto">
+<div class="divide-y divide-[#eff3e7] dark:divide-[#2d361d]">
+<!-- Staff Item 1 -->
+<div class="p-4 hover:bg-[#fafcf8] dark:hover:bg-[#2d361d] transition-colors flex items-center justify-between group">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-cover bg-center border border-primary/10" data-alt="Staff member Aisha" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAQMCLD0hRFcIrrLRXXUQNiuZ55b_YsJQ8_N8TCJ3yp89321T-NzfgxBDC31Slhk9VoF1iPthIzdi50lc6JzdH2KB_mvR8O-irrizqIvUCx3Q5OKO9wSWrr2wTLFZOtp8nk2W-IC3SvmEl7jmQOpWzOUTReDGulAT6Mrd6nlrkNz0PUHIJE_Anfx8PedhSBIhdMyUjA-r6NeYxerXVepZW-7obv5R3psvm4_7clFMEHj428PkaOhpkRxh6RC2Vxz1MFNG61ZXE21jAO');"></div>
+<div class="flex flex-col">
+<span class="text-xs font-bold">Aisha Rahman</span>
+<span class="text-[10px] text-primary font-medium">Standard Manager</span>
+</div>
+</div>
+<button class="opacity-0 group-hover:opacity-100 text-primary text-xs font-bold hover:underline transition-opacity">Edit</button>
+</div>
+<!-- Staff Item 2 -->
+<div class="p-4 hover:bg-[#fafcf8] dark:hover:bg-[#2d361d] transition-colors flex items-center justify-between group bg-primary/5">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-cover bg-center border border-primary/10" data-alt="Staff member Layla" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBGy77-5Fqzzx0ZtUC52pgD1Pz8frUVD8z-AG2TSgCTVDRpg78h4AOmyV3ZlOOqXQE2GWgiYR-Tl_kDEitHzFj69Vyi8y5M0HNQAAqeOlNfrG9uz_tJJqWLcX2UVFja6PkMtxLDPDPdsctBM7uVUcT5mGK0xkJG90OT72cYaYzZaIxCVuGFu4CnRimx8nWTJHCsvdEUcgkhpib1qvTzNe8MqjAFShq5FiLrmynxkzLAV0wN8NCYXXkfYvOmq_yPp7ENdGJdroTj1ZXU');"></div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1">
+<span class="text-xs font-bold">Layla Hassan</span>
+<span class="material-symbols-outlined !text-[10px] text-orange-400">tune</span>
+</div>
+<span class="text-[10px] text-orange-400 font-medium">Custom Permissions</span>
+</div>
+</div>
+<button class="text-primary text-xs font-bold hover:underline">Edit</button>
+</div>
+<!-- Staff Item 3 -->
+<div class="p-4 hover:bg-[#fafcf8] dark:hover:bg-[#2d361d] transition-colors flex items-center justify-between group">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-cover bg-center border border-primary/10" data-alt="Staff member Fatima" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD-uwq7ZZakZtmLhJYhmCQKj1d_vIMoudLx6wnQ6onpnN-XH7lpKBuIXoxxkkDXyCzoCJwcSzv54SDJJtGaQy1wexXgqxYpuIkvD7NS0uYCVRoW85ezmMiqiNlVS63I8CcbX4lHIH8L_ohfji8QIAmnsZrZbeUfleyQRP6HdKhFHemE3fAIFVF3qL0m6A-aSVAz9rBGKnKRV-XLVaxAGsrlaH8TkDeFWUqHJlnynswhR113um_BFpDHnb-s01rfvJFh9vPDvuk7n49a');"></div>
+<div class="flex flex-col">
+<span class="text-xs font-bold">Fatima Al-Sayed</span>
+<span class="text-[10px] text-[#7f974e] font-medium">Standard Manager</span>
+</div>
+</div>
+<button class="opacity-0 group-hover:opacity-100 text-primary text-xs font-bold hover:underline transition-opacity">Edit</button>
+</div>
+</div>
+</div>
+<div class="p-4 border-t border-[#eff3e7] dark:border-[#2d361d] text-center">
+<a class="text-[11px] font-bold text-primary hover:underline" href="#">View All 18 Staff Members</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Tips Card -->
+<div class="bg-primary/5 border border-primary/20 rounded-xl p-6 flex items-start gap-4">
+<div class="bg-primary/20 p-2 rounded-lg text-primary">
+<span class="material-symbols-outlined">lightbulb</span>
+</div>
+<div>
+<h4 class="text-sm font-bold text-[#171b0e] dark:text-[#f7f8f6]">Security Recommendation</h4>
+<p class="text-xs text-[#7f974e] mt-1 leading-relaxed">
+                            It's recommended to have at least two users with Admin roles in case of emergency. Currently, only <span class="font-bold">Sara (Owner)</span> and <span class="font-bold">Admin Support</span> have full access. We suggest reviewing Manager permissions every 30 days to ensure optimal security.
+                        </p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="px-10 py-6 border-t border-[#eff3e7] dark:border-[#2d361d] text-center">
+<p class="text-[11px] text-[#7f974e]">© 2024 Muslimah Salon Management System. Secure Administrative Console.</p>
+</footer>
+</div>
+</body></html>

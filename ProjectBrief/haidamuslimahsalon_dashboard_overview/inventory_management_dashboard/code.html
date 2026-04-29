@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Inventory Management Dashboard | Amina Muslimah Salon</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7de830",
+                        "background-light": "#f7f8f6",
+                        "background-dark": "#182111",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-72 bg-white dark:bg-[#1f2b16] border-r border-[#e0e5dc] dark:border-[#2d3d21] flex flex-col h-full">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 rounded-full bg-cover bg-center" data-alt="Amina Muslimah Salon logo showing abstract floral patterns" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuABs96pydIdyHeFVHUETncLh-SFPJWAsOc_OtZbrtip0GQWPWRRJg4D_dXjrTaAntC9-06dFwZTGdRJQcvrMmk2ZF5IGT__kFoVSexTakZdn6ZWpASxix_w2rAreZJ4yoQn6lpjUA9oyiXxks4z57G9YXneTiJT4CtzwRLlrat7yAIi85AkFRClrDpBdoVGoCC-lHrOSBTPPQ3sPcs2i7odUbzHe-Gy8Bqj59ZS8gFUZPkmtYPVtiAWPDIdBF0WdUL1xPBsJyLONebd");'></div>
+<div class="flex flex-col">
+<h1 class="text-[#141811] dark:text-white text-base font-bold leading-tight">Amina Muslimah</h1>
+<p class="text-[#728863] dark:text-[#a0b093] text-xs font-medium">Premium Management</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#f2f4f0] dark:hover:bg-[#2d3d21] text-[#141811] dark:text-gray-300 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<p class="text-sm font-semibold">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#f2f4f0] dark:hover:bg-[#2d3d21] text-[#141811] dark:text-gray-300 transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<p class="text-sm font-semibold">Appointments</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/20 dark:bg-primary/10 text-[#141811] dark:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">inventory_2</span>
+<p class="text-sm font-bold">Inventory</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#f2f4f0] dark:hover:bg-[#2d3d21] text-[#141811] dark:text-gray-300 transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<p class="text-sm font-semibold">Customers</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[#f2f4f0] dark:hover:bg-[#2d3d21] text-[#141811] dark:text-gray-300 transition-colors" href="#">
+<span class="material-symbols-outlined">person_outline</span>
+<p class="text-sm font-semibold">Staff</p>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6">
+<button class="w-full flex items-center justify-center gap-2 rounded-xl h-12 bg-primary text-[#141811] text-sm font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all">
+<span class="material-symbols-outlined text-xl">add_circle</span>
+<span>New Appointment</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto">
+<!-- Header Section -->
+<div class="max-w-6xl mx-auto px-8 pt-10">
+<div class="flex flex-wrap justify-between items-end gap-4 mb-8">
+<div class="flex flex-col gap-2">
+<h2 class="text-[#141811] dark:text-white text-4xl font-black tracking-tight">Inventory Management</h2>
+<p class="text-[#728863] dark:text-[#a0b093] text-base">Monitor and manage your salon supplies and products.</p>
+</div>
+<button class="flex items-center gap-2 px-6 h-12 bg-white dark:bg-[#1f2b16] border border-[#e0e5dc] dark:border-[#2d3d21] rounded-xl text-[#141811] dark:text-white text-sm font-bold hover:bg-[#f2f4f0] transition-colors">
+<span class="material-symbols-outlined">add</span>
+<span>Add New Product</span>
+</button>
+</div>
+<!-- Stats Overview -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="bg-white dark:bg-[#1f2b16] rounded-xl p-6 border border-[#e0e5dc] dark:border-[#2d3d21] shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<p class="text-[#728863] dark:text-[#a0b093] text-sm font-medium">Total Products</p>
+<span class="material-symbols-outlined text-primary">inventory_2</span>
+</div>
+<p class="text-[#141811] dark:text-white text-3xl font-bold">124</p>
+<div class="mt-3 flex items-center gap-1 text-[#07881f] text-sm font-bold">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+12% vs last month</span>
+</div>
+</div>
+<div class="bg-white dark:bg-[#1f2b16] rounded-xl p-6 border border-[#e0e5dc] dark:border-[#2d3d21] shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<p class="text-[#728863] dark:text-[#a0b093] text-sm font-medium">Low Stock Items</p>
+<span class="material-symbols-outlined text-orange-500">warning</span>
+</div>
+<p class="text-[#141811] dark:text-white text-3xl font-bold">8</p>
+<div class="mt-3 flex items-center gap-1 text-orange-600 text-sm font-bold">
+<span>Requires attention</span>
+</div>
+</div>
+<div class="bg-white dark:bg-[#1f2b16] rounded-xl p-6 border border-[#e0e5dc] dark:border-[#2d3d21] shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<p class="text-[#728863] dark:text-[#a0b093] text-sm font-medium">Inventory Value</p>
+<span class="material-symbols-outlined text-[#7de830]">payments</span>
+</div>
+<p class="text-[#141811] dark:text-white text-3xl font-bold">$4,250.00</p>
+<div class="mt-3 flex items-center gap-1 text-[#07881f] text-sm font-bold">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+3% vs last month</span>
+</div>
+</div>
+</div>
+<!-- Content Container -->
+<div class="bg-white dark:bg-[#1f2b16] rounded-2xl border border-[#e0e5dc] dark:border-[#2d3d21] overflow-hidden shadow-sm mb-12">
+<!-- Tabs -->
+<div class="flex border-b border-[#e0e5dc] dark:border-[#2d3d21] px-6">
+<a class="border-b-2 border-primary text-[#141811] dark:text-white px-6 py-4 text-sm font-bold flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-lg">list_alt</span>
+                            Active Inventory
+                        </a>
+<a class="border-b-2 border-transparent text-[#728863] dark:text-[#a0b093] px-6 py-4 text-sm font-semibold hover:text-[#141811] transition-colors flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-lg">history</span>
+                            Restock History
+                        </a>
+</div>
+<!-- Search & Filters -->
+<div class="p-6 flex flex-wrap gap-4 items-center">
+<div class="flex-1 min-w-[300px]">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-[#728863] group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full h-12 pl-12 pr-4 bg-[#f2f4f0] dark:bg-[#2d3d21] border-none rounded-xl text-[#141811] dark:text-white placeholder:text-[#728863] focus:ring-2 focus:ring-primary/20" placeholder="Search products, brands or SKU..." type="text"/>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="px-4 h-12 rounded-xl bg-primary/10 text-[#141811] dark:text-primary text-sm font-bold">All Categories</button>
+<button class="px-4 h-12 rounded-xl hover:bg-[#f2f4f0] dark:hover:bg-[#2d3d21] text-[#728863] text-sm font-semibold transition-colors">Hair Care</button>
+<button class="px-4 h-12 rounded-xl hover:bg-[#f2f4f0] dark:hover:bg-[#2d3d21] text-[#728863] text-sm font-semibold transition-colors">Skin Care</button>
+<button class="px-4 h-12 rounded-xl hover:bg-[#f2f4f0] dark:hover:bg-[#2d3d21] text-[#728863] text-sm font-semibold transition-colors">Tools</button>
+</div>
+</div>
+<!-- Table Section -->
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-[#f2f4f0]/50 dark:bg-[#2d3d21]/50 border-y border-[#e0e5dc] dark:border-[#2d3d21]">
+<tr>
+<th class="px-6 py-4 text-xs font-bold text-[#728863] uppercase tracking-wider">Product Name</th>
+<th class="px-6 py-4 text-xs font-bold text-[#728863] uppercase tracking-wider">Brand</th>
+<th class="px-6 py-4 text-xs font-bold text-[#728863] uppercase tracking-wider">Category</th>
+<th class="px-6 py-4 text-xs font-bold text-[#728863] uppercase tracking-wider">Stock Level</th>
+<th class="px-6 py-4 text-xs font-bold text-[#728863] uppercase tracking-wider">Price</th>
+<th class="px-6 py-4 text-xs font-bold text-[#728863] uppercase tracking-wider text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#e0e5dc] dark:divide-[#2d3d21]">
+<tr class="hover:bg-background-light/50 dark:hover:bg-white/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Hair conditioner bottle product shot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwx-kp4aVdEngcteuJ88YTswBY_9-dD9CB4hELus3TS8J7KQfCYIXLyjNz8JBe7xPWrnSF-1EnRZNGFf7W0lwqyi4MzJBr8CJM_pUrl43xAchFqMRBsvR2Cc_wDkPfBHW49aEBPn1cgaEf6uDpX3AUlqD-Dzd6adc_SufAYZRM8sNxodLdLh3JA_alZVdIKlfLe8RmQqrytQHyxhui6iupamAOYZQElme7rFvQXjlLsLw-WnhkIh9saU4O3t0c55HL-1rDFJM0o5s6"/>
+</div>
+<span class="text-[#141811] dark:text-white font-semibold">Organic Hijab Shampoo</span>
+</div>
+</td>
+<td class="px-6 py-4 text-[#728863] dark:text-[#a0b093] text-sm">NourishBotanics</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-[#f2f4f0] dark:bg-[#2d3d21] rounded-full text-[#141811] dark:text-gray-300 text-xs font-bold">Hair Care</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="flex-1 w-20 bg-gray-200 dark:bg-gray-700 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[85%]"></div>
+</div>
+<span class="text-xs font-bold text-[#141811] dark:text-white">42 left</span>
+</div>
+</td>
+<td class="px-6 py-4 text-[#141811] dark:text-white font-bold">$24.00</td>
+<td class="px-6 py-4 text-right">
+<button class="text-[#728863] hover:text-[#141811] dark:hover:text-white"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-background-light/50 dark:hover:bg-white/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Rosewater facial mist spray bottle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGfCl9jisuPYyYo6mWv1t04XfIa538o3SNX_WDpYWpAw8bkWFzEgxRUze56kYmNL6JRTwCdyScNURlHYmgQWWa6IQrKtwEjwC7U9pZ6c-3jKwxktvTrie7HmCdUDJMyw0LkY_yOygcT_HmdQ39k7dqCgrKs2K9FCg8eQ9S8iuEX3-9b_M0M8M_XFeLVHj3f4WJUk22ZWha5l7XN6rtqgKVKo2_MtkE9Vf4abhNU3ROhfuOYI1SviJY9bVfa75pH-9r6bUu2vFATghn"/>
+</div>
+<span class="text-[#141811] dark:text-white font-semibold">Rosewater Face Mist</span>
+</div>
+</td>
+<td class="px-6 py-4 text-[#728863] dark:text-[#a0b093] text-sm">GlowEssence</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-[#f2f4f0] dark:bg-[#2d3d21] rounded-full text-[#141811] dark:text-gray-300 text-xs font-bold">Skin Care</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="flex-1 w-20 bg-gray-200 dark:bg-gray-700 h-1.5 rounded-full overflow-hidden">
+<div class="bg-orange-500 h-full w-[15%]"></div>
+</div>
+<span class="text-xs font-bold text-orange-600">3 left</span>
+</div>
+</td>
+<td class="px-6 py-4 text-[#141811] dark:text-white font-bold">$18.50</td>
+<td class="px-6 py-4 text-right">
+<button class="text-[#728863] hover:text-[#141811] dark:hover:text-white"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-background-light/50 dark:hover:bg-white/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Professional ceramic hair styling tool" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgmQaSXOjFS1HsBLaLCd63KEUryEDroVqDVLwcc7g88STbxQsSbab_5qz4V-SNcjsqpq54kdU6j3pn5ckrLeUhbAIpF_lyCz-RJ_Cni5SqtqQGUMMhaE1Krm_DNQEU2jmVR2n4XoCLzmso-FfEnEAIuibWo7DRGmok4eyFVizyaHqQjAeEPHJHDqBYddLHAufMoRIgbAFW6LyhB9svf9fdllqwh9-o_gMsPinV-7HyHCzg34SbSn5cyGWmIunyvA10U-RpaeituGr6"/>
+</div>
+<span class="text-[#141811] dark:text-white font-semibold">Ceramic Flat Iron</span>
+</div>
+</td>
+<td class="px-6 py-4 text-[#728863] dark:text-[#a0b093] text-sm">ProStyling</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-[#f2f4f0] dark:bg-[#2d3d21] rounded-full text-[#141811] dark:text-gray-300 text-xs font-bold">Tools</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="flex-1 w-20 bg-gray-200 dark:bg-gray-700 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[100%]"></div>
+</div>
+<span class="text-xs font-bold text-[#141811] dark:text-white">12 left</span>
+</div>
+</td>
+<td class="px-6 py-4 text-[#141811] dark:text-white font-bold">$89.00</td>
+<td class="px-6 py-4 text-right">
+<button class="text-[#728863] hover:text-[#141811] dark:hover:text-white"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-background-light/50 dark:hover:bg-white/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Shea butter hair mask tub" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGV9DbprjfmPeB794dJLxF8fRjkVVl-UFjy16mHEcD_VfZkT3hdkYOn-PvqtBCGjXHbFvpkpnSWBvzRWvc954vmvisuMpmbqaNKx5VDSsXr45n-oSSOx08K4tfw9Y7_bYaZs8u7nuNMeLyHBuMcYxQdQXn5G8-nZU02aT7jdkQiNxV8tm44khYLBJX5K8uWkjc0-ByT_9Mq-uc09Cp7rpT0dMEv81qkFisyvaQcDnhuNyGxPLGWXHzEwEwcgAGxP-0fo2Lj9opU2C_"/>
+</div>
+<span class="text-[#141811] dark:text-white font-semibold">Shea Moisture Mask</span>
+</div>
+</td>
+<td class="px-6 py-4 text-[#728863] dark:text-[#a0b093] text-sm">NatureGlow</td>
+<td class="px-6 py-4">
+<span class="px-3 py-1 bg-[#f2f4f0] dark:bg-[#2d3d21] rounded-full text-[#141811] dark:text-gray-300 text-xs font-bold">Hair Care</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="flex-1 w-20 bg-gray-200 dark:bg-gray-700 h-1.5 rounded-full overflow-hidden">
+<div class="bg-red-500 h-full w-[0%]"></div>
+</div>
+<span class="text-xs font-bold text-red-600">Out of Stock</span>
+</div>
+</td>
+<td class="px-6 py-4 text-[#141811] dark:text-white font-bold">$32.00</td>
+<td class="px-6 py-4 text-right">
+<button class="text-[#728863] hover:text-[#141811] dark:hover:text-white"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="p-6 border-t border-[#e0e5dc] dark:border-[#2d3d21] flex justify-between items-center">
+<p class="text-sm text-[#728863]">Showing 1 to 4 of 124 products</p>
+<div class="flex gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-[#e0e5dc] dark:border-[#2d3d21] hover:bg-[#f2f4f0] dark:hover:bg-[#2d3d21] text-[#141811] dark:text-white">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary text-[#141811] font-bold">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-[#e0e5dc] dark:border-[#2d3d21] hover:bg-[#f2f4f0] dark:hover:bg-[#2d3d21] text-[#141811] dark:text-white">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-[#e0e5dc] dark:border-[#2d3d21] hover:bg-[#f2f4f0] dark:hover:bg-[#2d3d21] text-[#141811] dark:text-white">3</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-[#e0e5dc] dark:border-[#2d3d21] hover:bg-[#f2f4f0] dark:hover:bg-[#2d3d21] text-[#141811] dark:text-white">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

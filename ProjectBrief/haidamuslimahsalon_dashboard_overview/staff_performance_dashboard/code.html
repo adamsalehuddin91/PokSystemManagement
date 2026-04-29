@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Staff Performance Dashboard | Muslimah Salon</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7de830",
+                        "background-light": "#f7f8f6",
+                        "background-dark": "#182111",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .botanical-bg {
+            background-image: radial-gradient(circle at 2px 2px, #7de83015 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen font-display transition-colors duration-300">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-[#e0e5dc] dark:border-white/10 px-4 lg:px-20 py-3">
+<div class="max-w-[1200px] mx-auto flex items-center justify-between">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-[#141811] dark:text-white">
+<div class="size-10 bg-primary/20 rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined font-bold">spa</span>
+</div>
+<div>
+<h2 class="text-lg font-bold leading-tight tracking-tight">Muslimah Salon</h2>
+<p class="text-[10px] uppercase tracking-widest text-[#728863]">Management Portal</p>
+</div>
+</div>
+<div class="hidden md:flex relative w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#728863] text-xl">search</span>
+<input class="w-full pl-10 pr-4 py-2 rounded-xl border-none bg-primary/5 dark:bg-white/5 text-[#141811] dark:text-white placeholder:text-[#728863] focus:ring-2 focus:ring-primary/50 text-sm" placeholder="Search appointments..."/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="relative p-2 rounded-xl bg-primary/10 text-[#141811] dark:text-white hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-white"></span>
+</button>
+<button class="p-2 rounded-xl bg-primary/10 text-[#141811] dark:text-white hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-10 w-10 rounded-full border-2 border-primary bg-cover bg-center" data-alt="Close up of a smiling professional stylist" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCtACR-_j8sQH5_GnLgAIlymlQMYB5Qje1lH9VYgmSeOtc2ru6nbkBmqO88b-PDyQQ_SHP0STZCiJkOYHpmNeaf30j2bOAL1AXdseCa_intrvnAo2KNistA4GGRCrVaOvkVb5mxFGWrCx2bD3xXOoHDqCNCS4BewNq5g5X1uyFo19Kt-4eQ7Vz2uwAGI-EjHSBIs6LjPSHCYPjtfvwXoisHCPw39q-42B2daWWN6QtYe-mfo9L7NNPab_Ybf2CoG62kuRaNzuslIX1i");'></div>
+</div>
+</div>
+</header>
+<main class="max-w-[1200px] mx-auto px-4 lg:px-6 py-8 botanical-bg">
+<!-- Profile Header Section -->
+<div class="bg-white dark:bg-white/5 rounded-xl border border-[#e0e5dc] dark:border-white/10 p-6 mb-8 shadow-sm">
+<div class="flex flex-col md:flex-row items-center gap-6">
+<div class="relative">
+<div class="size-32 rounded-full border-4 border-primary/20 bg-cover bg-center shadow-lg" data-alt="Sarah Ahmed profile photo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAdmTLTFIUBqcbnTFu9_r9JU1UBudvGSeTKzIJ108DuCgP2uvEJYhZf6Lp0USs4rB5877VZddx4_3alphT5ojvm1oVSaT0-uzSOa2fVBU7U23BMQWq7-XY8x4a0-t8OncMKM8UWN2Povkafk09-amfGu6s8qjeuOBILdTbz-DTfrWPm4rIVD0XJC2kpELQ1GKrCN5Fo1n-QYC04U3axdBxZYf_LaIAThSQ3HvtrEHt0aUcA3rdK3wUvk1U8Ib_bVX_VIEqYomEu-Ckc");'></div>
+<div class="absolute bottom-1 right-1 size-8 bg-primary rounded-full border-4 border-white dark:border-background-dark flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-xs">verified</span>
+</div>
+</div>
+<div class="flex-1 text-center md:text-left">
+<div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mb-1">
+<h1 class="text-3xl font-bold text-[#141811] dark:text-white">Sarah Ahmed</h1>
+<span class="px-3 py-1 bg-primary/20 text-primary text-xs font-bold rounded-full border border-primary/30 uppercase tracking-wider self-center md:self-auto">Senior Stylist</span>
+</div>
+<p class="text-[#728863] font-medium flex items-center justify-center md:justify-start gap-1">
+<span class="material-symbols-outlined text-sm">badge</span> Hijab Styling &amp; Hair Treatment Specialist
+                    </p>
+<p class="text-[#728863] text-sm">Staff ID: MS-0842 • Since 2021</p>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-2.5 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/20 hover:opacity-90 transition-all">Edit Profile</button>
+<button class="px-4 py-2.5 bg-primary/10 text-primary font-bold rounded-xl hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="bg-white dark:bg-white/5 p-6 rounded-xl border border-[#e0e5dc] dark:border-white/10 shadow-sm flex flex-col gap-1 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-6xl text-primary">event_available</span>
+</div>
+<p class="text-[#728863] text-sm font-bold uppercase tracking-widest">Today's Appointments</p>
+<div class="flex items-baseline gap-2">
+<p class="text-4xl font-extrabold text-[#141811] dark:text-white">8</p>
+<span class="text-sm font-bold text-primary flex items-center gap-0.5">
+<span class="material-symbols-outlined text-sm">trending_up</span> +2 today
+                    </span>
+</div>
+<p class="text-xs text-[#728863] mt-2 italic">Next appointment: 10:30 AM</p>
+</div>
+<div class="bg-white dark:bg-white/5 p-6 rounded-xl border border-[#e0e5dc] dark:border-white/10 shadow-sm flex flex-col gap-1 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-6xl text-primary">payments</span>
+</div>
+<p class="text-[#728863] text-sm font-bold uppercase tracking-widest">Weekly Commission</p>
+<div class="flex items-baseline gap-2">
+<p class="text-4xl font-extrabold text-[#141811] dark:text-white">RM 450</p>
+<span class="text-sm font-bold text-primary flex items-center gap-0.5">
+<span class="material-symbols-outlined text-sm">trending_up</span> +12%
+                    </span>
+</div>
+<p class="text-xs text-[#728863] mt-2 italic">Calculated from 24 bookings</p>
+</div>
+<div class="bg-white dark:bg-white/5 p-6 rounded-xl border border-[#e0e5dc] dark:border-white/10 shadow-sm flex flex-col gap-1 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-6xl text-primary">star</span>
+</div>
+<p class="text-[#728863] text-sm font-bold uppercase tracking-widest">Average Rating</p>
+<div class="flex items-baseline gap-2">
+<p class="text-4xl font-extrabold text-[#141811] dark:text-white">4.9</p>
+<span class="text-sm font-bold text-primary flex items-center gap-0.5">
+<span class="material-symbols-outlined text-sm">trending_up</span> +0.1
+                    </span>
+</div>
+<div class="flex gap-0.5 mt-2">
+<span class="material-symbols-outlined text-sm text-primary fill-current">star</span>
+<span class="material-symbols-outlined text-sm text-primary fill-current">star</span>
+<span class="material-symbols-outlined text-sm text-primary fill-current">star</span>
+<span class="material-symbols-outlined text-sm text-primary fill-current">star</span>
+<span class="material-symbols-outlined text-sm text-primary fill-current">star_half</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Column: Calendar & Schedule -->
+<div class="lg:col-span-1 flex flex-col gap-8">
+<div class="bg-white dark:bg-white/5 rounded-xl border border-[#e0e5dc] dark:border-white/10 p-6 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-xl font-bold text-[#141811] dark:text-white">Daily Schedule</h3>
+<button class="text-primary hover:underline text-sm font-bold">Manage</button>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between p-2">
+<button class="size-8 rounded-lg bg-primary/10 flex items-center justify-center text-[#141811] dark:text-white">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<p class="font-bold text-[#141811] dark:text-white">October 2023</p>
+<button class="size-8 rounded-lg bg-primary/10 flex items-center justify-center text-[#141811] dark:text-white">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<div class="grid grid-cols-7 text-center gap-1">
+<span class="text-[10px] font-bold text-[#728863] uppercase">S</span>
+<span class="text-[10px] font-bold text-[#728863] uppercase">M</span>
+<span class="text-[10px] font-bold text-[#728863] uppercase">T</span>
+<span class="text-[10px] font-bold text-[#728863] uppercase">W</span>
+<span class="text-[10px] font-bold text-[#728863] uppercase">T</span>
+<span class="text-[10px] font-bold text-[#728863] uppercase">F</span>
+<span class="text-[10px] font-bold text-[#728863] uppercase">S</span>
+<div class="p-2 text-sm text-gray-400">28</div>
+<div class="p-2 text-sm text-gray-400">29</div>
+<div class="p-2 text-sm text-gray-400">30</div>
+<button class="p-2 text-sm hover:bg-primary/10 rounded-lg">1</button>
+<button class="p-2 text-sm hover:bg-primary/10 rounded-lg">2</button>
+<button class="p-2 text-sm hover:bg-primary/10 rounded-lg">3</button>
+<button class="p-2 text-sm hover:bg-primary/10 rounded-lg">4</button>
+<button class="p-2 text-sm bg-primary text-white font-bold rounded-lg shadow-md shadow-primary/20">5</button>
+<button class="p-2 text-sm hover:bg-primary/10 rounded-lg">6</button>
+<button class="p-2 text-sm hover:bg-primary/10 rounded-lg">7</button>
+<button class="p-2 text-sm hover:bg-primary/10 rounded-lg">8</button>
+</div>
+</div>
+<!-- Upcoming Slots -->
+<div class="mt-8 space-y-4">
+<div class="relative pl-6 border-l-2 border-primary">
+<div class="absolute -left-[5px] top-1 size-2 rounded-full bg-primary ring-4 ring-primary/20"></div>
+<p class="text-xs font-bold text-primary mb-1">10:30 AM - 11:30 AM</p>
+<h4 class="font-bold text-[#141811] dark:text-white">Zainab Yusof</h4>
+<p class="text-sm text-[#728863]">Premium Hijab Styling</p>
+</div>
+<div class="relative pl-6 border-l-2 border-gray-200">
+<div class="absolute -left-[5px] top-1 size-2 rounded-full bg-gray-300"></div>
+<p class="text-xs font-bold text-[#728863] mb-1">1:00 PM - 2:30 PM</p>
+<h4 class="font-bold text-[#141811] dark:text-white">Mariam Khalid</h4>
+<p class="text-sm text-[#728863]">Scalp Treatment + Wash</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Performance Trends & Feedback -->
+<div class="lg:col-span-2 flex flex-col gap-8">
+<!-- Performance Trends -->
+<div class="bg-white dark:bg-white/5 rounded-xl border border-[#e0e5dc] dark:border-white/10 p-6 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-xl font-bold text-[#141811] dark:text-white">Performance Trends</h3>
+<select class="bg-primary/5 border-none text-sm font-bold text-primary rounded-lg focus:ring-0 cursor-pointer">
+<option>Last 30 Days</option>
+<option>Last 3 Months</option>
+</select>
+</div>
+<div class="h-64 flex items-end justify-between gap-2 px-2">
+<!-- Simulated Chart -->
+<div class="w-full flex flex-col items-center gap-2 group">
+<div class="w-full bg-primary/10 rounded-t-lg h-[40%] group-hover:bg-primary/30 transition-colors"></div>
+<span class="text-[10px] font-bold text-[#728863]">WK 1</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group">
+<div class="w-full bg-primary/10 rounded-t-lg h-[65%] group-hover:bg-primary/30 transition-colors"></div>
+<span class="text-[10px] font-bold text-[#728863]">WK 2</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group">
+<div class="w-full bg-primary/10 rounded-t-lg h-[55%] group-hover:bg-primary/30 transition-colors"></div>
+<span class="text-[10px] font-bold text-[#728863]">WK 3</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group">
+<div class="w-full bg-primary/40 rounded-t-lg h-[85%] group-hover:bg-primary transition-colors border-t-4 border-primary shadow-lg shadow-primary/20"></div>
+<span class="text-[10px] font-bold text-[#141811] dark:text-white">WK 4</span>
+</div>
+<div class="w-full flex flex-col items-center gap-2 group">
+<div class="w-full bg-primary/10 rounded-t-lg h-[45%] group-hover:bg-primary/30 transition-colors"></div>
+<span class="text-[10px] font-bold text-[#728863]">WK 5</span>
+</div>
+</div>
+<div class="mt-6 flex items-center justify-center gap-6">
+<div class="flex items-center gap-2">
+<div class="size-3 rounded-full bg-primary"></div>
+<span class="text-sm font-medium text-[#728863]">Monthly Earnings</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-3 rounded-full bg-primary/20"></div>
+<span class="text-sm font-medium text-[#728863]">Target RM 2k</span>
+</div>
+</div>
+</div>
+<!-- Recent Client Feedback -->
+<div class="bg-white dark:bg-white/5 rounded-xl border border-[#e0e5dc] dark:border-white/10 p-6 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-xl font-bold text-[#141811] dark:text-white">Client Feedback</h3>
+<button class="text-primary hover:underline text-sm font-bold">See All</button>
+</div>
+<div class="space-y-6">
+<div class="flex gap-4 p-4 rounded-xl hover:bg-primary/5 transition-colors">
+<div class="size-12 rounded-full bg-center bg-cover border-2 border-white flex-shrink-0" data-alt="Client avatar smiling" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDH_vwpf_f_p6pFMlHRZCDUWY4J9a5tel_0Ln3yXanj3oQTd_SySfMcwE_k3670TRfeMC06WY5yov6UUrjfrbEdlFuLA7H6HXzZ-iaFm8FWJJKhjnuuJn7a-CQcZFEdXA-_sRbQbG1iO96antoS7yqnfIqZM7EBcqLNs5LtymwC-zfE8L1xeMh0iYHYQa4Uu_ro66TU5i8Eq6GdgHHz4QR9tV0twxcI0c5v1QRVu1xETdYvC-vL2WZdwIOgFhmxJ7RDOMftd-ILI_s7");'></div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-1">
+<h4 class="font-bold text-[#141811] dark:text-white">Layla Ibrahim</h4>
+<span class="text-[10px] font-bold text-[#728863] bg-[#f2f4f0] dark:bg-white/10 px-2 py-0.5 rounded-full">Yesterday</span>
+</div>
+<div class="flex gap-0.5 mb-2">
+<span class="material-symbols-outlined text-xs text-primary fill-current">star</span>
+<span class="material-symbols-outlined text-xs text-primary fill-current">star</span>
+<span class="material-symbols-outlined text-xs text-primary fill-current">star</span>
+<span class="material-symbols-outlined text-xs text-primary fill-current">star</span>
+<span class="material-symbols-outlined text-xs text-primary fill-current">star</span>
+</div>
+<p class="text-sm text-[#728863] italic">"Sarah is amazing! She really understood how to style my hijab for the wedding. The privacy in the salon was much appreciated. 5 stars!"</p>
+</div>
+</div>
+<div class="flex gap-4 p-4 rounded-xl hover:bg-primary/5 transition-colors">
+<div class="size-12 rounded-full bg-center bg-cover border-2 border-white flex-shrink-0" data-alt="Client avatar portrait" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDPw8rjaC7mirdetxFzms0FTrj2Ze-QCjnG5IbVemZKfE2R9AwegmRjtpgc0wn_kEe88sj9bQAvB0FqIkDQYc9hjIQ9jyR5Lj2HX3txc9jG4o53J0oa42Cx5u_Iag3jmn9OzPdUh-Pt6W_WGPnmXvYq3gxUZn67iCK6AdlknJpFAXctE4VEiepsrEqwR-tW12tA_RYW9nM7wykrMEfeaFGQlgScqAl9SLb2a3TdtykPDNmhcu7Fj8kLxtt0koWpGAkhZ3wJqipq4IjW");'></div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-1">
+<h4 class="font-bold text-[#141811] dark:text-white">Fatimah Zahra</h4>
+<span class="text-[10px] font-bold text-[#728863] bg-[#f2f4f0] dark:bg-white/10 px-2 py-0.5 rounded-full">3 days ago</span>
+</div>
+<div class="flex gap-0.5 mb-2">
+<span class="material-symbols-outlined text-xs text-primary fill-current">star</span>
+<span class="material-symbols-outlined text-xs text-primary fill-current">star</span>
+<span class="material-symbols-outlined text-xs text-primary fill-current">star</span>
+<span class="material-symbols-outlined text-xs text-primary fill-current">star</span>
+<span class="material-symbols-outlined text-xs text-primary fill-current">star</span>
+</div>
+<p class="text-sm text-[#728863] italic">"The organic scalp treatment left my hair feeling so soft. Sarah was professional and very knowledgeable about hair care."</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="mt-12 border-t border-[#e0e5dc] dark:border-white/10 py-8 text-center text-[#728863]">
+<div class="max-w-[1200px] mx-auto px-4">
+<p class="text-sm">© 2023 Muslimah Salon Management System. All rights reserved.</p>
+<div class="flex justify-center gap-4 mt-4 text-xs font-bold uppercase tracking-widest">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Help Center</a>
+<a class="hover:text-primary transition-colors" href="#">Feedback</a>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Low Stock Alerts Panel - Muslimah Salon</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#11d452",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#102216",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111813] dark:text-white">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#e5e7eb] dark:border-[#2d3731] bg-white dark:bg-[#15291e] px-6 lg:px-40 py-3 sticky top-0 z-40">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-[#111813] dark:text-white">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">Muslimah Salon</h2>
+</div>
+<div class="hidden md:flex items-center">
+<label class="flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full">
+<div class="text-[#61896f] flex border-none bg-[#f0f4f2] dark:bg-[#203629] items-center justify-center pl-4 rounded-l-xl">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-[#f0f4f2] dark:bg-[#203629] text-[#111813] dark:text-white focus:ring-0 h-full placeholder:text-[#61896f] px-4 rounded-r-xl pl-2 text-base font-normal leading-normal" placeholder="Search" value=""/>
+</div>
+</label>
+</div>
+</div>
+<div class="flex flex-1 justify-end gap-4 lg:gap-8 items-center">
+<div class="flex gap-2">
+<button class="relative flex cursor-pointer items-center justify-center rounded-xl h-10 w-10 bg-primary/10 text-primary transition-colors hover:bg-primary/20">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+</span>
+</button>
+<button class="flex cursor-pointer items-center justify-center rounded-xl h-10 w-10 bg-[#f0f4f2] dark:bg-[#203629] text-[#111813] dark:text-white">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 hidden sm:block border-2 border-primary/20" data-alt="User profile avatar of a woman" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD5dWf5uiBdDAXveLXWWZU89koC4W4PRsv3_cTOSp1E652doP_lMfBLkNY-6dQ9d9iUN-2iu2q16fNZf7JEz_MxjYXzZW6qbK9SlB8acwdnmhKiPfHKpmYKS95DUOLHjlTXT8epODK0nwvvBfqijzz2kqAjZcDuTdiDVAO1zf_DurN3K9ywsuH6Los4DTCXWA6cXz2XemAzNAiGCce5FHAdtJkftWarTigIIxxhj1aZvmz5KNGQWZwqPZ8HaixfnuCoZr-gpBn0Om9p");'></div>
+</div>
+</header>
+<main class="flex-1 flex px-6 lg:px-40 py-8 relative">
+<!-- Main Content Area (Background) -->
+<div class="flex-1 max-w-6xl mx-auto flex gap-8">
+<!-- Sidebar -->
+<aside class="hidden lg:flex w-64 flex-col gap-8">
+<div class="flex flex-col gap-4">
+<div class="flex flex-col">
+<h1 class="text-[#111813] dark:text-white text-base font-semibold leading-normal">Dashboard</h1>
+<p class="text-[#61896f] text-sm font-normal">Welcome back, Admin</p>
+</div>
+<nav class="flex flex-col gap-1">
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined">dashboard</span>
+<p class="text-sm font-semibold">Overview</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#111813] dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors cursor-pointer">
+<span class="material-symbols-outlined">inventory_2</span>
+<p class="text-sm font-medium">Inventory</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#111813] dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors cursor-pointer">
+<span class="material-symbols-outlined">content_cut</span>
+<p class="text-sm font-medium">Services</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[#111813] dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors cursor-pointer">
+<span class="material-symbols-outlined">group</span>
+<p class="text-sm font-medium">Staff</p>
+</div>
+</nav>
+</div>
+</aside>
+<!-- Mock Dashboard Content -->
+<div class="flex-1 flex flex-col gap-6 opacity-40 select-none">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="p-6 bg-white dark:bg-[#15291e] rounded-xl border border-[#e5e7eb] dark:border-[#2d3731]">
+<p class="text-sm text-gray-500">Today's Revenue</p>
+<h3 class="text-2xl font-bold">$1,240</h3>
+</div>
+<div class="p-6 bg-white dark:bg-[#15291e] rounded-xl border border-[#e5e7eb] dark:border-[#2d3731]">
+<p class="text-sm text-gray-500">Active Bookings</p>
+<h3 class="text-2xl font-bold">12</h3>
+</div>
+<div class="p-6 bg-white dark:bg-[#15291e] rounded-xl border border-[#e5e7eb] dark:border-[#2d3731]">
+<p class="text-sm text-gray-500">Total Products</p>
+<h3 class="text-2xl font-bold">84</h3>
+</div>
+</div>
+</div>
+</div>
+<!-- OVERLAY BACKDROP -->
+<div class="fixed inset-0 bg-black/20 backdrop-blur-sm z-40"></div>
+<!-- LOW STOCK ALERTS PANEL (SLIDE-OUT) -->
+<div class="fixed top-0 right-0 h-full w-full max-w-[420px] bg-white dark:bg-[#15291e] shadow-2xl z-50 flex flex-col transform translate-x-0 transition-transform duration-300">
+<!-- Panel Header -->
+<div class="flex items-center justify-between px-6 py-5 border-b border-gray-100 dark:border-[#2d3731]">
+<div class="flex flex-col">
+<h2 class="text-lg font-bold text-[#111813] dark:text-white">Inventory Alerts</h2>
+<p class="text-xs text-[#61896f] font-medium">3 items require attention</p>
+</div>
+<button class="p-2 hover:bg-gray-100 dark:hover:bg-white/5 rounded-full text-gray-400">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Panel Content -->
+<div class="flex-1 overflow-y-auto px-6 py-4 space-y-4">
+<!-- Alert Item 1 -->
+<div class="flex flex-col gap-3 p-4 bg-background-light dark:bg-[#102216] rounded-xl border border-transparent hover:border-primary/20 transition-all group">
+<div class="flex gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-16 shrink-0 border border-gray-100 dark:border-[#2d3731]" data-alt="Bottle of organic argan oil" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDrSqkLfhN2fE4ObVUIY7B6LDC4qEgBU3NdqJjnhJUH4rnruR2zvv8eCURaD3KZ_TPBIl6cF15clOhxoZOvPAipSSLWsD0LiH00yxC_03y6MBHl7DXsKRMmPBVjE3G8PtwCtuTRzQyEc8xXzzX-FGtKna9ibT-BDhgJ0FdmEcchbkWeoftcM2fpPyvN6VvuZbFo62tRyVK3m1fyJn5Fn9Dypm4R9vGXPaAOCUVAI_bAPq-Y9ozoi5RewQQMvZDGlOhfkYcUSVSF8Rxq");'></div>
+<div class="flex flex-1 flex-col justify-between">
+<div>
+<p class="text-[#111813] dark:text-white text-sm font-semibold leading-tight">Organic Argan Oil (250ml)</p>
+<p class="text-[#61896f] text-xs font-medium">Hair Care Product</p>
+</div>
+<div class="flex items-center gap-2 mt-2">
+<span class="px-2 py-0.5 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-[10px] font-bold uppercase tracking-wider rounded-md">Critical</span>
+<p class="text-red-600 dark:text-red-400 text-xs font-bold">3 units left</p>
+</div>
+</div>
+</div>
+<div class="flex gap-2 pt-2 border-t border-gray-200/50 dark:border-white/5">
+<button class="flex-1 bg-primary text-white py-2 rounded-lg text-sm font-bold shadow-sm shadow-primary/20 hover:bg-primary/90 transition-colors">
+                                Reorder Now
+                            </button>
+<button class="px-3 py-2 bg-gray-100 dark:bg-[#203629] text-gray-600 dark:text-gray-300 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+</div>
+</div>
+<!-- Alert Item 2 -->
+<div class="flex flex-col gap-3 p-4 bg-background-light dark:bg-[#102216] rounded-xl border border-transparent hover:border-primary/20 transition-all group">
+<div class="flex gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-16 shrink-0 border border-gray-100 dark:border-[#2d3731]" data-alt="Set of silver hijab pins" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC4PsG7Gg0TwHPthRKWNQ2kAQT64tjoJ9GZ19r5ibG1aDADtYslxw8xc9FESEynLNilml9lB_DquwhB7nRQ5AJZjL8tg0WdurhsCqtdrA6ekPIgwXPp2u4jRrP-7_fab2Vybm5vJnUYYTscv8RY9oSIXn9v2TbXReL54dxjawoboVLpOPIfV-E9vX1t41a9IB-DUhdfD0NUNt7JaBWziDZvd8hD1vN4qW-tVMBEiqSU9qpWk1LKrvZ0HcRIH_tBv0sWukjdU0Mufuz7");'></div>
+<div class="flex flex-1 flex-col justify-between">
+<div>
+<p class="text-[#111813] dark:text-white text-sm font-semibold leading-tight">Silk Hijab Pins (Silver)</p>
+<p class="text-[#61896f] text-xs font-medium">Accessories</p>
+</div>
+<div class="flex items-center gap-2 mt-2">
+<span class="px-2 py-0.5 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 text-[10px] font-bold uppercase tracking-wider rounded-md">Low Stock</span>
+<p class="text-orange-600 dark:text-orange-400 text-xs font-bold">10 units left</p>
+</div>
+</div>
+</div>
+<div class="flex gap-2 pt-2 border-t border-gray-200/50 dark:border-white/5">
+<button class="flex-1 bg-primary text-white py-2 rounded-lg text-sm font-bold shadow-sm shadow-primary/20 hover:bg-primary/90 transition-colors">
+                                Reorder
+                            </button>
+<button class="px-3 py-2 bg-gray-100 dark:bg-[#203629] text-gray-600 dark:text-gray-300 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+</div>
+</div>
+<!-- Alert Item 3 -->
+<div class="flex flex-col gap-3 p-4 bg-background-light dark:bg-[#102216] rounded-xl border border-transparent hover:border-primary/20 transition-all group">
+<div class="flex gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-16 shrink-0 border border-gray-100 dark:border-[#2d3731]" data-alt="Professional hair dye kit" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA8LYInrOMStUfZiK40TvRYeycdXVhBpNQhyb06_cyDyYZojn9eXCt_Zt5SVYQgI-5whB1r6dKFRbFnt3q8vLHxSIj4vEAzufQ1JOnaURDZ715WuFEXtZDIpWxbHGHjxf0QiZ05PgwRP5QDhCOtrOG9NofP7hU2mhcgqJGqJfeY0RwLngPAelyPNUMut9n1keqem-I492v_140QzHPwUS1mTFDmzMiDF3CGb7px6VQe4o61drJmKZn7iTNRNrn5LEKK32LzCwQh4TK6");'></div>
+<div class="flex flex-1 flex-col justify-between">
+<div>
+<p class="text-[#111813] dark:text-white text-sm font-semibold leading-tight">Professional Henna Kit</p>
+<p class="text-[#61896f] text-xs font-medium">Service Supplies</p>
+</div>
+<div class="flex items-center gap-2 mt-2">
+<span class="px-2 py-0.5 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 text-[10px] font-bold uppercase tracking-wider rounded-md">Low Stock</span>
+<p class="text-orange-600 dark:text-orange-400 text-xs font-bold">5 units left</p>
+</div>
+</div>
+</div>
+<div class="flex gap-2 pt-2 border-t border-gray-200/50 dark:border-white/5">
+<button class="flex-1 bg-primary text-white py-2 rounded-lg text-sm font-bold shadow-sm shadow-primary/20 hover:bg-primary/90 transition-colors">
+                                Reorder
+                            </button>
+<button class="px-3 py-2 bg-gray-100 dark:bg-[#203629] text-gray-600 dark:text-gray-300 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Panel Footer -->
+<div class="p-6 border-t border-gray-100 dark:border-[#2d3731] bg-gray-50 dark:bg-[#15291e]">
+<button class="w-full flex items-center justify-center gap-2 text-[#61896f] hover:text-primary font-semibold text-sm transition-colors">
+<span>View Full Inventory Report</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Add New Product &amp; Supplier Modal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#9be236",
+                "background-light": "#f7f8f6",
+                "background-dark": "#1a2111",
+              },
+              fontFamily: {
+                "display": ["Manrope"]
+              },
+              borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .modal-overlay {
+            background-color: rgba(26, 33, 17, 0.4);
+            backdrop-filter: blur(4px);
+        }
+        .form-input:focus {
+            border-color: #9be236 !important;
+            box-shadow: 0 0 0 1px #9be236;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex items-center justify-center p-4 md:p-10">
+<!-- Modal Overlay Backdrop -->
+<div class="fixed inset-0 modal-overlay flex items-center justify-center z-50 overflow-y-auto py-8">
+<!-- Modal Container -->
+<div class="bg-white dark:bg-[#252d1c] w-full max-w-5xl rounded-xl shadow-2xl flex flex-col relative overflow-hidden my-auto">
+<!-- PageHeading Style Header -->
+<div class="flex flex-wrap justify-between items-start gap-3 p-6 border-b border-[#e1e5dc] dark:border-[#3a4430]">
+<div class="flex min-w-72 flex-col gap-1">
+<p class="text-[#151711] dark:text-white tracking-tight text-2xl font-bold leading-tight flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">inventory_2</span>
+                        Add New Product
+                    </p>
+<p class="text-[#788764] dark:text-[#a3b190] text-sm font-normal leading-normal">
+                        Populate the inventory with new salon products and link them to reliable suppliers.
+                    </p>
+</div>
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[#f3f4f0] dark:bg-[#3a4430] text-[#151711] dark:text-white hover:bg-red-50 transition-colors">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+<!-- Modal Content - Two Column Grid -->
+<div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- Left Column: Product Information -->
+<div class="flex flex-col gap-4">
+<h3 class="text-[#151711] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] border-l-4 border-primary pl-3 mb-2">Product Information</h3>
+<!-- Product Name -->
+<div class="flex flex-col">
+<label class="text-[#151711] dark:text-white text-sm font-semibold pb-2">Product Name</label>
+<input class="form-input flex w-full rounded-lg text-[#151711] dark:text-white dark:bg-[#1a2111] border border-[#e1e5dc] dark:border-[#3a4430] h-12 placeholder:text-[#788764] p-4 text-sm font-normal" placeholder="e.g. Organic Argan Hair Oil" value=""/>
+</div>
+<!-- Category Dropdown -->
+<div class="flex flex-col">
+<label class="text-[#151711] dark:text-white text-sm font-semibold pb-2">Category</label>
+<select class="form-input flex w-full rounded-lg text-[#151711] dark:text-white dark:bg-[#1a2111] border border-[#e1e5dc] dark:border-[#3a4430] h-12 p-3 text-sm font-normal appearance-none bg-[url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724px%27 height=%2724px%27 fill=%27rgb(120,135,100)%27 viewBox=%270 0 256 256%27%3e%3cpath d=%27M181.66,170.34a8,8,0,0,1,0,11.32l-48,48a8,8,0,0,1-11.32,0l-48-48a8,8,0,0,1,11.32-11.32L128,212.69l42.34-42.35A8,8,0,0,1,181.66,170.34Zm-96-84.68L128,43.31l42.34,42.35a8,8,0,0,0,11.32-11.32l-48-48a8,8,0,0,0-11.32,0l-48,48A8,8,0,0,0,85.66,85.66Z%27%3e%3c/path%3e%3c/svg%3e')] bg-no-repeat bg-[right_0.75rem_center]">
+<option value="">Select Category</option>
+<option value="haircare">Hair Care</option>
+<option value="skincare">Skin Care</option>
+<option value="tools">Styling Tools</option>
+<option value="essential-oils">Essential Oils</option>
+</select>
+</div>
+<!-- SKU and Stock Row -->
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col">
+<label class="text-[#151711] dark:text-white text-sm font-semibold pb-2">SKU</label>
+<input class="form-input flex w-full rounded-lg text-[#151711] dark:text-white dark:bg-[#1a2111] border border-[#e1e5dc] dark:border-[#3a4430] h-12 placeholder:text-[#788764] p-4 text-sm font-normal" placeholder="SAL-ARG-001" value=""/>
+</div>
+<div class="flex flex-col">
+<label class="text-[#151711] dark:text-white text-sm font-semibold pb-2">Initial Stock</label>
+<input class="form-input flex w-full rounded-lg text-[#151711] dark:text-white dark:bg-[#1a2111] border border-[#e1e5dc] dark:border-[#3a4430] h-12 placeholder:text-[#788764] p-4 text-sm font-normal" placeholder="0" type="number" value=""/>
+</div>
+</div>
+<!-- Image Upload Area -->
+<div class="flex flex-col mt-2">
+<label class="text-[#151711] dark:text-white text-sm font-semibold pb-2">Product Image</label>
+<div class="border-2 border-dashed border-[#e1e5dc] dark:border-[#3a4430] rounded-xl p-8 flex flex-col items-center justify-center bg-background-light/30 dark:bg-background-dark/30 cursor-pointer hover:bg-primary/5 transition-colors">
+<span class="material-symbols-outlined text-4xl text-primary mb-2">add_photo_alternate</span>
+<p class="text-[#151711] dark:text-white text-sm font-medium">Drag and drop or click to upload</p>
+<p class="text-[#788764] dark:text-[#a3b190] text-xs mt-1">PNG, JPG up to 5MB</p>
+</div>
+</div>
+</div>
+<!-- Right Column: Supplier & Pricing -->
+<div class="flex flex-col gap-4">
+<h3 class="text-[#151711] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] border-l-4 border-primary pl-3 mb-2">Supplier &amp; Pricing</h3>
+<!-- Supplier Name -->
+<div class="flex flex-col">
+<label class="text-[#151711] dark:text-white text-sm font-semibold pb-2">Supplier Name</label>
+<input class="form-input flex w-full rounded-lg text-[#151711] dark:text-white dark:bg-[#1a2111] border border-[#e1e5dc] dark:border-[#3a4430] h-12 placeholder:text-[#788764] p-4 text-sm font-normal" placeholder="e.g. Pure Essence Wholesale" value=""/>
+</div>
+<!-- Contact Info -->
+<div class="flex flex-col">
+<label class="text-[#151711] dark:text-white text-sm font-semibold pb-2">Supplier Contact</label>
+<input class="form-input flex w-full rounded-lg text-[#151711] dark:text-white dark:bg-[#1a2111] border border-[#e1e5dc] dark:border-[#3a4430] h-12 placeholder:text-[#788764] p-4 text-sm font-normal" placeholder="Email or Phone Number" value=""/>
+</div>
+<!-- Pricing Row -->
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col">
+<label class="text-[#151711] dark:text-white text-sm font-semibold pb-2">Cost Price ($)</label>
+<input class="form-input flex w-full rounded-lg text-[#151711] dark:text-white dark:bg-[#1a2111] border border-[#e1e5dc] dark:border-[#3a4430] h-12 placeholder:text-[#788764] p-4 text-sm font-normal" placeholder="0.00" step="0.01" type="number" value=""/>
+</div>
+<div class="flex flex-col">
+<label class="text-[#151711] dark:text-white text-sm font-semibold pb-2">Retail Price ($)</label>
+<input class="form-input flex w-full rounded-lg text-[#151711] dark:text-white dark:bg-[#1a2111] border border-[#e1e5dc] dark:border-[#3a4430] h-12 placeholder:text-[#788764] p-4 text-sm font-normal" placeholder="0.00" step="0.01" type="number" value=""/>
+</div>
+</div>
+<!-- Supplier Description / Notes -->
+<div class="flex flex-col grow">
+<label class="text-[#151711] dark:text-white text-sm font-semibold pb-2">Notes (Optional)</label>
+<textarea class="form-input flex w-full rounded-lg text-[#151711] dark:text-white dark:bg-[#1a2111] border border-[#e1e5dc] dark:border-[#3a4430] min-h-[140px] placeholder:text-[#788764] p-4 text-sm font-normal resize-none" placeholder="Enter any additional details about the supplier or product handling..."></textarea>
+</div>
+</div>
+</div>
+<!-- Modal Footer -->
+<div class="flex justify-end items-center gap-4 p-6 bg-background-light dark:bg-[#1e2516] border-t border-[#e1e5dc] dark:border-[#3a4430]">
+<button class="flex min-w-[120px] cursor-pointer items-center justify-center rounded-xl h-12 px-6 bg-white dark:bg-[#3a4430] border border-[#e1e5dc] dark:border-[#4a5540] text-[#151711] dark:text-white text-sm font-semibold hover:bg-[#f3f4f0] dark:hover:bg-[#4a5540] transition-colors">
+                    Cancel
+                </button>
+<button class="flex min-w-[160px] cursor-pointer items-center justify-center rounded-xl h-12 px-6 bg-primary text-background-dark text-sm font-bold shadow-lg shadow-primary/20 hover:brightness-105 transition-all">
+                    Save Product
+                </button>
+</div>
+</div>
+</div>
+</body></html>

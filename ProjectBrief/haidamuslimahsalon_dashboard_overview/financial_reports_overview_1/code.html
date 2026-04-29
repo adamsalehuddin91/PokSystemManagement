@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Financial Reports Overview | Muslimah Salon</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7de830",
+                        "background-light": "#f7f8f6",
+                        "background-dark": "#182111",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e0e5dc;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#141811] dark:text-white transition-colors duration-300">
+<div class="flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="w-64 border-r border-[#e0e5dc] dark:border-white/10 bg-white dark:bg-[#1f2b16] sticky top-0 h-screen flex flex-col justify-between p-6">
+<div class="flex flex-col gap-8">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-primary flex items-center justify-center text-[#141811]">
+<span class="material-symbols-outlined">spa</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-[#141811] dark:text-white text-base font-bold leading-none">Muslimah Salon</h1>
+<p class="text-[#728863] text-xs font-medium">Management System</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#728863] hover:bg-background-light dark:hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#728863] hover:bg-background-light dark:hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">content_cut</span>
+<span class="text-sm font-medium">Services</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#728863] hover:bg-background-light dark:hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium">Staff</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-[#141811] dark:text-primary font-bold" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="text-sm">Financial Reports</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#728863] hover:bg-background-light dark:hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+</div>
+<button class="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-[#f2f4f0] dark:bg-white/5 text-[#141811] dark:text-white text-sm font-bold hover:bg-red-50 dark:hover:bg-red-900/20 transition-all">
+<span class="material-symbols-outlined text-lg">logout</span>
+<span>Logout</span>
+</button>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col min-w-0 bg-background-light dark:bg-background-dark">
+<!-- TopNavBar -->
+<header class="flex items-center justify-between px-8 py-4 bg-white dark:bg-[#1f2b16] border-b border-[#e0e5dc] dark:border-white/10 sticky top-0 z-10">
+<div class="flex items-center gap-4">
+<h2 class="text-[#141811] dark:text-white text-xl font-bold tracking-tight">Financial Reports Overview</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#728863] text-lg">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-background-light dark:bg-white/5 border-none rounded-xl text-sm focus:ring-2 focus:ring-primary/50 placeholder:text-[#728863]" placeholder="Search transactions..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-[#141811] rounded-xl text-sm font-bold hover:shadow-lg transition-all">
+<span class="material-symbols-outlined text-lg">download</span>
+<span>Export Report</span>
+</button>
+<button class="p-2 rounded-xl bg-background-light dark:bg-white/5 text-[#141811] dark:text-white">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-px bg-[#e0e5dc] dark:bg-white/10 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-cover bg-center border-2 border-primary" data-alt="Portrait of a female salon owner" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDQ741z6DnaFzjhjQp1cFpoa9g8mw4OUEuT2xXLqLmxHsKhud-Mtdbu5yk-n8MdS76LezdQAGtWVPjn-thfP0t1LZ4F9MFWoH5uX2b0dluEzpN_Th0uW00kIRSfDV2oqv3T-F_eUG85bfjoOR0AcN5veGIzXNXIuRfixGRHCcb-mTzHgdGkiTI0o8VCeJk6dTnVbZUuSs8cA2JpaJDBgZDFSvp2ORd2CINLkv-QzhontfBKoXRpbGz4xwee1dHETm26Wfdsbn099-nP");'></div>
+<div class="hidden lg:block">
+<p class="text-xs font-bold leading-none mb-1">Farah Amira</p>
+<p class="text-[10px] text-[#728863] leading-none uppercase tracking-wider">Owner</p>
+</div>
+</div>
+</div>
+</div>
+</header>
+<div class="p-8 space-y-6 max-w-[1400px] mx-auto w-full">
+<!-- Date Range & Filters -->
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-2 bg-white dark:bg-[#1f2b16] p-1 rounded-xl shadow-sm border border-[#e0e5dc] dark:border-white/10">
+<button class="px-4 py-1.5 rounded-lg text-sm font-bold bg-primary text-[#141811]">Monthly</button>
+<button class="px-4 py-1.5 rounded-lg text-sm font-medium text-[#728863] hover:bg-background-light dark:hover:bg-white/5">Weekly</button>
+<button class="px-4 py-1.5 rounded-lg text-sm font-medium text-[#728863] hover:bg-background-light dark:hover:bg-white/5">Daily</button>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-[#1f2b16] border border-[#e0e5dc] dark:border-white/10 rounded-xl text-sm font-medium shadow-sm">
+<span class="material-symbols-outlined text-lg">calendar_month</span>
+<span>October 2023</span>
+<span class="material-symbols-outlined text-lg">expand_more</span>
+</button>
+<button class="p-2 bg-white dark:bg-[#1f2b16] border border-[#e0e5dc] dark:border-white/10 rounded-xl text-[#728863] shadow-sm">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="flex flex-col gap-2 rounded-2xl p-6 bg-white dark:bg-[#1f2b16] border border-[#e0e5dc] dark:border-white/10 shadow-sm">
+<div class="flex items-center justify-between mb-1">
+<p class="text-[#728863] text-sm font-medium">Total Revenue</p>
+<span class="material-symbols-outlined text-primary">payments</span>
+</div>
+<p class="text-[#141811] dark:text-white tracking-tight text-2xl font-bold">RM 12,450.00</p>
+<div class="flex items-center gap-1.5">
+<span class="text-[#07881f] text-sm font-bold flex items-center">
+<span class="material-symbols-outlined text-sm">trending_up</span> +12.5%
+                            </span>
+<span class="text-[#728863] text-xs font-normal">vs last month</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-2xl p-6 bg-white dark:bg-[#1f2b16] border border-[#e0e5dc] dark:border-white/10 shadow-sm">
+<div class="flex items-center justify-between mb-1">
+<p class="text-[#728863] text-sm font-medium">Total Expenses</p>
+<span class="material-symbols-outlined text-orange-400">shopping_cart</span>
+</div>
+<p class="text-[#141811] dark:text-white tracking-tight text-2xl font-bold">RM 4,200.00</p>
+<div class="flex items-center gap-1.5">
+<span class="text-[#07881f] text-sm font-bold flex items-center">
+<span class="material-symbols-outlined text-sm">trending_up</span> +5.2%
+                            </span>
+<span class="text-[#728863] text-xs font-normal">vs last month</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-2xl p-6 bg-white dark:bg-[#1f2b16] border border-[#e0e5dc] dark:border-white/10 shadow-sm">
+<div class="flex items-center justify-between mb-1">
+<p class="text-[#728863] text-sm font-medium">Net Profit</p>
+<span class="material-symbols-outlined text-blue-400">account_balance</span>
+</div>
+<p class="text-[#141811] dark:text-white tracking-tight text-2xl font-bold">RM 8,250.00</p>
+<div class="flex items-center gap-1.5">
+<span class="text-[#e71f08] text-sm font-bold flex items-center">
+<span class="material-symbols-outlined text-sm">trending_down</span> -2.4%
+                            </span>
+<span class="text-[#728863] text-xs font-normal">vs last month</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-2xl p-6 bg-white dark:bg-[#1f2b16] border border-[#e0e5dc] dark:border-white/10 shadow-sm">
+<div class="flex items-center justify-between mb-1">
+<p class="text-[#728863] text-sm font-medium">Outstanding</p>
+<span class="material-symbols-outlined text-red-400">pending_actions</span>
+</div>
+<p class="text-[#141811] dark:text-white tracking-tight text-2xl font-bold">RM 450.00</p>
+<div class="flex items-center gap-1.5">
+<span class="text-[#07881f] text-sm font-bold flex items-center">
+<span class="material-symbols-outlined text-sm">trending_up</span> +8.1%
+                            </span>
+<span class="text-[#728863] text-xs font-normal">vs last month</span>
+</div>
+</div>
+</div>
+<!-- Main Charts Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Revenue Trends -->
+<div class="lg:col-span-2 rounded-2xl p-6 bg-white dark:bg-[#1f2b16] border border-[#e0e5dc] dark:border-white/10 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h3 class="text-base font-bold dark:text-white">Revenue vs Expenses</h3>
+<p class="text-sm text-[#728863]">Cash flow tracking for October 2023</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<div class="size-3 rounded-full bg-primary"></div>
+<span class="text-xs text-[#728863] font-medium">Revenue</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-3 rounded-full bg-[#f2f4f0]"></div>
+<span class="text-xs text-[#728863] font-medium">Expenses</span>
+</div>
+</div>
+</div>
+<div class="h-64 relative w-full overflow-hidden">
+<svg class="w-full h-full" fill="none" preserveaspectratio="none" viewbox="0 0 100 100">
+<path d="M0 80 Q 15 70 25 75 T 50 40 T 75 30 T 100 20 V 100 H 0 Z" fill="url(#chartGradient)"></path>
+<path d="M0 80 Q 15 70 25 75 T 50 40 T 75 30 T 100 20" fill="none" stroke="#7de830" stroke-width="2"></path>
+<path d="M0 90 Q 20 85 40 88 T 70 80 T 100 85" fill="none" stroke="#728863" stroke-dasharray="4 4" stroke-width="1.5"></path>
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#7de830" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#7de830" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+</svg>
+<div class="absolute inset-0 flex items-end justify-between px-2 pb-1 text-[10px] text-[#728863] font-bold uppercase tracking-wider">
+<span>Week 1</span>
+<span>Week 2</span>
+<span>Week 3</span>
+<span>Week 4</span>
+</div>
+</div>
+</div>
+<!-- Revenue Sources -->
+<div class="rounded-2xl p-6 bg-white dark:bg-[#1f2b16] border border-[#e0e5dc] dark:border-white/10 shadow-sm flex flex-col">
+<div class="mb-6">
+<h3 class="text-base font-bold dark:text-white">Revenue Sources</h3>
+<p class="text-sm text-[#728863]">Earnings breakdown</p>
+</div>
+<div class="flex-1 flex flex-col justify-center gap-6">
+<div class="relative size-48 mx-auto">
+<svg class="size-full transform -rotate-90" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#f2f4f0" stroke-width="12"></circle>
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#7de830" stroke-dasharray="251.2" stroke-dashoffset="60" stroke-linecap="round" stroke-width="12"></circle>
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#333" stroke-dasharray="251.2" stroke-dashoffset="230" stroke-linecap="round" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-xl font-bold">RM 8,250</span>
+<span class="text-[10px] text-[#728863] font-bold uppercase">Net Profit</span>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-3">
+<div class="flex items-center justify-between text-sm">
+<div class="flex items-center gap-2 font-medium">
+<div class="size-2.5 rounded-full bg-primary"></div>
+<span>Services (75%)</span>
+</div>
+<span class="font-bold">RM 6,187</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<div class="flex items-center gap-2 font-medium">
+<div class="size-2.5 rounded-full bg-[#141811] dark:bg-white"></div>
+<span>Products (15%)</span>
+</div>
+<span class="font-bold">RM 1,237</span>
+</div>
+<div class="flex items-center justify-between text-sm">
+<div class="flex items-center gap-2 font-medium">
+<div class="size-2.5 rounded-full bg-[#f2f4f0] dark:bg-white/20"></div>
+<span>Others (10%)</span>
+</div>
+<span class="font-bold">RM 826</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Daily Sales Table -->
+<div class="rounded-2xl bg-white dark:bg-[#1f2b16] border border-[#e0e5dc] dark:border-white/10 shadow-sm overflow-hidden">
+<div class="p-6 border-b border-[#e0e5dc] dark:border-white/10 flex items-center justify-between">
+<div>
+<h3 class="text-base font-bold dark:text-white">Recent Daily Sales</h3>
+<p class="text-sm text-[#728863]">Live transaction logging</p>
+</div>
+<button class="text-primary text-sm font-bold hover:underline">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-background-light dark:bg-white/5">
+<tr>
+<th class="px-6 py-4 text-xs font-bold text-[#728863] uppercase tracking-wider">Date &amp; Time</th>
+<th class="px-6 py-4 text-xs font-bold text-[#728863] uppercase tracking-wider">Customer</th>
+<th class="px-6 py-4 text-xs font-bold text-[#728863] uppercase tracking-wider">Service</th>
+<th class="px-6 py-4 text-xs font-bold text-[#728863] uppercase tracking-wider">Stylist</th>
+<th class="px-6 py-4 text-xs font-bold text-[#728863] uppercase tracking-wider">Amount</th>
+<th class="px-6 py-4 text-xs font-bold text-[#728863] uppercase tracking-wider text-right">Method</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#e0e5dc] dark:divide-white/10">
+<tr class="hover:bg-background-light dark:hover:bg-white/5 transition-colors">
+<td class="px-6 py-4 text-sm font-medium">24 Oct, 2:30 PM</td>
+<td class="px-6 py-4 text-sm">Nurul Huda</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase">Hair Spa &amp; Blow</span>
+</td>
+<td class="px-6 py-4 text-sm">Siti Aminah</td>
+<td class="px-6 py-4 text-sm font-bold">RM 180.00</td>
+<td class="px-6 py-4 text-sm text-right">
+<div class="flex items-center justify-end gap-2 text-[#728863]">
+<span class="material-symbols-outlined text-sm">qr_code_2</span>
+<span>DuitNow</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-background-light dark:hover:bg-white/5 transition-colors">
+<td class="px-6 py-4 text-sm font-medium">24 Oct, 1:15 PM</td>
+<td class="px-6 py-4 text-sm">Zahra Kassim</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-[10px] font-bold uppercase">Bridal Makeup</span>
+</td>
+<td class="px-6 py-4 text-sm">Maya R.</td>
+<td class="px-6 py-4 text-sm font-bold">RM 450.00</td>
+<td class="px-6 py-4 text-sm text-right">
+<div class="flex items-center justify-end gap-2 text-[#728863]">
+<span class="material-symbols-outlined text-sm">credit_card</span>
+<span>Visa</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-background-light dark:hover:bg-white/5 transition-colors">
+<td class="px-6 py-4 text-sm font-medium">24 Oct, 11:00 AM</td>
+<td class="px-6 py-4 text-sm">Aisha Yusof</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 text-[10px] font-bold uppercase">Organic Facial</span>
+</td>
+<td class="px-6 py-4 text-sm">Siti Aminah</td>
+<td class="px-6 py-4 text-sm font-bold">RM 120.00</td>
+<td class="px-6 py-4 text-sm text-right">
+<div class="flex items-center justify-end gap-2 text-[#728863]">
+<span class="material-symbols-outlined text-sm">payments</span>
+<span>Cash</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-background-light dark:hover:bg-white/5 transition-colors">
+<td class="px-6 py-4 text-sm font-medium">23 Oct, 4:45 PM</td>
+<td class="px-6 py-4 text-sm">Liyana Rose</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase">Full Coloring</span>
+</td>
+<td class="px-6 py-4 text-sm">Maya R.</td>
+<td class="px-6 py-4 text-sm font-bold">RM 320.00</td>
+<td class="px-6 py-4 text-sm text-right">
+<div class="flex items-center justify-end gap-2 text-[#728863]">
+<span class="material-symbols-outlined text-sm">account_balance_wallet</span>
+<span>GrabPay</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Footer Summary Actions -->
+<div class="flex flex-wrap items-center justify-between gap-4 py-4">
+<p class="text-sm text-[#728863]">Showing top 4 transactions for today. Export for complete ledger.</p>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-[#1f2b16] border border-[#e0e5dc] dark:border-white/10 rounded-xl text-sm font-bold hover:bg-background-light transition-all">
+<span class="material-symbols-outlined text-lg">description</span>
+<span>Inventory Cost Report</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-[#1f2b16] border border-[#e0e5dc] dark:border-white/10 rounded-xl text-sm font-bold hover:bg-background-light transition-all">
+<span class="material-symbols-outlined text-lg">badge</span>
+<span>Staff Commission</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

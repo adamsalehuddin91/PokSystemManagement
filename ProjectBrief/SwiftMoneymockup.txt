@@ -1,0 +1,389 @@
+import React, { useState, useMemo } from 'react';
+import { 
+  CheckCircle, Circle, Home, CreditCard, GraduationCap, 
+  Zap, Heart, User, Plus, Camera, ChevronRight, 
+  TrendingDown, Eye, EyeOff, Wallet, ArrowUpRight, ArrowDownRight, X,
+  Settings, LogOut, Users, FileText, Bell, ShieldCheck, Sprout
+} from 'lucide-react';
+
+const App = () => {
+  const [isHidden, setIsHidden] = useState(false);
+  const [activeTab, setActiveTab] = useState('home'); // 'home' or 'user'
+  
+  // Modals state
+  const [showIncomeModal, setShowIncomeModal] = useState(false);
+  const [showBillModal, setShowBillModal] = useState(false);
+
+  // Data State
+  const [income, setIncome] = useState([
+    { id: 1, source: 'Gaji Hakiki', amount: 8500 },
+    { id: 2, source: 'Hasil Felda', amount: 2450 },
+  ]);
+
+  const [bills, setBills] = useState([
+    { id: 1, category: 'Sekolah', title: 'SRITI Adam Luthfi', amount: 370, paid: true, assigned: 'Ayg' },
+    { id: 2, category: 'Sekolah', title: 'SRITI Adam Luqman', amount: 370, paid: true, assigned: 'Ayg' },
+    { id: 3, category: 'Sekolah', title: 'Pasti AlFatah (Lutfan)', amount: 300, paid: true, assigned: 'Ayg' },
+    { id: 4, category: 'Sekolah', title: 'Taska Adam Lubaid', amount: 435, paid: true, assigned: 'Ayg' },
+    { id: 5, category: 'Sekolah', title: 'Tusyen Adam Luthfi', amount: 120, paid: false, assigned: 'Abg' },
+    { id: 6, category: 'Sekolah', title: 'Ngaji', amount: 100, paid: true, assigned: 'Ayg' },
+    { id: 7, category: 'Rumah', title: 'Rumah Jasin', amount: 1385, paid: true, assigned: 'Abg' },
+    { id: 8, category: 'Rumah', title: 'Rumah Nuri', amount: 2610, paid: true, assigned: 'Ayg' },
+    { id: 9, category: 'Rumah', title: 'P. Loan Abg', amount: 1720, paid: true, assigned: 'Abg' },
+    { id: 10, category: 'Rumah', title: 'P. Loan Ayg', amount: 2100, paid: true, assigned: 'Ayg' },
+    { id: 11, category: 'Rumah', title: 'Bil Api Jasin', amount: 115.40, paid: false, assigned: 'Abg' },
+    { id: 15, category: 'Rumah', title: 'Internet Rumah', amount: 165, paid: false, assigned: 'Abg' },
+    { id: 24, category: 'Lain2', title: 'Motor JXG8767', amount: 385, paid: false, assigned: 'Abg' },
+  ]);
+
+  const [debts] = useState([
+    { title: 'Total Pintu (CC)', total: 7000, current: 3632.73, label: 'Baki 10 Bulan' },
+    { title: 'Hutang Kakak', total: 5140, current: 1600, label: 'Dah bayar RM1000' }
+  ]);
+
+  const categories = ['Sekolah', 'Rumah', 'Insurance', 'Coway', 'Lain2'];
+
+  // Form Logic
+  const [newIncome, setNewIncome] = useState({ source: '', amount: '' });
+  const [newBill, setNewBill] = useState({ title: '', amount: '', category: 'Rumah', assigned: 'Abg' });
+
+  const handleAddIncome = () => {
+    if (!newIncome.source || !newIncome.amount) return;
+    setIncome([...income, { id: Date.now(), ...newIncome, amount: parseFloat(newIncome.amount) }]);
+    setNewIncome({ source: '', amount: '' });
+    setShowIncomeModal(false);
+  };
+
+  const handleAddBill = () => {
+    if (!newBill.title || !newBill.amount) return;
+    setBills([...bills, { id: Date.now(), ...newBill, amount: parseFloat(newBill.amount), paid: false }]);
+    setNewBill({ title: '', amount: '', category: 'Rumah', assigned: 'Abg' });
+    setShowBillModal(false);
+  };
+
+  // Logic: Calculations
+  const totals = useMemo(() => {
+    const totalIncome = income.reduce((acc, curr) => acc + curr.amount, 0);
+    const totalBills = bills.reduce((acc, b) => acc + b.amount, 0);
+    const paidBills = bills.reduce((acc, b) => b.paid ? acc + b.amount : acc, 0);
+    const unpaidBills = totalBills - paidBills;
+    const netBalance = totalIncome - unpaidBills;
+    const progress = (paidBills / totalBills) * 100 || 0;
+
+    return { totalIncome, totalBills, paidBills, unpaidBills, netBalance, progress };
+  }, [bills, income]);
+
+  const toggleBill = (id) => {
+    setBills(prev => prev.map(b => b.id === id ? { ...b, paid: !b.paid } : b));
+  };
+
+  const formatMoney = (amount, isPrivate = false) => {
+    if (isHidden && isPrivate) return 'RM •••••';
+    return `RM ${amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+  };
+
+  return (
+    <div className="max-w-md mx-auto bg-slate-50 min-h-screen pb-28 font-sans text-slate-900 overflow-x-hidden relative">
+      
+      {/* ----------------- MODALS ----------------- */}
+      {showIncomeModal && (
+        <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in">
+          <div className="bg-white w-full max-w-sm rounded-[32px] p-6 shadow-2xl animate-in slide-in-from-bottom-10">
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-xl font-bold">Add Income</h3>
+              <button onClick={() => setShowIncomeModal(false)} className="p-2 bg-slate-100 rounded-full"><X size={20}/></button>
+            </div>
+            <div className="space-y-4">
+              <div>
+                <label className="text-[10px] font-bold text-slate-400 uppercase ml-1">Source Name</label>
+                <input type="text" placeholder="e.g. Bonus, Felda Bonus" className="w-full bg-slate-50 border-none rounded-2xl p-4 mt-1" value={newIncome.source} onChange={(e) => setNewIncome({...newIncome, source: e.target.value})} />
+              </div>
+              <div>
+                <label className="text-[10px] font-bold text-slate-400 uppercase ml-1">Amount (RM)</label>
+                <input type="number" placeholder="0.00" className="w-full bg-slate-50 border-none rounded-2xl p-4 mt-1" value={newIncome.amount} onChange={(e) => setNewIncome({...newIncome, amount: e.target.value})} />
+              </div>
+              <button onClick={handleAddIncome} className="w-full bg-indigo-600 text-white font-bold p-4 rounded-2xl shadow-lg shadow-indigo-200 mt-2 active:scale-95 transition-all">Save Income</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showBillModal && (
+        <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in">
+          <div className="bg-white w-full max-w-sm rounded-[32px] p-6 shadow-2xl animate-in slide-in-from-bottom-10">
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-xl font-bold">Add Commitment</h3>
+              <button onClick={() => setShowBillModal(false)} className="p-2 bg-slate-100 rounded-full"><X size={20}/></button>
+            </div>
+            <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-3">
+                <div className="col-span-2">
+                   <label className="text-[10px] font-bold text-slate-400 uppercase ml-1">Title</label>
+                   <input type="text" placeholder="e.g. Astro, Bil Air" className="w-full bg-slate-50 border-none rounded-2xl p-4 mt-1" value={newBill.title} onChange={(e) => setNewBill({...newBill, title: e.target.value})} />
+                </div>
+                <div>
+                   <label className="text-[10px] font-bold text-slate-400 uppercase ml-1">Amount</label>
+                   <input type="number" placeholder="0.00" className="w-full bg-slate-50 border-none rounded-2xl p-4 mt-1" value={newBill.amount} onChange={(e) => setNewBill({...newBill, amount: e.target.value})} />
+                </div>
+                <div>
+                   <label className="text-[10px] font-bold text-slate-400 uppercase ml-1">PIC</label>
+                   <select className="w-full bg-slate-50 border-none rounded-2xl p-4 mt-1 appearance-none" value={newBill.assigned} onChange={(e) => setNewBill({...newBill, assigned: e.target.value})}>
+                      <option value="Abg">Abang</option>
+                      <option value="Ayg">Sayang</option>
+                   </select>
+                </div>
+              </div>
+              <button onClick={handleAddBill} className="w-full bg-indigo-600 text-white font-bold p-4 rounded-2xl shadow-lg shadow-indigo-200 mt-2 active:scale-95 transition-all">Add to Tracker</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ----------------- RENDER VIEWS ----------------- */}
+      {activeTab === 'home' ? (
+        <>
+          {/* HEADER DASHBOARD */}
+          <div className="bg-indigo-700 pt-10 pb-28 px-6 rounded-b-[48px] shadow-2xl relative">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+            <div className="flex justify-between items-center mb-6 relative z-10">
+              <div>
+                <h1 className="text-white text-2xl font-bold tracking-tight">SwiftMoney</h1>
+                <p className="text-indigo-200 text-xs font-medium tracking-wide">MAC 2026 • RM {totals.totalBills.toLocaleString()}</p>
+              </div>
+              <div className="flex gap-3 items-center">
+                <button onClick={() => setIsHidden(!isHidden)} className="bg-white/10 p-2.5 rounded-2xl text-white backdrop-blur-md border border-white/10 active:scale-90 transition-all">
+                  {isHidden ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
+                <div className="bg-white p-1 rounded-full border-2 border-indigo-400">
+                  <div className="bg-indigo-600 text-[10px] text-white font-bold w-8 h-8 rounded-full flex items-center justify-center">ABG</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-[32px] p-6 shadow-2xl relative z-10">
+              <div className="flex justify-between items-start mb-4">
+                <div>
+                  <p className="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-1 flex items-center gap-1">
+                    <Wallet size={12} className="text-indigo-500" /> Baki Bersih (Net)
+                  </p>
+                  <h2 className="text-3xl font-black text-slate-800 tracking-tighter">
+                    {formatMoney(totals.netBalance, true)}
+                  </h2>
+                </div>
+                <div className="bg-green-100 text-green-600 p-2 rounded-2xl shadow-sm">
+                   <ArrowUpRight size={20} />
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-4 pt-4 border-t border-slate-50">
+                <div>
+                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Income</p>
+                  <p className="text-sm font-black text-green-600">{formatMoney(totals.totalIncome, true)}</p>
+                </div>
+                <div className="text-right border-l border-slate-50 pl-4">
+                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Baki Bil</p>
+                  <p className="text-sm font-black text-red-500">{formatMoney(totals.unpaidBills, false)}</p>
+                </div>
+              </div>
+
+              <div className="mt-6">
+                <div className="flex justify-between text-[10px] font-bold text-slate-400 mb-2 uppercase">
+                  <span>Progress Bayaran</span>
+                  <span className="text-indigo-600">{Math.round(totals.progress)}%</span>
+                </div>
+                <div className="h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                  <div className="h-full bg-indigo-600 rounded-full transition-all duration-1000 ease-out" style={{ width: `${totals.progress}%` }}></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* MAIN CONTENT DASHBOARD */}
+          <div className="px-6 -mt-12 space-y-8 relative z-20 pb-20">
+            <section className="animate-in fade-in slide-in-from-top-4 duration-500">
+              <div className="flex justify-between items-center mb-3">
+                <h3 className="text-[11px] font-black text-slate-500 uppercase tracking-widest flex items-center gap-2"><ArrowUpRight size={14} className="text-green-500" /> My Income Sources</h3>
+                <button onClick={() => setShowIncomeModal(true)} className="text-[10px] font-bold text-indigo-600 flex items-center gap-1 bg-indigo-50 px-2 py-1 rounded-lg"><Plus size={12}/> ADD</button>
+              </div>
+              <div className="bg-white rounded-3xl p-5 shadow-sm border border-slate-100 flex gap-6 overflow-x-auto no-scrollbar">
+                {income.map(inc => (
+                  <div key={inc.id} className="min-w-[120px] flex flex-col">
+                    <p className="text-[10px] text-slate-400 font-bold uppercase mb-1">{inc.source}</p>
+                    <p className="text-sm font-black text-slate-700">{formatMoney(inc.amount, true)}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Debt Tracker */}
+            <section>
+              <h3 className="text-[11px] font-black text-slate-500 uppercase tracking-widest mb-4 flex items-center gap-2"><TrendingDown size={14} className="text-orange-500" /> Debt Amortization</h3>
+              <div className="space-y-3">
+                {debts.map((debt, idx) => (
+                  <div key={idx} className="bg-white p-5 rounded-[24px] shadow-sm border border-slate-100">
+                    <div className="flex justify-between items-end mb-2.5">
+                      <div>
+                        <h4 className="font-bold text-slate-700 text-[13px]">{debt.title}</h4>
+                        <p className="text-[9px] text-slate-400 font-bold uppercase tracking-wider">{debt.label}</p>
+                      </div>
+                      <p className="text-[11px] font-black text-indigo-600 font-mono">{formatMoney(debt.total - debt.current, false)}</p>
+                    </div>
+                    <div className="w-full bg-slate-50 h-2 rounded-full overflow-hidden border border-slate-100/50">
+                      <div className="bg-orange-400 h-full rounded-full transition-all duration-1000" style={{ width: `${((debt.total - debt.current) / debt.total) * 100}%` }}></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Bills categories loop */}
+            {categories.map(cat => (
+              <section key={cat}>
+                <div className="flex justify-between items-center mb-4 text-[11px] font-black text-slate-800 uppercase tracking-widest">
+                  <span className="flex items-center gap-2">
+                    {cat === 'Sekolah' && <GraduationCap size={16} className="text-blue-500" />}
+                    {cat === 'Rumah' && <Home size={16} className="text-indigo-500" />}
+                    {cat === 'Insurance' && <Heart size={16} className="text-red-500" />}
+                    {cat === 'Coway' && <Zap size={16} className="text-orange-500" />}
+                    {cat === 'Lain2' && <CreditCard size={16} className="text-slate-500" />}
+                    {cat}
+                  </span>
+                  <span className="text-[9px] bg-slate-200 text-slate-600 px-2 py-0.5 rounded-full">{bills.filter(b => b.category === cat).length} ITEMS</span>
+                </div>
+                <div className="space-y-3">
+                  {bills.filter(b => b.category === cat).map(bill => (
+                    <div key={bill.id} onClick={() => toggleBill(bill.id)} className={`flex items-center justify-between p-4 rounded-[22px] transition-all border-2 cursor-pointer ${bill.paid ? 'bg-slate-50 border-transparent opacity-60' : 'bg-white border-white shadow-sm ring-1 ring-slate-100'}`}>
+                      <div className="flex items-center gap-4">
+                        {bill.paid ? <CheckCircle size={26} className="text-green-500" /> : <Circle size={26} className="text-slate-200" />}
+                        <div>
+                          <h4 className={`text-[13px] font-bold leading-tight ${bill.paid ? 'text-slate-400 line-through' : 'text-slate-700'}`}>{bill.title}</h4>
+                          <div className="flex items-center gap-2 mt-1">
+                            <span className={`text-xs font-black ${bill.paid ? 'text-slate-400' : 'text-indigo-600'}`}>{formatMoney(bill.amount, false)}</span>
+                            <span className={`text-[8px] font-black px-1.5 py-0.5 rounded-md uppercase ${bill.assigned === 'Abg' ? 'bg-indigo-50 text-indigo-500' : 'bg-pink-50 text-pink-500'}`}>{bill.assigned}</span>
+                          </div>
+                        </div>
+                      </div>
+                      <ChevronRight size={16} className="text-slate-300" />
+                    </div>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
+        </>
+      ) : (
+        /* ----------------- PROFILE VIEW ----------------- */
+        <div className="p-6 pt-16 space-y-8 animate-in fade-in duration-300">
+          <div className="flex flex-col items-center text-center space-y-4">
+            <div className="relative">
+              <div className="w-24 h-24 bg-indigo-600 rounded-full flex items-center justify-center text-white text-3xl font-black shadow-2xl border-4 border-white">ABG</div>
+              <div className="absolute bottom-0 right-0 bg-green-500 w-6 h-6 rounded-full border-4 border-white shadow-sm"></div>
+            </div>
+            <div>
+              <h2 className="text-2xl font-black text-slate-800 tracking-tighter">Ahmad Ibrahim</h2>
+              <p className="text-slate-400 text-xs font-bold uppercase tracking-widest">Senior Architect • Jasin, Melaka</p>
+            </div>
+            <div className="flex gap-2">
+               <span className="bg-indigo-50 text-indigo-600 text-[10px] font-black px-3 py-1 rounded-full border border-indigo-100 flex items-center gap-1 uppercase tracking-tighter">
+                  <ShieldCheck size={12}/> Verified User
+               </span>
+               <span className="bg-green-50 text-green-600 text-[10px] font-black px-3 py-1 rounded-full border border-green-100 flex items-center gap-1 uppercase tracking-tighter">
+                  <Users size={12}/> Linked: Ayg
+               </span>
+            </div>
+          </div>
+
+          {/* Quick Stats Grid */}
+          <div className="grid grid-cols-2 gap-3">
+             <div className="bg-white p-4 rounded-3xl border border-slate-100 shadow-sm">
+                <p className="text-[9px] font-bold text-slate-400 uppercase mb-1">Total Assets</p>
+                <p className="text-sm font-black text-slate-800">{formatMoney(totals.totalIncome * 12, true)}</p>
+                <p className="text-[8px] text-slate-300 font-bold mt-1 tracking-tighter">ESTIMATED ANNUAL</p>
+             </div>
+             <div className="bg-white p-4 rounded-3xl border border-slate-100 shadow-sm">
+                <p className="text-[9px] font-bold text-slate-400 uppercase mb-1">Burn Rate</p>
+                <p className="text-sm font-black text-red-500">{Math.round((totals.totalBills / totals.totalIncome) * 100)}%</p>
+                <p className="text-[8px] text-slate-300 font-bold mt-1 tracking-tighter">MONTHLY INCOME USED</p>
+             </div>
+          </div>
+
+          {/* Settings Group */}
+          <div className="space-y-4">
+            <h3 className="text-[11px] font-black text-slate-500 uppercase tracking-widest ml-1">Configuration</h3>
+            
+            <div className="bg-white rounded-[32px] overflow-hidden border border-slate-100 shadow-sm">
+               <div className="p-4 flex items-center justify-between border-b border-slate-50 active:bg-slate-50 transition-colors">
+                  <div className="flex items-center gap-4">
+                     <div className="bg-indigo-50 text-indigo-600 p-2.5 rounded-2xl"><Sprout size={20}/></div>
+                     <div>
+                        <p className="text-sm font-bold text-slate-700">Felda Earnings Config</p>
+                        <p className="text-[10px] text-slate-400 font-medium">Update sawit price & harvest cycle</p>
+                     </div>
+                  </div>
+                  <ChevronRight size={16} className="text-slate-300"/>
+               </div>
+               
+               <div className="p-4 flex items-center justify-between border-b border-slate-50 active:bg-slate-50 transition-colors">
+                  <div className="flex items-center gap-4">
+                     <div className="bg-blue-50 text-blue-600 p-2.5 rounded-2xl"><Bell size={20}/></div>
+                     <div>
+                        <p className="text-sm font-bold text-slate-700">Notifications</p>
+                        <p className="text-[10px] text-slate-400 font-medium">Auto-remind on 25th of month</p>
+                     </div>
+                  </div>
+                  <div className="w-10 h-5 bg-indigo-600 rounded-full relative">
+                     <div className="absolute right-0.5 top-0.5 w-4 h-4 bg-white rounded-full"></div>
+                  </div>
+               </div>
+
+               <div className="p-4 flex items-center justify-between active:bg-slate-50 transition-colors">
+                  <div className="flex items-center gap-4">
+                     <div className="bg-slate-50 text-slate-600 p-2.5 rounded-2xl"><FileText size={20}/></div>
+                     <div>
+                        <p className="text-sm font-bold text-slate-700">Financial Reports</p>
+                        <p className="text-[10px] text-slate-400 font-medium">Export monthly PDF for wife</p>
+                     </div>
+                  </div>
+                  <ChevronRight size={16} className="text-slate-300"/>
+               </div>
+            </div>
+
+            <div className="bg-white rounded-[32px] overflow-hidden border border-slate-100 shadow-sm">
+               <div className="p-4 flex items-center justify-between text-red-500 active:bg-red-50 transition-colors">
+                  <div className="flex items-center gap-4">
+                     <div className="bg-red-50 p-2.5 rounded-2xl"><LogOut size={20}/></div>
+                     <p className="text-sm font-bold">Logout Session</p>
+                  </div>
+               </div>
+            </div>
+            
+            <p className="text-center text-[9px] text-slate-300 font-bold uppercase tracking-widest py-4">
+               SwiftMoney PWA v2.4.0 • Build 2026.03
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* ----------------- FLOATING NAV ----------------- */}
+      <div className="fixed bottom-6 left-6 right-6 max-w-[calc(448px-3rem)] mx-auto z-50">
+        <div className="bg-white/80 backdrop-blur-2xl border border-white/40 shadow-[0_20px_50px_rgba(0,0,0,0.15)] rounded-[32px] flex justify-around items-center p-3">
+          <button onClick={() => setActiveTab('home')} className={`flex flex-col items-center p-2 transition-all ${activeTab === 'home' ? 'text-indigo-600' : 'text-slate-400'}`}>
+            <Home size={22} strokeWidth={2.5} />
+            <span className="text-[9px] font-black mt-1 uppercase tracking-tighter">Home</span>
+          </button>
+          
+          <button onClick={() => setShowBillModal(true)} className="bg-indigo-600 text-white p-4 rounded-2xl shadow-lg shadow-indigo-200 -mt-12 active:scale-90 transition-all border-4 border-slate-50">
+            <Plus size={24} strokeWidth={3} />
+          </button>
+          
+          <button onClick={() => setActiveTab('user')} className={`flex flex-col items-center p-2 transition-all ${activeTab === 'user' ? 'text-indigo-600' : 'text-slate-400'}`}>
+            <User size={22} strokeWidth={2.5} />
+            <span className="text-[9px] font-black mt-1 uppercase tracking-tighter">Profile</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default App;

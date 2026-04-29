@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Expense Management - Muslimah Salon</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7de830",
+                        "background-light": "#f7f8f6",
+                        "background-dark": "#182111",
+                        "accent-soft": "#f2f4f0",
+                        "text-main": "#141811",
+                        "text-muted": "#728863",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e0e5dc;
+            border-radius: 10px;
+        }
+        .drawer-shadow {
+            box-shadow: -10px 0 30px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main dark:text-white transition-colors duration-300">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-72 bg-white dark:bg-zinc-900 border-r border-[#e0e5dc] dark:border-zinc-800 flex flex-col justify-between p-6">
+<div class="flex flex-col gap-8">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12 ring-2 ring-primary/20" data-alt="Modern salon logo with floral motif" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDWS1whQBONWP_UOAPAIabnQSnCajSodV4ewX3b07YipbQxATs9-vV51Vl-T7uhTI17EZgMLqG4gKh20j1OvpmnZHczkg-Wc-Mw7P6ahnT94a3-wjSTJabIqt7xBqgoaOU6MA3wafkfDMD7-iGwvqHxmhP7wmPu1HWT7cP_7s7RTb2zJmRn0ogerXD3iJYLi_SVtaKevydJOayz6CAPnupGfISw1Zg6cm4LgL9TVUF7ERPfC8oyvdB7hHwumw7eEfX8d-kKpuNZH-eh");'></div>
+<div class="flex flex-col">
+<h1 class="text-text-main dark:text-white text-lg font-bold leading-tight">Muslimah Salon</h1>
+<p class="text-text-muted text-xs font-medium uppercase tracking-wider">Premium Management</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-accent-soft dark:hover:bg-zinc-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-text-muted">dashboard</span>
+<p class="text-sm font-semibold">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-accent-soft dark:hover:bg-zinc-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-text-muted">calendar_today</span>
+<p class="text-sm font-semibold">Bookings</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-accent-soft dark:hover:bg-zinc-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-text-muted">group</span>
+<p class="text-sm font-semibold">Clients</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-text-main shadow-md shadow-primary/20" href="#">
+<span class="material-symbols-outlined">payments</span>
+<p class="text-sm font-bold">Expenses</p>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-accent-soft dark:hover:bg-zinc-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-text-muted">content_cut</span>
+<p class="text-sm font-semibold">Services</p>
+</a>
+</nav>
+</div>
+<div class="pt-6 border-t border-[#e0e5dc] dark:border-zinc-800">
+<div class="flex items-center gap-3 px-2">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Staff profile photo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC2Hii_MF61ry5qCtWMCibSOSxXCdGxF7B-9ZqSAqo9rQzPomTKMM_pOVO6uQs3O0JvQvjmg57VGQSnm39ys2vaRbE2OVSNkxjRpTrtBf673v4siLPa3DzLpJlSroP6RY71_cnNMMYozxbEb5vhptXnKUX4PzP_G7BsdLOtsBhY0mRs3Hif8NZkDOHhfm3sjChRhndD-MslY88k1_Gc--5XmQ2SEFMp221hKADXNLMI25jlPbKXx1WGJEQAGCZDdEIWVWYhS2nvZmpI");'></div>
+<div class="flex flex-col">
+<p class="text-sm font-bold">Amina K.</p>
+<p class="text-xs text-text-muted">Salon Owner</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col overflow-hidden">
+<!-- Top Navigation Bar -->
+<header class="h-20 bg-white dark:bg-zinc-900 border-b border-[#e0e5dc] dark:border-zinc-800 flex items-center justify-between px-8">
+<div class="flex items-center gap-6">
+<h2 class="text-xl font-bold tracking-tight">Expense Management</h2>
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-muted text-xl">search</span>
+<input class="w-full bg-accent-soft dark:bg-zinc-800 border-none rounded-xl pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary placeholder:text-text-muted/60" placeholder="Search expenses..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-xl bg-accent-soft dark:bg-zinc-800 text-text-main dark:text-white hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-xl bg-accent-soft dark:bg-zinc-800 text-text-main dark:text-white hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="flex items-center gap-2 bg-primary text-text-main font-bold py-2.5 px-6 rounded-xl hover:opacity-90 transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-xl">add</span>
+                        New Expense
+                    </button>
+</div>
+</header>
+<!-- Content Area -->
+<div class="flex-1 overflow-y-auto p-8 bg-background-light dark:bg-background-dark">
+<!-- Stats Overview -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="bg-white dark:bg-zinc-900 p-6 rounded-2xl border border-[#e0e5dc] dark:border-zinc-800 flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<p class="text-text-muted text-sm font-medium">Monthly Total</p>
+<span class="material-symbols-outlined text-primary">account_balance_wallet</span>
+</div>
+<p class="text-3xl font-extrabold">$4,250.00</p>
+<div class="flex items-center gap-1 text-emerald-600 text-xs font-bold">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>5.2% from last month</span>
+</div>
+</div>
+<div class="bg-white dark:bg-zinc-900 p-6 rounded-2xl border border-[#e0e5dc] dark:border-zinc-800 flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<p class="text-text-muted text-sm font-medium">Pending Receipts</p>
+<span class="material-symbols-outlined text-amber-500">description</span>
+</div>
+<p class="text-3xl font-extrabold">12</p>
+<div class="flex items-center gap-1 text-amber-600 text-xs font-bold">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>Requires attention</span>
+</div>
+</div>
+<div class="bg-white dark:bg-zinc-900 p-6 rounded-2xl border border-[#e0e5dc] dark:border-zinc-800 flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<p class="text-text-muted text-sm font-medium">Budget Used</p>
+<span class="material-symbols-outlined text-blue-500">pie_chart</span>
+</div>
+<p class="text-3xl font-extrabold">65%</p>
+<div class="w-full bg-accent-soft dark:bg-zinc-800 h-1.5 rounded-full mt-1 overflow-hidden">
+<div class="bg-primary h-full w-[65%]"></div>
+</div>
+</div>
+</div>
+<!-- Filters/Chips -->
+<div class="flex items-center gap-3 mb-6 overflow-x-auto pb-2">
+<button class="flex items-center gap-2 px-4 py-2 rounded-xl bg-primary text-text-main font-bold text-sm">
+                        All Expenses
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-xl bg-white dark:bg-zinc-900 border border-[#e0e5dc] dark:border-zinc-800 text-sm font-medium hover:border-primary transition-colors">
+                        Supplies <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-xl bg-white dark:bg-zinc-900 border border-[#e0e5dc] dark:border-zinc-800 text-sm font-medium hover:border-primary transition-colors">
+                        Rent &amp; Utilities <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-xl bg-white dark:bg-zinc-900 border border-[#e0e5dc] dark:border-zinc-800 text-sm font-medium hover:border-primary transition-colors">
+                        Payroll <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-xl bg-white dark:bg-zinc-900 border border-[#e0e5dc] dark:border-zinc-800 text-sm font-medium hover:border-primary transition-colors">
+                        Marketing <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<div class="ml-auto flex items-center gap-2">
+<button class="p-2 text-text-muted hover:text-primary transition-colors">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+<button class="p-2 text-text-muted hover:text-primary transition-colors">
+<span class="material-symbols-outlined">download</span>
+</button>
+</div>
+</div>
+<!-- Table Component -->
+<div class="bg-white dark:bg-zinc-900 rounded-2xl border border-[#e0e5dc] dark:border-zinc-800 overflow-hidden shadow-sm">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-[#e0e5dc] dark:border-zinc-800 bg-accent-soft/30 dark:bg-zinc-800/50">
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-widest text-text-muted">Date</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-widest text-text-muted">Category</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-widest text-text-muted">Amount</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-widest text-text-muted">Payment Method</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-widest text-text-muted">Receipt</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-widest text-text-muted text-right">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#e0e5dc] dark:divide-zinc-800">
+<tr class="hover:bg-accent-soft/20 dark:hover:bg-zinc-800/20 transition-colors group">
+<td class="px-6 py-5 text-sm font-medium">Oct 24, 2023</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs font-bold">Supplies</span>
+</td>
+<td class="px-6 py-5 text-sm font-extrabold">$450.00</td>
+<td class="px-6 py-5 text-sm text-text-muted font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">credit_card</span> Visa Ending in 4242
+                                </td>
+<td class="px-6 py-5">
+<div class="size-10 rounded-lg bg-cover bg-center border border-[#e0e5dc] dark:border-zinc-700 cursor-zoom-in" data-alt="Small thumbnail of an official supply receipt" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuArg2yv2ECA2PIodID4Ep9z8Q2BnIpt2rYR3tJC-JDmbbf96VkeqtOZOEaHVb_iIdcPoCt25bEvVxqMLXXUBi-AKA_YIWBG4bef4wXJ6vho39W7KknlH30LV3Gv-zNu8I-sfEjkdCNpsKADD0sbAeg-v9VUTo_qnR9M4T6Qs8WmK7ON0A5ONyldfXVZDPtY5WQeObz_AjcZmGXNochZvf1LBmAE96_xAIFnFR7O4rkW90qTbwbBZCHcqWRduwd7AcyuS62joj4YE6KW");'></div>
+</td>
+<td class="px-6 py-5 text-right">
+<span class="px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 text-xs font-bold uppercase">Cleared</span>
+</td>
+</tr>
+<tr class="hover:bg-accent-soft/20 dark:hover:bg-zinc-800/20 transition-colors group">
+<td class="px-6 py-5 text-sm font-medium">Oct 22, 2023</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs font-bold">Rent</span>
+</td>
+<td class="px-6 py-5 text-sm font-extrabold">$2,000.00</td>
+<td class="px-6 py-5 text-sm text-text-muted font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">account_balance</span> Bank Transfer
+                                </td>
+<td class="px-6 py-5">
+<div class="size-10 rounded-lg bg-cover bg-center border border-[#e0e5dc] dark:border-zinc-700" data-alt="Receipt placeholder pattern" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB2xGTURs1H308tT9naS-73BjOAJo8HNgN9LjB5aJZhoN7sh6pWIhhzIyUT5L_YFB2lTXJR5RuNe_iAtubhvxJdaGlcsa7F9tQX_G0TuGZs23r0DDTcIRLvYjTTUyBeErQHCXwoUXYP2yfyXSta9fky8x4w4ir7SYLcksKRylVqLJ_ZxNrp_xJyGsf4vzJ3FwYTkxMK6WSzZHM_bhQU80KfzpL2qPtlzJQ0YhOYcGH0CruM9mq-QKqW5jouzhca2wDIgg6NJRDkCn7q");'></div>
+</td>
+<td class="px-6 py-5 text-right">
+<span class="px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 text-xs font-bold uppercase">Cleared</span>
+</td>
+</tr>
+<tr class="hover:bg-accent-soft/20 dark:hover:bg-zinc-800/20 transition-colors group">
+<td class="px-6 py-5 text-sm font-medium">Oct 20, 2023</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 text-xs font-bold">Utilities</span>
+</td>
+<td class="px-6 py-5 text-sm font-extrabold">$180.50</td>
+<td class="px-6 py-5 text-sm text-text-muted font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">payments</span> Cash Payment
+                                </td>
+<td class="px-6 py-5">
+<div class="size-10 rounded-lg bg-zinc-100 dark:bg-zinc-800 border-2 border-dashed border-primary/40 flex items-center justify-center text-primary cursor-pointer hover:bg-primary/5 transition-colors">
+<span class="material-symbols-outlined text-lg">add_a_photo</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<span class="px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 text-xs font-bold uppercase">Pending</span>
+</td>
+</tr>
+<tr class="hover:bg-accent-soft/20 dark:hover:bg-zinc-800/20 transition-colors group">
+<td class="px-6 py-5 text-sm font-medium">Oct 18, 2023</td>
+<td class="px-6 py-5">
+<span class="px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs font-bold">Supplies</span>
+</td>
+<td class="px-6 py-5 text-sm font-extrabold">$320.00</td>
+<td class="px-6 py-5 text-sm text-text-muted font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">credit_card</span> Visa Ending in 4242
+                                </td>
+<td class="px-6 py-5">
+<div class="size-10 rounded-lg bg-cover bg-center border border-[#e0e5dc] dark:border-zinc-700" data-alt="Digital receipt screenshot" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDxaWjErTswdE1A3LilqPxOVjrqztDDYyWIE_8gsLkKiQJXIlTu2H3sgocdKvgPXjSUZ9DN_PVF7NvfiMPOhZJ1WU3dLXHFM6skDQpma6sXgGb_fJWWoeQfQbyjOQMEx4kBU5xiRlYe7ISCPD0lRmnRK9SueyFc7tOmj2F2l1W5Ic108QviE7oJq7wClhBJsqm0dev2kYjYKLxEZl0QsECw3IBlPUvGc3i1t6eRMw67K-oxMgvkY78fx98uEq1tSyWVXYT6t05KyjHH");'></div>
+</td>
+<td class="px-6 py-5 text-right">
+<span class="px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 text-xs font-bold uppercase">Cleared</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Placeholder -->
+<div class="mt-6 flex items-center justify-between">
+<p class="text-sm text-text-muted">Showing <span class="font-bold text-text-main dark:text-white">1-4</span> of 48 expenses</p>
+<div class="flex gap-2">
+<button class="px-4 py-2 rounded-xl bg-white dark:bg-zinc-900 border border-[#e0e5dc] dark:border-zinc-800 text-sm font-bold opacity-50 cursor-not-allowed">Previous</button>
+<button class="px-4 py-2 rounded-xl bg-white dark:bg-zinc-900 border border-[#e0e5dc] dark:border-zinc-800 text-sm font-bold hover:border-primary transition-colors">Next</button>
+</div>
+</div>
+</div>
+</main>
+<!-- New Expense Side Drawer Overlay -->
+<div class="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 transition-opacity flex justify-end">
+<!-- Sidebar Drawer Content -->
+<div class="w-[480px] h-full bg-white dark:bg-zinc-900 drawer-shadow flex flex-col animate-slide-in">
+<div class="p-8 border-b border-[#e0e5dc] dark:border-zinc-800 flex justify-between items-center">
+<div>
+<h3 class="text-xl font-extrabold">New Expense</h3>
+<p class="text-sm text-text-muted mt-1">Log a transaction and upload your receipt.</p>
+</div>
+<button class="p-2 hover:bg-accent-soft dark:hover:bg-zinc-800 rounded-full transition-colors text-text-muted">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-8 space-y-8">
+<!-- Basic Information -->
+<div class="space-y-4">
+<label class="block">
+<span class="text-sm font-bold text-text-muted uppercase tracking-wider block mb-2">Category</span>
+<select class="w-full bg-accent-soft dark:bg-zinc-800 border-none rounded-xl py-3 px-4 text-sm focus:ring-2 focus:ring-primary appearance-none">
+<option>Select a category</option>
+<option>Supplies</option>
+<option>Rent</option>
+<option>Utilities</option>
+<option>Payroll</option>
+<option>Marketing</option>
+</select>
+</label>
+<div class="grid grid-cols-2 gap-4">
+<label class="block">
+<span class="text-sm font-bold text-text-muted uppercase tracking-wider block mb-2">Amount</span>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-text-muted">$</span>
+<input class="w-full bg-accent-soft dark:bg-zinc-800 border-none rounded-xl py-3 pl-8 pr-4 text-sm focus:ring-2 focus:ring-primary" placeholder="0.00" type="number"/>
+</div>
+</label>
+<label class="block">
+<span class="text-sm font-bold text-text-muted uppercase tracking-wider block mb-2">Date</span>
+<input class="w-full bg-accent-soft dark:bg-zinc-800 border-none rounded-xl py-3 px-4 text-sm focus:ring-2 focus:ring-primary" type="date"/>
+</label>
+</div>
+</div>
+<!-- Payment Details -->
+<div class="space-y-4">
+<span class="text-sm font-bold text-text-muted uppercase tracking-wider block mb-2">Payment Method</span>
+<div class="grid grid-cols-3 gap-3">
+<button class="flex flex-col items-center justify-center gap-2 p-4 rounded-xl border-2 border-primary bg-primary/10 text-text-main">
+<span class="material-symbols-outlined">credit_card</span>
+<span class="text-xs font-bold">Card</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-4 rounded-xl border-2 border-transparent bg-accent-soft dark:bg-zinc-800 text-text-muted hover:border-primary/40 transition-all">
+<span class="material-symbols-outlined">account_balance</span>
+<span class="text-xs font-bold">Transfer</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-4 rounded-xl border-2 border-transparent bg-accent-soft dark:bg-zinc-800 text-text-muted hover:border-primary/40 transition-all">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-xs font-bold">Cash</span>
+</button>
+</div>
+</div>
+<!-- Receipt Upload -->
+<div class="space-y-4">
+<span class="text-sm font-bold text-text-muted uppercase tracking-wider block mb-2">Receipt Attachment</span>
+<div class="border-2 border-dashed border-[#e0e5dc] dark:border-zinc-700 rounded-2xl p-8 flex flex-col items-center gap-3 bg-accent-soft/30 dark:bg-zinc-800/30 group hover:border-primary transition-colors cursor-pointer">
+<div class="size-14 rounded-full bg-primary/20 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">cloud_upload</span>
+</div>
+<div class="text-center">
+<p class="text-sm font-bold">Click to upload or drag &amp; drop</p>
+<p class="text-xs text-text-muted mt-1">PNG, JPG or PDF (Max. 5MB)</p>
+</div>
+</div>
+</div>
+<label class="block">
+<span class="text-sm font-bold text-text-muted uppercase tracking-wider block mb-2">Notes (Optional)</span>
+<textarea class="w-full bg-accent-soft dark:bg-zinc-800 border-none rounded-xl py-3 px-4 text-sm focus:ring-2 focus:ring-primary resize-none" placeholder="Add additional context about this expense..." rows="3"></textarea>
+</label>
+</div>
+<div class="p-8 border-t border-[#e0e5dc] dark:border-zinc-800 bg-accent-soft/10 dark:bg-zinc-900 flex gap-4">
+<button class="flex-1 py-3 bg-accent-soft dark:bg-zinc-800 font-bold text-sm rounded-xl hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors">Cancel</button>
+<button class="flex-[2] py-3 bg-primary text-text-main font-bold text-sm rounded-xl hover:shadow-lg hover:shadow-primary/20 transition-all">Save Expense</button>
+</div>
+</div>
+</div>
+</div>
+</body></html>

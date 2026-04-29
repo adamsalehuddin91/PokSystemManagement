@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Service &amp; Commission Settings | Muslimah Salon</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7de830",
+                        "background-light": "#f7f8f6",
+                        "background-dark": "#182111",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen font-display">
+<div class="flex h-screen overflow-hidden">
+<!-- Side Navigation -->
+<aside class="w-64 flex-shrink-0 border-r border-[#e0e5dc] bg-white dark:bg-background-dark hidden md:flex flex-col">
+<div class="p-6 flex items-center gap-3">
+<div class="size-10 bg-primary/20 rounded-full flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">spa</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-[#141811] dark:text-white text-base font-bold leading-tight">Muslimah Salon</h1>
+<p class="text-[#728863] text-xs font-normal">Admin Dashboard</p>
+</div>
+</div>
+<nav class="flex-1 px-4 py-4 flex flex-col gap-1 overflow-y-auto">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#728863] hover:bg-[#f2f4f0] transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#728863] hover:bg-[#f2f4f0] transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="text-sm font-medium">Bookings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-[#141811] dark:text-white" href="#">
+<span class="material-symbols-outlined fill-[1]">content_cut</span>
+<span class="text-sm font-semibold">Services</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#728863] hover:bg-[#f2f4f0] transition-colors" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="text-sm font-medium">Staff Management</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#728863] hover:bg-[#f2f4f0] transition-colors" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-sm font-medium">Inventory</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#728863] hover:bg-[#f2f4f0] transition-colors" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-sm font-medium">Payroll</span>
+</a>
+<div class="mt-auto pt-4 border-t border-[#e0e5dc]">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#728863] hover:bg-[#f2f4f0] transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</div>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col overflow-hidden relative">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between bg-white dark:bg-background-dark border-b border-[#e0e5dc] px-8 py-4">
+<div class="flex items-center gap-4 flex-1">
+<label class="flex flex-col min-w-40 h-10 max-w-sm w-full">
+<div class="flex w-full items-stretch rounded-xl h-full bg-[#f2f4f0] dark:bg-zinc-800">
+<div class="text-[#728863] flex items-center justify-center pl-4">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="w-full bg-transparent border-none focus:ring-0 text-[#141811] dark:text-white placeholder:text-[#728863] text-sm" placeholder="Search services..."/>
+</div>
+</label>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center p-2 rounded-xl bg-[#f2f4f0] dark:bg-zinc-800 text-[#141811] dark:text-white">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-[1px] bg-[#e0e5dc]"></div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-bold text-[#141811] dark:text-white leading-none">Amina Yusuf</p>
+<p class="text-[10px] text-[#728863] uppercase tracking-wider font-semibold">Owner</p>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-primary/20" data-alt="Profile picture of salon owner" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDg94sbFfdbI-L0HCGIPtxf_YqV5nvV8H_Ahz5wIZIQslWA0_jrowSXSt1MXoUogJrOKL7L-tZBsO_SOPHdw56jhYbL7soS-RmjZJ6bHwNrzfaVoqJEqB93ukJJeRZ-tQhd9k0Owwzr_gIA8YXPJkPEllr0x4sPif3M6_1jcXzS5xkkdaX0N2rQimDkDIF-bOViFQqGk507niAmrgWDNgq5_CeVMsF_PPohCoewga69MMo7Iz7rxEAD0al6kqIa6Lm3SuChVvgfZSV4");'></div>
+</div>
+</div>
+</header>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-8">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-2 mb-2">
+<a class="text-[#728863] text-sm font-medium" href="#">Settings</a>
+<span class="text-[#728863] text-sm">/</span>
+<span class="text-[#141811] dark:text-white text-sm font-medium">Service &amp; Commission Settings</span>
+</div>
+<!-- Page Heading -->
+<div class="flex flex-wrap items-end justify-between gap-4 mb-8">
+<div class="max-w-2xl">
+<h2 class="text-[#141811] dark:text-white text-4xl font-black tracking-tight leading-tight">Service &amp; Commission Settings</h2>
+<p class="text-[#728863] text-base mt-2">Configure your salon's service menu and staff incentive structure. All rates are applied per transaction.</p>
+</div>
+<button class="flex items-center gap-2 bg-primary text-black px-6 py-3 rounded-xl font-bold transition-transform hover:scale-[1.02] active:scale-95 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">add</span>
+<span>Add New Service</span>
+</button>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+<div class="bg-white dark:bg-zinc-900 rounded-xl p-6 border border-[#e0e5dc] dark:border-zinc-800">
+<div class="flex items-center justify-between mb-2">
+<p class="text-[#728863] text-sm font-medium uppercase tracking-wider">Total Services</p>
+<span class="material-symbols-outlined text-primary">layers</span>
+</div>
+<p class="text-[#141811] dark:text-white text-3xl font-bold">42</p>
+<div class="flex items-center gap-1 mt-2">
+<span class="text-[#07881f] text-xs font-bold">+2 this month</span>
+</div>
+</div>
+<div class="bg-white dark:bg-zinc-900 rounded-xl p-6 border border-[#e0e5dc] dark:border-zinc-800">
+<div class="flex items-center justify-between mb-2">
+<p class="text-[#728863] text-sm font-medium uppercase tracking-wider">Avg. Commission</p>
+<span class="material-symbols-outlined text-primary">percent</span>
+</div>
+<p class="text-[#141811] dark:text-white text-3xl font-bold">15%</p>
+<div class="flex items-center gap-1 mt-2">
+<span class="text-[#728863] text-xs font-bold">Consistent with industry avg.</span>
+</div>
+</div>
+<div class="bg-white dark:bg-zinc-900 rounded-xl p-6 border border-[#e0e5dc] dark:border-zinc-800">
+<div class="flex items-center justify-between mb-2">
+<p class="text-[#728863] text-sm font-medium uppercase tracking-wider">Active Categories</p>
+<span class="material-symbols-outlined text-primary">category</span>
+</div>
+<p class="text-[#141811] dark:text-white text-3xl font-bold">8</p>
+<div class="flex items-center gap-1 mt-2">
+<span class="text-[#e71f08] text-xs font-bold">1 category inactive</span>
+</div>
+</div>
+</div>
+<!-- Data Table Card -->
+<div class="bg-white dark:bg-zinc-900 rounded-xl border border-[#e0e5dc] dark:border-zinc-800 overflow-hidden">
+<div class="px-6 py-4 border-b border-[#e0e5dc] dark:border-zinc-800 flex justify-between items-center">
+<h3 class="text-lg font-bold text-[#141811] dark:text-white">Active Service Menu</h3>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 rounded-lg border border-[#e0e5dc] dark:border-zinc-700 text-sm font-medium text-[#728863] hover:bg-[#f2f4f0] transition-colors">
+                                Filter by Category
+                            </button>
+<button class="px-3 py-1.5 rounded-lg border border-[#e0e5dc] dark:border-zinc-700 text-sm font-medium text-[#728863] hover:bg-[#f2f4f0] transition-colors">
+                                Export PDF
+                            </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-[#f7f8f6] dark:bg-zinc-800/50">
+<tr>
+<th class="px-6 py-4 text-xs font-bold text-[#728863] uppercase tracking-wider">Service Name</th>
+<th class="px-6 py-4 text-xs font-bold text-[#728863] uppercase tracking-wider">Category</th>
+<th class="px-6 py-4 text-xs font-bold text-[#728863] uppercase tracking-wider text-right">Base Price</th>
+<th class="px-6 py-4 text-xs font-bold text-[#728863] uppercase tracking-wider text-center">Comm %</th>
+<th class="px-6 py-4 text-xs font-bold text-[#728863] uppercase tracking-wider text-right">Staff Payout</th>
+<th class="px-6 py-4 text-xs font-bold text-[#728863] uppercase tracking-wider text-center">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#e0e5dc] dark:divide-zinc-800">
+<tr class="hover:bg-[#fcfdfb] dark:hover:bg-zinc-800 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">face_6</span>
+</div>
+<div>
+<p class="font-bold text-[#141811] dark:text-white">Signature Hijab Spa</p>
+<p class="text-xs text-[#728863]">60 Minutes • Premium</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-2.5 py-1 rounded-full bg-blue-100 text-blue-700 text-[10px] font-bold uppercase tracking-wider">Spa &amp; Wellness</span>
+</td>
+<td class="px-6 py-5 text-right font-bold text-[#141811] dark:text-white">RM 120.00</td>
+<td class="px-6 py-5 text-center">
+<span class="font-medium text-[#141811] dark:text-white">15%</span>
+</td>
+<td class="px-6 py-5 text-right font-bold text-[#07881f]">RM 18.00</td>
+<td class="px-6 py-5 text-center">
+<button class="p-2 hover:bg-primary/20 rounded-lg transition-colors text-[#141811] dark:text-white">
+<span class="material-symbols-outlined">edit_square</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-[#fcfdfb] dark:hover:bg-zinc-800 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">content_cut</span>
+</div>
+<div>
+<p class="font-bold text-[#141811] dark:text-white">Botanical Hair Therapy</p>
+<p class="text-xs text-[#728863]">45 Minutes • Natural</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-2.5 py-1 rounded-full bg-purple-100 text-purple-700 text-[10px] font-bold uppercase tracking-wider">Hair Care</span>
+</td>
+<td class="px-6 py-5 text-right font-bold text-[#141811] dark:text-white">RM 85.00</td>
+<td class="px-6 py-5 text-center">
+<span class="font-medium text-[#141811] dark:text-white">12%</span>
+</td>
+<td class="px-6 py-5 text-right font-bold text-[#07881f]">RM 10.20</td>
+<td class="px-6 py-5 text-center">
+<button class="p-2 hover:bg-primary/20 rounded-lg transition-colors text-[#141811] dark:text-white">
+<span class="material-symbols-outlined">edit_square</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-[#fcfdfb] dark:hover:bg-zinc-800 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">palette</span>
+</div>
+<div>
+<p class="font-bold text-[#141811] dark:text-white">Halal Nail Henna Art</p>
+<p class="text-xs text-[#728863]">30 Minutes • Artistic</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-2.5 py-1 rounded-full bg-orange-100 text-orange-700 text-[10px] font-bold uppercase tracking-wider">Manicure</span>
+</td>
+<td class="px-6 py-5 text-right font-bold text-[#141811] dark:text-white">RM 45.00</td>
+<td class="px-6 py-5 text-center">
+<span class="font-medium text-[#141811] dark:text-white">20%</span>
+</td>
+<td class="px-6 py-5 text-right font-bold text-[#07881f]">RM 9.00</td>
+<td class="px-6 py-5 text-center">
+<button class="p-2 hover:bg-primary/20 rounded-lg transition-colors text-[#141811] dark:text-white">
+<span class="material-symbols-outlined">edit_square</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-[#fcfdfb] dark:hover:bg-zinc-800 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">clean_hands</span>
+</div>
+<div>
+<p class="font-bold text-[#141811] dark:text-white">Deep Cleansing Facial</p>
+<p class="text-xs text-[#728863]">90 Minutes • Medical Grade</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-bold uppercase tracking-wider">Skincare</span>
+</td>
+<td class="px-6 py-5 text-right font-bold text-[#141811] dark:text-white">RM 220.00</td>
+<td class="px-6 py-5 text-center">
+<span class="font-medium text-[#141811] dark:text-white">10%</span>
+</td>
+<td class="px-6 py-5 text-right font-bold text-[#07881f]">RM 22.00</td>
+<td class="px-6 py-5 text-center">
+<button class="p-2 hover:bg-primary/20 rounded-lg transition-colors text-[#141811] dark:text-white">
+<span class="material-symbols-outlined">edit_square</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Edit Service Modal Overlay -->
+<div class="absolute inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
+<div class="bg-white dark:bg-background-dark w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
+<div class="px-8 py-6 border-b border-[#e0e5dc] dark:border-zinc-800 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-primary/20 rounded-full flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-sm">edit</span>
+</div>
+<h4 class="text-xl font-bold text-[#141811] dark:text-white">Edit Service Details</h4>
+</div>
+<button class="text-[#728863] hover:text-[#141811] transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="p-8">
+<form class="space-y-6">
+<div class="grid grid-cols-1 gap-6">
+<div>
+<label class="block text-xs font-bold text-[#728863] uppercase tracking-wider mb-2">Service Name</label>
+<input class="w-full rounded-xl border-[#e0e5dc] dark:border-zinc-800 bg-[#f7f8f6] dark:bg-zinc-800 focus:border-primary focus:ring-primary text-[#141811] dark:text-white" type="text" value="Signature Hijab Spa"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-bold text-[#728863] uppercase tracking-wider mb-2">Base Price (RM)</label>
+<input class="w-full rounded-xl border-[#e0e5dc] dark:border-zinc-800 bg-[#f7f8f6] dark:bg-zinc-800 focus:border-primary focus:ring-primary text-[#141811] dark:text-white" type="number" value="120.00"/>
+</div>
+<div>
+<label class="block text-xs font-bold text-[#728863] uppercase tracking-wider mb-2">Commission (%)</label>
+<input class="w-full rounded-xl border-[#e0e5dc] dark:border-zinc-800 bg-[#f7f8f6] dark:bg-zinc-800 focus:border-primary focus:ring-primary text-[#141811] dark:text-white" type="number" value="15"/>
+</div>
+</div>
+<div class="p-4 bg-primary/5 rounded-xl border border-primary/20">
+<div class="flex items-center justify-between">
+<p class="text-sm font-medium text-[#728863]">Calculated Payout for Staff</p>
+<p class="text-lg font-bold text-[#141811] dark:text-white">RM 18.00</p>
+</div>
+</div>
+<div class="flex items-center justify-between py-2 border-t border-[#e0e5dc] dark:border-zinc-800">
+<div class="flex flex-col">
+<p class="text-sm font-bold text-[#141811] dark:text-white">Active Status</p>
+<p class="text-xs text-[#728863]">Show this service in the booking system</p>
+</div>
+<div class="w-12 h-6 bg-primary rounded-full relative shadow-inner cursor-pointer">
+<div class="absolute right-0.5 top-0.5 size-5 bg-white rounded-full shadow"></div>
+</div>
+</div>
+</div>
+<div class="flex gap-3 pt-4">
+<button class="flex-1 bg-[#f2f4f0] dark:bg-zinc-800 text-[#141811] dark:text-white py-3 rounded-xl font-bold hover:bg-[#e0e5dc] transition-colors" type="button">Discard</button>
+<button class="flex-1 bg-primary text-black py-3 rounded-xl font-bold transition-transform hover:scale-[1.02] shadow-lg shadow-primary/10" type="submit">Save Changes</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

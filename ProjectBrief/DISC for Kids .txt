@@ -1,0 +1,213 @@
+# 🎮 DISC for Kids  
+## Web App – Kenal Karakter Kanak-Kanak (8-Bit Edition)
+
+---
+
+## 1. Pengenalan Projek
+
+**DISC for Kids** ialah sebuah web app interaktif berkonsep **8-bit / pixel art / retro game** yang membantu kanak-kanak, ibu bapa dan guru memahami **kecenderungan karakter kanak-kanak** secara positif dan menyeronokkan.
+
+Aplikasi ini **BUKAN ujian psikologi**, tetapi alat pendidikan ringan untuk:
+- memahami cara anak berfikir & bertindak
+- menyesuaikan cara komunikasi dan didikan
+- mengelakkan pelabelan negatif
+
+---
+
+## 2. Objektif Aplikasi
+
+### 🎯 Untuk Kanak-Kanak
+- Kenal diri sendiri melalui “permainan”
+- Rasa dihargai & difahami
+- Faham setiap orang berbeza
+
+### 👨‍👩‍👧 Untuk Ibu Bapa & Guru
+- Faham cara terbaik mendekati anak
+- Urus tingkah laku ikut karakter
+- Kurangkan konflik & salah faham
+
+---
+
+## 3. Sasaran Pengguna
+
+- **Utama:** Kanak-kanak umur **5–12 tahun**
+- **Sekunder:** Ibu bapa, guru taska / tadika / sekolah rendah
+
+---
+
+## 4. Konsep Reka Bentuk (UI / UX)
+
+### 🎨 Tema Visual
+- **8-bit / Pixel Art / Retro RPG**
+- Warna ceria, kontras tinggi
+- Ikon besar & button mudah ditekan
+
+### 📱 Responsif (Mobile-First)
+- Fokus paparan **mobile**
+- Sokong tablet & desktop
+- Navigasi ringkas (1 skrin = 1 fokus)
+
+---
+
+## 5. Aliran Aplikasi (User Flow)
+
+### 🟢 1. Intro Screen (Sebelum Soalan)
+
+#### Untuk Ibu Bapa
+> Setiap anak ada cara berfikir dan bertindak yang berbeza.  
+> Aplikasi ini membantu ibu bapa memahami anak dengan lebih baik.
+
+**Disclaimer:**
+> Alat ini bukan diagnosis psikologi.  
+> Ia bertujuan pendidikan dan panduan komunikasi sahaja.
+
+#### Untuk Kanak-Kanak
+> “Jom jawab soalan mudah untuk kenal diri kita!”
+
+🎮 **Butang:** Mula Permainan
+
+---
+
+## 6. Modul Soalan (Quiz)
+
+- 10–12 soalan
+- Situasi harian (main, sekolah, kawan)
+- 4 pilihan jawapan (DISC)
+- Bahasa mudah & positif
+
+---
+
+## 7. Model DISC (Versi Kanak-Kanak)
+
+| Kod | Nama Mesra | Fokus |
+|----|-----------|------|
+| D | Pemimpin Cilik | Berani & yakin |
+| I | Si Ceria | Peramah & ekspresif |
+| S | Si Penyayang | Sabar & penyokong |
+| C | Si Teliti | Kemas & berfikir |
+
+---
+
+## 8. 🎨 Pixel Avatar 8-Bit (Ikut DISC)
+
+### 🦁 D – Pemimpin Cilik  
+**Gaya Avatar:**
+- Postur yakin
+- Warna terang (merah / oren)
+- Aksesori: pedang kecil / bintang / topi hero
+
+**Personaliti:**
+- Suka mengetuai
+- Berani buat keputusan
+
+**Cara Handle Anak (D):**
+- Beri pilihan jelas (A atau B)
+- Libatkan anak dalam keputusan kecil
+- Ajar kawal emosi bila tak dapat apa yang diinginkan
+
+
+::contentReference[oaicite:0]{index=0}
+
+
+---
+
+### 😄 I – Si Ceria  
+**Gaya Avatar:**
+- Senyum besar
+- Warna cerah (kuning / biru muda)
+- Aksesori: belon / mikrofon / sparkles
+
+**Personaliti:**
+- Suka bercakap
+- Mudah berkawan
+
+**Cara Handle Anak (I):**
+- Beri ruang bercakap & bercerita
+- Gunakan pujian lisan
+- Bantu fokus dengan aktiviti pendek
+
+
+::contentReference[oaicite:1]{index=1}
+
+
+---
+
+### 🤝 S – Si Penyayang  
+**Gaya Avatar:**
+- Postur lembut
+- Warna pastel (hijau / biru)
+- Aksesori: hati / perisai kecil
+
+**Personaliti:**
+- Suka bantu orang
+- Tak suka konflik
+
+**Cara Handle Anak (S):**
+- Beri masa bila ada perubahan
+- Galakkan anak bersuara
+- Puji sikap tolong-menolong
+
+
+::contentReference[oaicite:2]{index=2}
+
+
+---
+
+### 🧠 C – Si Teliti  
+**Gaya Avatar:**
+- Wajah fokus
+- Warna sejuk (ungu / kelabu)
+- Aksesori: buku / kaca pembesar
+
+**Personaliti:**
+- Suka ikut peraturan
+- Teliti & berhati-hati
+
+**Cara Handle Anak (C):**
+- Beri arahan langkah demi langkah
+- Jelaskan sebab sesuatu peraturan
+- Elakkan tekanan untuk sempurna
+
+
+::contentReference[oaicite:3]{index=3}
+
+
+---
+
+## 9. Paparan Keputusan (Gamified Result)
+
+- Papar **Avatar Pixel 8-Bit**
+- Tunjuk:
+  - Karakter utama
+  - Karakter sokongan
+- Ayat positif & membina
+- Boleh **print / simpan**
+
+---
+
+## 10. Teknologi
+
+- HTML
+- CSS (Pixel / Retro UI)
+- JavaScript (Vanilla)
+- Static hosting (murah & mudah)
+
+---
+
+## 11. Deliverables
+
+1. Web App DISC for Kids (8-bit theme)
+2. Intro & explanation screen
+3. Quiz interaktif
+4. Avatar pixel ikut DISC
+5. Panduan ibu bapa (detail & praktikal)
+
+---
+
+## 12. Penutup
+
+> “Kenal karakter, bina potensi anak.”
+
+DISC for Kids membantu anak rasa difahami dan ibu bapa lebih yakin membimbing.
+
+---

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Monthly Commission Report - Muslimah Salon</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7de830",
+                        "background-light": "#f7f8f6",
+                        "background-dark": "#182111",
+                        "olive-grey": "#728863",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen font-display">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#e0e5dc] dark:border-white/10 bg-white dark:bg-background-dark px-6 md:px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-[#141811] dark:text-white">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">spa</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">Muslimah Salon</h2>
+</div>
+<nav class="hidden lg:flex items-center gap-9">
+<a class="text-olive-grey hover:text-primary text-sm font-medium transition-colors" href="#">Dashboard</a>
+<a class="text-olive-grey hover:text-primary text-sm font-medium transition-colors" href="#">Appointments</a>
+<a class="text-olive-grey hover:text-primary text-sm font-medium transition-colors" href="#">Staff</a>
+<a class="text-[#141811] dark:text-white text-sm font-bold border-b-2 border-primary pb-1" href="#">Reports</a>
+<a class="text-olive-grey hover:text-primary text-sm font-medium transition-colors" href="#">Inventory</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<div class="hidden md:flex bg-[#f2f4f0] dark:bg-white/5 rounded-xl px-3 py-2 items-center gap-2">
+<span class="material-symbols-outlined text-olive-grey text-lg">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-40 placeholder:text-olive-grey" placeholder="Search report..."/>
+</div>
+<button class="p-2 rounded-xl bg-[#f2f4f0] dark:bg-white/5 text-olive-grey hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="Salon manager avatar profile photo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDge_-j21sNpADr5z6Ln_ijGov9wbI82Fi1ZvkXKQ2Jwz2Lu18XEU5ogiKh_nFiTvMzCQo15dQG-Uy4r3W84M8Xf5JQDT6YWwU06wvAvwWfU-mNDq8trBYndaiKjGIoCeNZfnYZxVY4fjLNaWyx7cjdCckEYDih2oWwwR834jcp4jHbPK-9B-yVQayPpveOjQZYmUicMjJgevUQ3gV6A9-owY8Ny0Sf4ufoiShHc4aLsxMRILsVNzfqj0Fi284DzeAwjCypCc23YtAU");'></div>
+</div>
+</header>
+<div class="flex">
+<!-- Sidebar Navigation -->
+<aside class="hidden xl:flex w-64 flex-col border-r border-[#e0e5dc] dark:border-white/10 h-[calc(100vh-64px)] p-6 sticky top-16">
+<div class="flex flex-col gap-6">
+<div>
+<h3 class="text-xs font-bold text-olive-grey uppercase tracking-wider mb-4">Analytics</h3>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 text-olive-grey hover:bg-primary/10 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary/20 text-[#141811] dark:text-white rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-sm font-bold">Commission Reports</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-olive-grey hover:bg-primary/10 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-sm font-medium">Payroll</span>
+</a>
+</div>
+</div>
+<div>
+<h3 class="text-xs font-bold text-olive-grey uppercase tracking-wider mb-4">Performance</h3>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 text-olive-grey hover:bg-primary/10 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="text-sm font-medium">Staff Rankings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-olive-grey hover:bg-primary/10 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="text-sm font-medium">Growth Insights</span>
+</a>
+</div>
+</div>
+</div>
+<div class="mt-auto pt-6 border-t border-[#e0e5dc] dark:border-white/10">
+<a class="flex items-center gap-3 px-3 py-2 text-olive-grey hover:bg-primary/10 rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 max-w-7xl mx-auto p-4 md:p-8">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-2 mb-2">
+<a class="text-olive-grey hover:text-primary text-sm font-medium" href="#">Reports</a>
+<span class="material-symbols-outlined text-olive-grey text-xs">chevron_right</span>
+<span class="text-[#141811] dark:text-white text-sm font-bold">Commission Report</span>
+</div>
+<!-- Page Heading -->
+<div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 mb-8">
+<div class="flex flex-col gap-1">
+<h1 class="text-3xl md:text-4xl font-black text-[#141811] dark:text-white tracking-tight">Monthly Commission Report</h1>
+<p class="text-olive-grey text-base">September 2023 • Overview of staff earnings and service performance.</p>
+</div>
+<div class="flex flex-wrap gap-3">
+<div class="relative inline-block">
+<button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-white/5 border border-[#e0e5dc] dark:border-white/10 rounded-xl text-sm font-bold text-[#141811] dark:text-white shadow-sm hover:bg-background-light transition-colors">
+<span class="material-symbols-outlined text-xl">calendar_today</span>
+                            September 2023
+                            <span class="material-symbols-outlined text-xl">expand_more</span>
+</button>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-white/5 border border-[#e0e5dc] dark:border-white/10 rounded-xl text-sm font-bold text-[#141811] dark:text-white shadow-sm hover:bg-background-light transition-colors">
+<span class="material-symbols-outlined text-xl">download</span>
+                        Export
+                    </button>
+<button class="flex items-center gap-2 px-6 py-2 bg-primary text-[#182111] rounded-xl text-sm font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-xl">lock</span>
+                        Lock Month
+                    </button>
+</div>
+</div>
+<!-- Stats Overview -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="bg-white dark:bg-white/5 border border-[#e0e5dc] dark:border-white/10 rounded-xl p-6 shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<p class="text-olive-grey text-sm font-semibold uppercase tracking-wider">Total Revenue</p>
+<span class="p-2 bg-primary/20 rounded-lg text-primary material-symbols-outlined">payments</span>
+</div>
+<p class="text-3xl font-black text-[#141811] dark:text-white">$24,580.00</p>
+<div class="flex items-center gap-1 text-emerald-600 dark:text-primary text-sm font-bold">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+14.2% from last month</span>
+</div>
+</div>
+<div class="bg-white dark:bg-white/5 border border-[#e0e5dc] dark:border-white/10 rounded-xl p-6 shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<p class="text-olive-grey text-sm font-semibold uppercase tracking-wider">Total Commission</p>
+<span class="p-2 bg-primary/20 rounded-lg text-primary material-symbols-outlined">account_balance_wallet</span>
+</div>
+<p class="text-3xl font-black text-[#141811] dark:text-white">$6,145.20</p>
+<div class="flex items-center gap-1 text-rose-500 text-sm font-bold">
+<span class="material-symbols-outlined text-sm">trending_down</span>
+<span>-2.1% commission avg</span>
+</div>
+</div>
+<div class="bg-white dark:bg-white/5 border border-[#e0e5dc] dark:border-white/10 rounded-xl p-6 shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<p class="text-olive-grey text-sm font-semibold uppercase tracking-wider">Services Rendered</p>
+<span class="p-2 bg-primary/20 rounded-lg text-primary material-symbols-outlined">content_cut</span>
+</div>
+<p class="text-3xl font-black text-[#141811] dark:text-white">412</p>
+<div class="flex items-center gap-1 text-olive-grey text-sm font-bold">
+<span class="material-symbols-outlined text-sm">group</span>
+<span>12 Active Stylists</span>
+</div>
+</div>
+</div>
+<!-- Commission Table -->
+<div class="bg-white dark:bg-white/5 border border-[#e0e5dc] dark:border-white/10 rounded-xl shadow-sm overflow-hidden">
+<div class="px-6 py-4 border-b border-[#e0e5dc] dark:border-white/10 flex justify-between items-center bg-background-light/50 dark:bg-white/5">
+<h2 class="text-lg font-bold text-[#141811] dark:text-white">Staff Performance Breakdown</h2>
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold px-2 py-1 bg-amber-100 text-amber-800 rounded-lg uppercase tracking-tight">Draft Status</span>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="text-olive-grey text-xs font-bold uppercase tracking-wider border-b border-[#e0e5dc] dark:border-white/10">
+<th class="px-6 py-4">Staff Member</th>
+<th class="px-6 py-4">Services</th>
+<th class="px-6 py-4">Service Revenue</th>
+<th class="px-6 py-4">Product Revenue</th>
+<th class="px-6 py-4">Comm. Rate</th>
+<th class="px-6 py-4 text-right">Total Commission</th>
+<th class="px-6 py-4 w-10"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#e0e5dc] dark:divide-white/10">
+<!-- Staff Row 1 -->
+<tr class="hover:bg-background-light dark:hover:bg-white/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover bg-center border-2 border-primary/20" data-alt="Staff member Aamina" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCxWgMLqOT4t5clfbHZyTVwJ7YZCtBZSE5XYPuChnqLMrS3vVOmvoLxuISBFBBUZTo6vxwmv5SDb62zRU4ux1s-D-9rwS1z0_JkXiOP2KmExI0bS0DwxAHtlpmB-mmdrJ1646oDPZt2r2xb4wImofO9J-j1uhvACF1_j7qDKEntOSQyYUdwxYwkX4-eHJR6uvhpafN4Eqampi6NqOypPHcUtsaQwqEcbYr2hgGbP8jp5fovNfjP2kBzQtYQ2ar8s3b2Az_5zoEa4QUp");'></div>
+<div>
+<p class="text-sm font-bold text-[#141811] dark:text-white">Aamina K.</p>
+<p class="text-xs text-olive-grey">Senior Stylist</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col gap-1">
+<span class="text-sm font-medium text-[#141811] dark:text-white">84</span>
+<div class="w-16 h-1 bg-[#e0e5dc] dark:bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 80%"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-medium text-[#141811] dark:text-white">$5,420.00</td>
+<td class="px-6 py-4 text-sm font-medium text-[#141811] dark:text-white">$450.00</td>
+<td class="px-6 py-4">
+<span class="text-xs font-bold px-2 py-1 bg-primary/10 text-olive-grey rounded-lg">25% Service / 10% Prod</span>
+</td>
+<td class="px-6 py-4 text-right">
+<p class="text-sm font-black text-primary">$1,400.00</p>
+</td>
+<td class="px-6 py-4">
+<button class="text-olive-grey hover:text-[#141811] dark:hover:text-white">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- Staff Row 2 -->
+<tr class="hover:bg-background-light dark:hover:bg-white/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover bg-center border-2 border-primary/20" data-alt="Staff member Layla" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBV8Ir-BO9XfGJ9Mko2PEE1EGJjqka1r1mBU4pDwi4ScFdK_6idjOIPw_b3ACrx4QR4lksOtZYMIeQTA4BbRjLlkIxPXkbwr7X2k0EcaZ31F-opDLEYuiSqZpFh6lkd4RmC0QQoicXY8bIobiph6aXN-eqThZ_9EOGtC9SOxmUaohs6-49tYb8gpQ3Ln4Yy2YJFHecXhKBLgCYnj3_2uj_X5_8Yi8UKrqC_nmSazZrNubudMkY28tttI-USIsaPh14tPs0UyOYl97NF");'></div>
+<div>
+<p class="text-sm font-bold text-[#141811] dark:text-white">Layla M.</p>
+<p class="text-xs text-olive-grey">Junior Stylist</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col gap-1">
+<span class="text-sm font-medium text-[#141811] dark:text-white">62</span>
+<div class="w-16 h-1 bg-[#e0e5dc] dark:bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 60%"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-medium text-[#141811] dark:text-white">$3,890.00</td>
+<td class="px-6 py-4 text-sm font-medium text-[#141811] dark:text-white">$210.00</td>
+<td class="px-6 py-4">
+<span class="text-xs font-bold px-2 py-1 bg-primary/10 text-olive-grey rounded-lg">20% Service / 10% Prod</span>
+</td>
+<td class="px-6 py-4 text-right">
+<p class="text-sm font-black text-primary">$799.00</p>
+</td>
+<td class="px-6 py-4">
+<button class="text-olive-grey hover:text-[#141811] dark:hover:text-white">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- Staff Row 3 -->
+<tr class="hover:bg-background-light dark:hover:bg-white/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover bg-center border-2 border-primary/20" data-alt="Staff member Sarah" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCjYgAbHg1db8r_aF-6Flg2CuqqY_I1M5NkR8EdezG8C5FqGDiP6idEsnZEj0TMFzRo-GHAnvFW3FRiVCWldHMqZhoYvlLaMQH3Kp_6CoH6Kf_Ew6g0nLHpybATnnUxBThku796A6r2si-796NtsDxx19mO1WKfl409zYzIlJNO24JIthnKRkk9KGu54R4pE8GZNRoD-4evkBq67qJS-O3vtHnSVKvw4IUjNmEu5tvUe5xt6R4piJ5o6q26Cq-5KSqrFzfEhXIbqGB8");'></div>
+<div>
+<p class="text-sm font-bold text-[#141811] dark:text-white">Sarah H.</p>
+<p class="text-xs text-olive-grey">Esthetician</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col gap-1">
+<span class="text-sm font-medium text-[#141811] dark:text-white">45</span>
+<div class="w-16 h-1 bg-[#e0e5dc] dark:bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 45%"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-medium text-[#141811] dark:text-white">$4,120.00</td>
+<td class="px-6 py-4 text-sm font-medium text-[#141811] dark:text-white">$1,100.00</td>
+<td class="px-6 py-4">
+<span class="text-xs font-bold px-2 py-1 bg-primary/10 text-olive-grey rounded-lg">25% Service / 15% Prod</span>
+</td>
+<td class="px-6 py-4 text-right">
+<p class="text-sm font-black text-primary">$1,195.00</p>
+</td>
+<td class="px-6 py-4">
+<button class="text-olive-grey hover:text-[#141811] dark:hover:text-white">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</td>
+</tr>
+<!-- Staff Row 4 -->
+<tr class="hover:bg-background-light dark:hover:bg-white/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-cover bg-center border-2 border-primary/20" data-alt="Staff member Fatima" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC91vJwnSuoadObnW1LKYF4xLI9L2TXOwGgaNsZjivB2Oh4FU1sdbJCn96k9OVFCkNBNFKlXpkckOwp8Ilrzm3MeFqkR5PR1W9Fm5Jzn76xagN0SLJqSStueJ6NaDE_G4_7mEZTTJCeYp6Ap4b7vZaoA3PG2JtwSonn68wCqt1Uoqj_l59ryIid7wqJZHm7B7feQN-85jW4r8UNVW7SX88fC8We0S7fXbhTz25rSLgQFb6VPFfv7CkRN_BgcBAv_h-ViOecsxN4SahN");'></div>
+<div>
+<p class="text-sm font-bold text-[#141811] dark:text-white">Fatima Z.</p>
+<p class="text-xs text-olive-grey">Nail Specialist</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col gap-1">
+<span class="text-sm font-medium text-[#141811] dark:text-white">92</span>
+<div class="w-16 h-1 bg-[#e0e5dc] dark:bg-white/10 rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 90%"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-medium text-[#141811] dark:text-white">$6,100.00</td>
+<td class="px-6 py-4 text-sm font-medium text-[#141811] dark:text-white">$320.00</td>
+<td class="px-6 py-4">
+<span class="text-xs font-bold px-2 py-1 bg-primary/10 text-olive-grey rounded-lg">30% Service / 10% Prod</span>
+</td>
+<td class="px-6 py-4 text-right">
+<p class="text-sm font-black text-primary">$1,862.00</p>
+</td>
+<td class="px-6 py-4">
+<button class="text-olive-grey hover:text-[#141811] dark:hover:text-white">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr class="bg-background-light/80 dark:bg-white/5 font-black text-[#141811] dark:text-white border-t-2 border-[#e0e5dc] dark:border-white/20">
+<td class="px-6 py-6" colspan="2">TOTAL MONTHLY PAYOUT</td>
+<td class="px-6 py-6">$19,530.00</td>
+<td class="px-6 py-6">$2,080.00</td>
+<td class="px-6 py-6 text-xs text-olive-grey font-medium italic">Aggregate of all commission tiers</td>
+<td class="px-6 py-6 text-right text-lg text-primary">$5,256.00</td>
+<td class="px-6 py-6"></td>
+</tr>
+</tfoot>
+</table>
+</div>
+</div>
+<!-- Additional Info Section -->
+<div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
+<div class="bg-white dark:bg-white/5 border border-[#e0e5dc] dark:border-white/10 rounded-xl p-6">
+<h3 class="text-base font-bold text-[#141811] dark:text-white mb-4">Commission Policy Summary</h3>
+<ul class="space-y-3">
+<li class="flex gap-3 text-sm text-olive-grey">
+<span class="material-symbols-outlined text-primary text-lg">info</span>
+                            Stylists earn 25% on services when exceeding $4,000 monthly goal.
+                        </li>
+<li class="flex gap-3 text-sm text-olive-grey">
+<span class="material-symbols-outlined text-primary text-lg">info</span>
+                            Product commission is a flat 10% for all staff levels.
+                        </li>
+<li class="flex gap-3 text-sm text-olive-grey">
+<span class="material-symbols-outlined text-primary text-lg">info</span>
+                            Locked reports cannot be edited without senior admin overriding.
+                        </li>
+</ul>
+</div>
+<div class="bg-[#f2f4f0] dark:bg-white/5 border-dashed border-2 border-[#e0e5dc] dark:border-white/10 rounded-xl p-6 flex flex-col items-center justify-center text-center gap-3">
+<span class="material-symbols-outlined text-4xl text-primary/60">print</span>
+<div>
+<p class="font-bold text-[#141811] dark:text-white">Ready for payroll processing?</p>
+<p class="text-sm text-olive-grey">Lock the month to generate individual payout slips for your staff.</p>
+</div>
+<button class="mt-2 text-primary font-bold text-sm hover:underline">View Print Sample</button>
+</div>
+</div>
+</main>
+</div>
+</body></html>

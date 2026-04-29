@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Supplier Directory | Muslimah Salon</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#a7f042",
+                        "background-light": "#fcfaf7",
+                        "background-dark": "#1a2210",
+                        "olive-subtle": "#799a4c",
+                        "cream-accent": "#eef3e7",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#161b0d] dark:text-gray-100 min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-cream-accent dark:border-white/10 px-6 lg:px-20 py-4">
+<div class="max-w-[1200px] mx-auto flex items-center justify-between">
+<div class="flex items-center gap-10">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-1.5 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-[#161b0d] text-2xl">spa</span>
+</div>
+<h1 class="text-lg font-extrabold tracking-tight text-[#161b0d] dark:text-white uppercase">Muslimah Salon</h1>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-semibold text-olive-subtle hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-semibold text-olive-subtle hover:text-primary transition-colors" href="#">Appointments</a>
+<a class="text-sm font-semibold text-[#161b0d] dark:text-white border-b-2 border-primary" href="#">Suppliers</a>
+<a class="text-sm font-semibold text-olive-subtle hover:text-primary transition-colors" href="#">Inventory</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-olive-subtle text-xl">search</span>
+<input class="pl-10 pr-4 py-2 bg-cream-accent dark:bg-white/5 border-none rounded-lg text-sm focus:ring-2 focus:ring-primary w-64 placeholder:text-olive-subtle/60" placeholder="Quick search..." type="text"/>
+</div>
+<div class="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center border border-primary/30 cursor-pointer">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9" data-alt="User profile avatar silhouette" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDVo3CqjofbLsxBPkWsWdvN_lI84nO-i_5itep27Gtnu0WAHdxXr1FA2gSdy5hSC5ekhdMwTJQR3JA-5nACwDZYf4I547TB2QqIGPjrAh_0Jy6e--McszpSv7XKOpUgEcqGG_vSBzEHzY7ZDxiBe0lWAocuVca4kqTYkC5OYVzDIjl1XLwCHfolTuRq2v_qdZXNK4KOzR12HuI4HJj1psVRLehBgmqMIJPOyj5fIWUvWLuX0Ym2YTwiPMCHIY2RU7cDMmcFURK8OFux");'></div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-[1200px] mx-auto px-6 lg:px-20 py-10">
+<!-- Page Heading -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+<div class="space-y-2">
+<h2 class="text-4xl font-black tracking-tight text-[#161b0d] dark:text-white">Supplier Directory</h2>
+<p class="text-olive-subtle dark:text-gray-400 font-medium">Manage salon vendors, contact details, and active order logistics.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center justify-center gap-2 px-5 py-2.5 bg-cream-accent dark:bg-white/5 text-[#161b0d] dark:text-white rounded-lg font-bold text-sm hover:bg-cream-accent/80 transition-all border border-transparent hover:border-olive-subtle/20">
+<span class="material-symbols-outlined text-xl">download</span>
+                    Export CSV
+                </button>
+<button class="flex items-center justify-center gap-2 px-5 py-2.5 bg-primary text-[#161b0d] rounded-lg font-bold text-sm hover:opacity-90 transition-all shadow-sm shadow-primary/20">
+<span class="material-symbols-outlined text-xl">add_business</span>
+                    Add Supplier
+                </button>
+</div>
+</div>
+<!-- Filters & Toolbar -->
+<div class="bg-white dark:bg-background-dark/50 border border-cream-accent dark:border-white/10 rounded-xl p-4 mb-8 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
+<div class="flex items-center gap-3 w-full sm:w-auto">
+<div class="flex gap-2">
+<button class="p-2.5 bg-cream-accent dark:bg-white/5 rounded-lg text-olive-subtle hover:text-[#161b0d] transition-colors" title="Filter list">
+<span class="material-symbols-outlined">tune</span>
+</button>
+<button class="p-2.5 bg-cream-accent dark:bg-white/5 rounded-lg text-olive-subtle hover:text-[#161b0d] transition-colors" title="Refresh data">
+<span class="material-symbols-outlined">refresh</span>
+</button>
+</div>
+<div class="h-8 w-[1px] bg-cream-accent dark:bg-white/10 mx-1"></div>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-1.5 bg-primary text-[#161b0d] text-xs font-bold rounded-full">All Categories</button>
+<button class="px-4 py-1.5 bg-cream-accent dark:bg-white/5 text-olive-subtle dark:text-gray-300 text-xs font-bold rounded-full hover:bg-primary/20 transition-colors">Haircare</button>
+<button class="px-4 py-1.5 bg-cream-accent dark:bg-white/5 text-olive-subtle dark:text-gray-300 text-xs font-bold rounded-full hover:bg-primary/20 transition-colors">Spa &amp; Massage</button>
+<button class="px-4 py-1.5 bg-cream-accent dark:bg-white/5 text-olive-subtle dark:text-gray-300 text-xs font-bold rounded-full hover:bg-primary/20 transition-colors">Equipment</button>
+</div>
+</div>
+<div class="flex items-center gap-3 w-full sm:w-auto">
+<p class="text-xs font-semibold text-olive-subtle hidden lg:block">Showing 5 of 24 Suppliers</p>
+<div class="flex bg-cream-accent dark:bg-white/5 rounded-lg p-1">
+<button class="p-1.5 bg-white dark:bg-white/10 rounded shadow-sm text-primary">
+<span class="material-symbols-outlined text-xl">list</span>
+</button>
+<button class="p-1.5 text-olive-subtle/50 hover:text-olive-subtle">
+<span class="material-symbols-outlined text-xl">grid_view</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Table Container -->
+<div class="bg-white dark:bg-background-dark/30 border border-cream-accent dark:border-white/10 rounded-xl overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-cream-accent/30 dark:bg-white/5 border-b border-cream-accent dark:border-white/10">
+<th class="px-6 py-4 text-xs font-extrabold uppercase tracking-wider text-olive-subtle">Supplier Details</th>
+<th class="px-6 py-4 text-xs font-extrabold uppercase tracking-wider text-olive-subtle">Category</th>
+<th class="px-6 py-4 text-xs font-extrabold uppercase tracking-wider text-olive-subtle">Contact Person</th>
+<th class="px-6 py-4 text-xs font-extrabold uppercase tracking-wider text-olive-subtle">Orders Status</th>
+<th class="px-6 py-4 text-xs font-extrabold uppercase tracking-wider text-olive-subtle text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-cream-accent dark:divide-white/5">
+<!-- Supplier Row 1 -->
+<tr class="hover:bg-cream-accent/10 dark:hover:bg-white/5 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary font-bold overflow-hidden border border-primary/20">
+<div class="bg-center bg-no-repeat aspect-square bg-cover size-full" data-alt="Botanical brand logo with silk texture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCMapjHyDThyXtMZk1Z7YlHTLlCkvXN1L-aNkTiZPccjvH9gMO3zsPii5h4Pm5UjRnyYOthk2JmnelkT07dG04yeufsQ2z_czYOxd4lgdcJ-6PqjTTrKgIUZn_tDEkaa3qGrG0MGsm_zYdxOfwHRJmMo12RBn2DkZpH8U68llN086HfzimYhB-pjq26O9EY5EtZ7-Ps6FVezf_fAAKr5wrqWMzUHMw0BD99duwrsXl6wjyPNCx2JaFo5DGUOKl2OPpKiqR7GmRKCQfO");'></div>
+</div>
+<div>
+<p class="font-bold text-[#161b0d] dark:text-white">Pure Silk Botanicals</p>
+<p class="text-xs text-olive-subtle">ID: SUP-00241</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 rounded-md bg-primary/10 text-olive-subtle text-xs font-bold border border-primary/20">Haircare</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<p class="text-sm font-semibold text-[#161b0d] dark:text-white">Aisha Rahmani</p>
+<p class="text-xs text-olive-subtle">aisha.r@puresilk.com</p>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<p class="text-sm font-bold text-[#161b0d] dark:text-white">2 Active Orders</p>
+</div>
+<p class="text-[10px] text-olive-subtle mt-1 italic leading-none">Last delivered: 3 days ago</p>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="px-4 py-2 bg-cream-accent dark:bg-white/10 text-[#161b0d] dark:text-white text-xs font-bold rounded-lg hover:bg-primary hover:text-[#161b0d] transition-all">
+                                    View Details
+                                </button>
+</td>
+</tr>
+<!-- Supplier Row 2 -->
+<tr class="hover:bg-cream-accent/10 dark:hover:bg-white/5 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary font-bold overflow-hidden border border-primary/20">
+<div class="bg-center bg-no-repeat aspect-square bg-cover size-full" data-alt="Traditional oud wood wholesaler logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBb2un0JDQOKOLWuZvrPN74DPvFKcK84McpwjSs28MMBcZNiQ5sTDq5E1PIBMWtE5DwITbVJO3mrR0iHSmktG34PQE7LwyJj5CHpyqTlDtGnw19zJN1aVAfXt2Qj3yTfMS-XxRsLl5DPkkQwiMjChwRA8JAJhffQi0AYItPQGVJxs6VClnFbHc8wwPGM6cgSXc7g6Xw7EAcp9HW7Ga8U0-Ao_hXyH4HsCbNUGfB3JJfHgLnvw3WKVzQanzlbphqyaNtk80EpOnw7Brq");'></div>
+</div>
+<div>
+<p class="font-bold text-[#161b0d] dark:text-white">Oud &amp; Earth Wholesalers</p>
+<p class="text-xs text-olive-subtle">ID: SUP-00108</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 rounded-md bg-olive-subtle/10 text-olive-subtle text-xs font-bold border border-olive-subtle/20">Spa Supplies</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<p class="text-sm font-semibold text-[#161b0d] dark:text-white">Zainab Khan</p>
+<p class="text-xs text-olive-subtle">z.khan@oudearth.net</p>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2 text-olive-subtle/40">
+<span class="w-2 h-2 rounded-full bg-olive-subtle/20"></span>
+<p class="text-sm font-medium">No Active Orders</p>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="px-4 py-2 bg-cream-accent dark:bg-white/10 text-[#161b0d] dark:text-white text-xs font-bold rounded-lg hover:bg-primary hover:text-[#161b0d] transition-all">
+                                    View Details
+                                </button>
+</td>
+</tr>
+<!-- Supplier Row 3 -->
+<tr class="hover:bg-cream-accent/10 dark:hover:bg-white/5 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary font-bold overflow-hidden border border-primary/20">
+<div class="bg-center bg-no-repeat aspect-square bg-cover size-full" data-alt="Premium fabric and linen textures" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBi1ZESiSnKo7OFRNVyUcWXAkOW1ktXANi8SLj9JBO80hhZJuFzHaFZXtV4_av064ZObXk3DMfv6VBSbrjN6WjR_oldBFFIvSzbdDE9di9qVNRcz95d96RS4XNxB54hlasohHPiLaYnfnnmLVWiQjzB-NJZ4gZ9gOPEIa51Z5M0yU54sYS_RgCtx1V0PZzpbC5CzXdA01EIJ4YNoC9qChPqmxya6UWa4tkwOBk4YHIKPNkPGn9qa-8cykOuhI5_Pfp280WrGh9p37P5");'></div>
+</div>
+<div>
+<p class="font-bold text-[#161b0d] dark:text-white">Luxe Linen Co.</p>
+<p class="text-xs text-olive-subtle">ID: SUP-00412</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 rounded-md bg-olive-subtle/10 text-olive-subtle text-xs font-bold border border-olive-subtle/20">Salon Textiles</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<p class="text-sm font-semibold text-[#161b0d] dark:text-white">Sarah Jenkins</p>
+<p class="text-xs text-olive-subtle">orders@luxelinen.co</p>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<p class="text-sm font-bold text-[#161b0d] dark:text-white">1 Active Order</p>
+</div>
+<p class="text-[10px] text-primary mt-1 font-bold leading-none">Expected: Tomorrow</p>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="px-4 py-2 bg-cream-accent dark:bg-white/10 text-[#161b0d] dark:text-white text-xs font-bold rounded-lg hover:bg-primary hover:text-[#161b0d] transition-all">
+                                    View Details
+                                </button>
+</td>
+</tr>
+<!-- Supplier Row 4 -->
+<tr class="hover:bg-cream-accent/10 dark:hover:bg-white/5 transition-colors group">
+<td class="px-6 py-5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary font-bold overflow-hidden border border-primary/20">
+<div class="bg-center bg-no-repeat aspect-square bg-cover size-full" data-alt="Aromatic essential oils bottles" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAou_ploer7B7Aaf1dkkMvBxMXeYRTJvJnAPb5jJZk9E0IoLACfZD8JKpe3MngTMuokrqiwJmq_4hcuEAqqhstu7_0LEKmPATWegDNVNLt9CZBE6UtI3XYwiAKgz4KFaA-9JWPBgjv_6b7GxfuNvLOap1F7-aMqYHGSH9y3PZ4f6DkMn9LOaJzc8fBIClsMjldtkXMBW98pcFI-wQBZrX-kJdjssytj0QVMzvmByXiGKzkF7bXQoVDUQBzzR5I4rGdPmdodlIBnL8pa");'></div>
+</div>
+<div>
+<p class="font-bold text-[#161b0d] dark:text-white">Botanical Essence</p>
+<p class="text-xs text-olive-subtle">ID: SUP-00519</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 rounded-md bg-olive-subtle/10 text-olive-subtle text-xs font-bold border border-olive-subtle/20">Essential Oils</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<p class="text-sm font-semibold text-[#161b0d] dark:text-white">Mariam Yusuf</p>
+<p class="text-xs text-olive-subtle">m.yusuf@botessence.com</p>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<p class="text-sm font-bold text-[#161b0d] dark:text-white">3 Active Orders</p>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<button class="px-4 py-2 bg-cream-accent dark:bg-white/10 text-[#161b0d] dark:text-white text-xs font-bold rounded-lg hover:bg-primary hover:text-[#161b0d] transition-all">
+                                    View Details
+                                </button>
+</td>
+</tr>
+<!-- Supplier Row 5 -->
+<tr class="hover:bg-cream-accent/10 dark:hover:bg-white/5 transition-colors group">
+<td class="px-6 py-5 border-b-0">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary font-bold overflow-hidden border border-primary/20">
+<div class="bg-center bg-no-repeat aspect-square bg-cover size-full" data-alt="Salon barber chair furniture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCLv4240__Sd8tl-sWYbtGOTk4o-BC6y_G6DqS04fk8oRjgCI7mle0qxQnGY8XkSNig8ilQCuyaIKR_sfY3ZP6ZkpMYOJAb3d8C8uIF-tW5RoNLQ2pHJf1DJGKnOtQaD8KAk_JY6H_T84DtP4RwJa4fVGTuwAqrXNDEkFR20a70g5wx5opjKQ_hbUw_Cehi01-5-Nj9FDPrbMuMoeL_wl-zlEZvCAePftu_DTQ4HbkTRxinRVh9L5JgOEGlK24seOGgp3UUt77b91Fi");'></div>
+</div>
+<div>
+<p class="font-bold text-[#161b0d] dark:text-white">Pro-Cut Equipment</p>
+<p class="text-xs text-olive-subtle">ID: SUP-00098</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5 border-b-0">
+<span class="inline-flex items-center px-2.5 py-1 rounded-md bg-olive-subtle/10 text-olive-subtle text-xs font-bold border border-olive-subtle/20">Furniture</span>
+</td>
+<td class="px-6 py-5 border-b-0">
+<div class="flex flex-col">
+<p class="text-sm font-semibold text-[#161b0d] dark:text-white">Layla Ahmad</p>
+<p class="text-xs text-olive-subtle">sales@procut.equipment</p>
+</div>
+</td>
+<td class="px-6 py-5 border-b-0">
+<div class="flex items-center gap-2 text-olive-subtle/40">
+<span class="w-2 h-2 rounded-full bg-olive-subtle/20"></span>
+<p class="text-sm font-medium">No Active Orders</p>
+</div>
+</td>
+<td class="px-6 py-5 text-right border-b-0">
+<button class="px-4 py-2 bg-cream-accent dark:bg-white/10 text-[#161b0d] dark:text-white text-xs font-bold rounded-lg hover:bg-primary hover:text-[#161b0d] transition-all">
+                                    View Details
+                                </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 bg-cream-accent/20 dark:bg-white/5 border-t border-cream-accent dark:border-white/10 flex items-center justify-between">
+<button class="flex items-center gap-1 text-sm font-bold text-olive-subtle hover:text-[#161b0d] disabled:opacity-40" disabled="">
+<span class="material-symbols-outlined text-lg">chevron_left</span>
+                    Previous
+                </button>
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded bg-primary text-[#161b0d] text-xs font-bold">1</button>
+<button class="w-8 h-8 rounded hover:bg-cream-accent dark:hover:bg-white/10 text-[#161b0d] dark:text-white text-xs font-bold">2</button>
+<button class="w-8 h-8 rounded hover:bg-cream-accent dark:hover:bg-white/10 text-[#161b0d] dark:text-white text-xs font-bold">3</button>
+<span class="px-1 text-olive-subtle">...</span>
+<button class="w-8 h-8 rounded hover:bg-cream-accent dark:hover:bg-white/10 text-[#161b0d] dark:text-white text-xs font-bold">8</button>
+</div>
+<button class="flex items-center gap-1 text-sm font-bold text-olive-subtle hover:text-[#161b0d]">
+                    Next
+                    <span class="material-symbols-outlined text-lg">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Footnote / Performance Insights Card -->
+<div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-primary/10 border border-primary/20 rounded-xl p-6">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary">verified</span>
+<h3 class="font-bold text-sm uppercase tracking-wide">Top Performer</h3>
+</div>
+<p class="text-lg font-black mb-1">Pure Silk Botanicals</p>
+<p class="text-sm text-olive-subtle leading-relaxed">98.5% on-time delivery rate this quarter with 0 damaged goods reports.</p>
+</div>
+<div class="bg-white dark:bg-white/5 border border-cream-accent dark:border-white/10 rounded-xl p-6">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-orange-400">pending_actions</span>
+<h3 class="font-bold text-sm uppercase tracking-wide">Pending Restock</h3>
+</div>
+<p class="text-lg font-black mb-1">6 Urgent SKU's</p>
+<p class="text-sm text-olive-subtle leading-relaxed">Inventory levels for 'Premium Oud Oil' are below threshold. Reorder suggested.</p>
+</div>
+<div class="bg-white dark:bg-white/5 border border-cream-accent dark:border-white/10 rounded-xl p-6">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-blue-400">payments</span>
+<h3 class="font-bold text-sm uppercase tracking-wide">Monthly Spend</h3>
+</div>
+<p class="text-lg font-black mb-1">$4,250.00</p>
+<p class="text-sm text-olive-subtle leading-relaxed">Total expenditure across 12 active suppliers in the last 30 days.</p>
+</div>
+</div>
+</main>
+<footer class="px-6 lg:px-20 py-10 border-t border-cream-accent dark:border-white/10 text-center">
+<p class="text-xs font-bold text-olive-subtle uppercase tracking-widest">© 2024 Muslimah Salon Management System. All Rights Reserved.</p>
+</footer>
+</body></html>

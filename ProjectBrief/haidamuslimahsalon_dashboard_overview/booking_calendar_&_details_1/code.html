@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Booking Calendar &amp; Details - Muslimah Salon</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7de830",
+                        "background-light": "#f7f8f6",
+                        "background-dark": "#182111",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#141811] dark:text-white min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 bg-white dark:bg-[#1f2916] border-r border-gray-200 dark:border-gray-800 flex flex-col justify-between p-6">
+<div class="flex flex-col gap-8">
+<div class="flex items-center gap-3">
+<div class="bg-primary/20 rounded-full p-2 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">spa</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-base font-bold leading-none">Muslimah Salon</h1>
+<p class="text-xs text-[#728863] dark:text-gray-400 mt-1">Owner Portal</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-background-light dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-gray-500">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-[#141811] dark:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="text-sm font-bold">Appointments</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-background-light dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-gray-500">person_search</span>
+<span class="text-sm font-medium">Customers</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-background-light dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-gray-500">groups</span>
+<span class="text-sm font-medium">Staff</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-background-light dark:hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-gray-500">payments</span>
+<span class="text-sm font-medium">Financials</span>
+</a>
+</nav>
+</div>
+<div class="flex items-center gap-3 pt-6 border-t border-gray-100 dark:border-gray-800">
+<div class="size-10 rounded-full bg-cover bg-center" data-alt="Profile picture of salon owner" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC1QRFpKsYd9WSyvK7qFBJK-ucgJ5CuQ36duAP_l5WV083q0rZdTlrXR3xh50f2ke6rlAV94Pii-7xHbdFHuGONJRXfVZ3WRVOoE2gkcUCYEsUL39aemO4dTCNnLjbuGVlF-SLSwNwfFMLlXAIJQOM25BM8xGpJFhJyGmFbNygiGR5NMZOxpdEGxLugj3pI0G1DKfky8JVpYwCeUjnlXx-zye3ME9DwnBDphp26nja6BW5BAgHz6onZMXeXzCq66G3FihY_m_Kv8uLi')"></div>
+<div class="flex flex-col">
+<p class="text-sm font-bold">Fatima Al-Sayed</p>
+<p class="text-[10px] text-gray-500 uppercase tracking-wider">Manager</p>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col overflow-hidden">
+<!-- Top Header -->
+<header class="h-20 bg-white dark:bg-[#1f2916] border-b border-gray-200 dark:border-gray-800 flex items-center justify-between px-8">
+<div class="flex flex-col">
+<div class="flex items-center gap-2 text-xs text-gray-500 mb-1">
+<a class="hover:text-primary transition-colors" href="#">Dashboard</a>
+<span>/</span>
+<span class="text-gray-900 dark:text-gray-100 font-medium">Booking Calendar</span>
+</div>
+<h2 class="text-xl font-bold">Appointment Schedule</h2>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-lg">search</span>
+<input class="bg-background-light dark:bg-background-dark border-none rounded-xl pl-10 pr-4 py-2 text-sm w-64 focus:ring-2 focus:ring-primary/50" placeholder="Search appointments..." type="text"/>
+</div>
+<button class="bg-primary text-[#141811] font-bold text-sm px-6 py-2.5 rounded-xl hover:opacity-90 transition-opacity flex items-center gap-2 shadow-sm shadow-primary/20">
+<span class="material-symbols-outlined text-lg">add</span>
+                        New Booking
+                    </button>
+</div>
+</header>
+<!-- Workspace -->
+<div class="flex-1 flex overflow-hidden">
+<!-- Left Section: Calendar -->
+<section class="flex-1 overflow-y-auto p-8 scrollbar-hide">
+<div class="bg-white dark:bg-[#1f2916] rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 p-6">
+<!-- Calendar Header -->
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-4">
+<h3 class="text-lg font-bold">October 2023</h3>
+<div class="flex items-center gap-1 bg-background-light dark:bg-background-dark rounded-lg p-1">
+<button class="p-1 hover:bg-white dark:hover:bg-gray-700 rounded-md transition-all">
+<span class="material-symbols-outlined text-lg">chevron_left</span>
+</button>
+<button class="p-1 hover:bg-white dark:hover:bg-gray-700 rounded-md transition-all">
+<span class="material-symbols-outlined text-lg">chevron_right</span>
+</button>
+</div>
+<button class="text-xs font-bold text-primary px-3 py-1.5 border border-primary/20 rounded-lg hover:bg-primary/5 transition-colors">Today</button>
+</div>
+<div class="flex bg-background-light dark:bg-background-dark p-1 rounded-xl">
+<button class="px-4 py-1.5 text-xs font-bold rounded-lg bg-white dark:bg-gray-800 shadow-sm">Month</button>
+<button class="px-4 py-1.5 text-xs font-medium text-gray-500">Week</button>
+<button class="px-4 py-1.5 text-xs font-medium text-gray-500">Day</button>
+</div>
+</div>
+<!-- Calendar Grid -->
+<div class="calendar-grid text-center text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-4">
+<div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+</div>
+<div class="calendar-grid border-t border-l border-gray-50 dark:border-gray-800">
+<!-- Dummy days for October (starts Sunday) -->
+<div class="aspect-square border-r border-b border-gray-50 dark:border-gray-800 p-2 relative group cursor-pointer hover:bg-background-light/50 transition-colors">
+<span class="text-xs text-gray-400">1</span>
+</div>
+<div class="aspect-square border-r border-b border-gray-50 dark:border-gray-800 p-2 relative group cursor-pointer hover:bg-background-light/50 transition-colors">
+<span class="text-xs text-gray-400">2</span>
+</div>
+<div class="aspect-square border-r border-b border-gray-50 dark:border-gray-800 p-2 relative group cursor-pointer hover:bg-background-light/50 transition-colors">
+<span class="text-xs text-gray-400">3</span>
+<div class="mt-1 space-y-1">
+<div class="bg-primary/20 text-primary text-[9px] font-bold p-1 rounded border-l-2 border-primary truncate">10:00 - Amina K.</div>
+</div>
+</div>
+<div class="aspect-square border-r border-b border-gray-50 dark:border-gray-800 p-2 relative group cursor-pointer hover:bg-background-light/50 transition-colors">
+<span class="text-xs text-gray-400">4</span>
+</div>
+<div class="aspect-square border-r border-b border-gray-50 dark:border-gray-800 p-2 relative group cursor-pointer ring-2 ring-primary ring-inset bg-primary/5 z-10">
+<span class="text-xs font-bold text-primary">5</span>
+<div class="mt-1 space-y-1">
+<div class="bg-primary text-white text-[9px] font-bold p-1 rounded shadow-sm truncate">14:30 - Sarah J.</div>
+<div class="bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-[9px] font-bold p-1 rounded border-l-2 border-blue-500 truncate">16:00 - Layla M.</div>
+</div>
+</div>
+<div class="aspect-square border-r border-b border-gray-50 dark:border-gray-800 p-2 relative group cursor-pointer hover:bg-background-light/50 transition-colors">
+<span class="text-xs text-gray-400">6</span>
+</div>
+<div class="aspect-square border-r border-b border-gray-50 dark:border-gray-800 p-2 relative group cursor-pointer hover:bg-background-light/50 transition-colors">
+<span class="text-xs text-gray-400">7</span>
+</div>
+<!-- More rows would follow -->
+<div class="aspect-square border-r border-b border-gray-50 dark:border-gray-800 p-2 relative group cursor-pointer hover:bg-background-light/50 transition-colors"><span class="text-xs text-gray-400">8</span></div>
+<div class="aspect-square border-r border-b border-gray-50 dark:border-gray-800 p-2 relative group cursor-pointer hover:bg-background-light/50 transition-colors"><span class="text-xs text-gray-400">9</span></div>
+<div class="aspect-square border-r border-b border-gray-50 dark:border-gray-800 p-2 relative group cursor-pointer hover:bg-background-light/50 transition-colors"><span class="text-xs text-gray-400">10</span></div>
+<div class="aspect-square border-r border-b border-gray-50 dark:border-gray-800 p-2 relative group cursor-pointer hover:bg-background-light/50 transition-colors"><span class="text-xs text-gray-400">11</span></div>
+<div class="aspect-square border-r border-b border-gray-50 dark:border-gray-800 p-2 relative group cursor-pointer hover:bg-background-light/50 transition-colors"><span class="text-xs text-gray-400">12</span></div>
+<div class="aspect-square border-r border-b border-gray-50 dark:border-gray-800 p-2 relative group cursor-pointer hover:bg-background-light/50 transition-colors"><span class="text-xs text-gray-400">13</span></div>
+<div class="aspect-square border-r border-b border-gray-50 dark:border-gray-800 p-2 relative group cursor-pointer hover:bg-background-light/50 transition-colors"><span class="text-xs text-gray-400">14</span></div>
+<div class="aspect-square border-r border-b border-gray-50 dark:border-gray-800 p-2 relative group cursor-pointer hover:bg-background-light/50 transition-colors"><span class="text-xs text-gray-400">15</span></div>
+<div class="aspect-square border-r border-b border-gray-50 dark:border-gray-800 p-2 relative group cursor-pointer hover:bg-background-light/50 transition-colors"><span class="text-xs text-gray-400">16</span></div>
+<div class="aspect-square border-r border-b border-gray-50 dark:border-gray-800 p-2 relative group cursor-pointer hover:bg-background-light/50 transition-colors"><span class="text-xs text-gray-400">17</span></div>
+<div class="aspect-square border-r border-b border-gray-50 dark:border-gray-800 p-2 relative group cursor-pointer hover:bg-background-light/50 transition-colors"><span class="text-xs text-gray-400">18</span></div>
+<div class="aspect-square border-r border-b border-gray-50 dark:border-gray-800 p-2 relative group cursor-pointer hover:bg-background-light/50 transition-colors"><span class="text-xs text-gray-400">19</span></div>
+<div class="aspect-square border-r border-b border-gray-50 dark:border-gray-800 p-2 relative group cursor-pointer hover:bg-background-light/50 transition-colors"><span class="text-xs text-gray-400">20</span></div>
+<div class="aspect-square border-r border-b border-gray-50 dark:border-gray-800 p-2 relative group cursor-pointer hover:bg-background-light/50 transition-colors"><span class="text-xs text-gray-400">21</span></div>
+</div>
+</div>
+</section>
+<!-- Right Section: Booking Details -->
+<aside class="w-96 bg-white dark:bg-[#1f2916] border-l border-gray-200 dark:border-gray-800 flex flex-col">
+<div class="p-6 border-b border-gray-100 dark:border-gray-800">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-lg font-bold">Booking Details</h3>
+<button class="p-2 hover:bg-background-light dark:hover:bg-white/5 rounded-full">
+<span class="material-symbols-outlined text-gray-400">more_vert</span>
+</button>
+</div>
+<!-- Customer Card -->
+<div class="bg-background-light dark:bg-background-dark/50 rounded-2xl p-4 flex items-center gap-4 mb-6">
+<div class="size-12 rounded-full bg-cover bg-center border-2 border-primary/20" data-alt="Profile of customer Sarah J." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCpIR-6CqMa6JdLd8BHJR3mjW8BjHvYrmfw3KH3aKEBVJwTQc1apmod5sPClH2NZFA3O4wePw9wYJ13dSvJfTUfv470qInTK4eY8-ESI9qPjprAdIaZbdGcjWbJNsO23xEw_QeWu3ULb89J0ZomeAlix-iCkmjxq0XhPQOC3ADHXG7LjKlCeFelBYhBZHQsLGzziIm2kyjs00VqpAEpMRdOGmYoM0MH5wrDVvEZNOTmygZ03nDak18rwc0H-B3hTI7zvnc9wNawkUMt')"></div>
+<div class="flex-1">
+<div class="flex items-center gap-2">
+<p class="font-bold text-sm">Sarah Jenkins</p>
+<span class="bg-primary/10 text-primary text-[10px] font-bold px-1.5 py-0.5 rounded">LOYALTY</span>
+</div>
+<p class="text-xs text-gray-500">+60 12-345-6789</p>
+</div>
+<button class="size-8 rounded-full bg-white dark:bg-gray-800 flex items-center justify-center text-gray-400 shadow-sm">
+<span class="material-symbols-outlined text-lg">chat_bubble</span>
+</button>
+</div>
+<!-- Service Details -->
+<div class="space-y-4">
+<div class="flex flex-col gap-1">
+<label class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Service</label>
+<div class="flex items-center justify-between">
+<p class="text-sm font-semibold">Premium Organic Hair Spa</p>
+<p class="text-sm font-bold">$120.00</p>
+</div>
+<p class="text-xs text-gray-500">Duration: 90 mins</p>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex flex-col gap-1">
+<label class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Date &amp; Time</label>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">event</span>
+<p class="text-xs font-semibold">Oct 5, 2023 at 14:30</p>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Assigned Staff</label>
+<div class="flex items-center gap-2">
+<div class="size-5 rounded-full bg-cover bg-center" data-alt="Staff member Zaynab" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBQOX2K-9-WLVHTiyx9pYXG36rwZ98Lt_SOukygDA36_J7I5MNGKkGsJ3P181FkuuCC49v6Pw816kYT8Pa_kJ5u5YPqdWHLdZx53zV8qVp5SNpr8K9XTNtzsf2tnFEMwOLjcP_M7DYVB22gJvyclRw6aGID6ONQ9qKZY5li93z44dUEVtaJZ5Eb7XvVdAM_tFrGZy2Ql1WFxDsK5c4M0rK4qh2roCRJogwCojVVzRyeVLdQBDX3pQR211x6I1vTDu5HzbsX8ZqWi_Yg')"></div>
+<p class="text-xs font-semibold">Zaynab A.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Payment & Deposit Status -->
+<div class="p-6 flex-1 flex flex-col">
+<div class="flex flex-col gap-4 mb-8">
+<div class="flex items-center justify-between">
+<p class="text-sm text-gray-500">Deposit Status</p>
+<span class="bg-primary/20 text-primary-dark dark:text-primary text-[10px] font-bold px-3 py-1 rounded-full flex items-center gap-1">
+<span class="size-1.5 rounded-full bg-primary"></span>
+                                    PAID
+                                </span>
+</div>
+<div class="space-y-2 pt-4 border-t border-dashed border-gray-200 dark:border-gray-800">
+<div class="flex justify-between text-sm">
+<span class="text-gray-500">Service Total</span>
+<span class="font-medium">$120.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-gray-500">Deposit Paid</span>
+<span class="text-primary font-medium">-$30.00</span>
+</div>
+<div class="flex justify-between text-lg font-bold pt-2">
+<span>Remaining Balance</span>
+<span>$90.00</span>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<div class="mt-auto">
+<button class="w-full bg-primary text-[#141811] font-bold py-4 rounded-xl shadow-lg shadow-primary/10 hover:shadow-primary/20 active:scale-[0.98] transition-all flex flex-col items-center justify-center gap-0.5">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined">point_of_sale</span>
+                                    Convert to Sale
+                                </span>
+<span class="text-[10px] opacity-70 font-medium">Deposit will be auto-deducted</span>
+</button>
+<div class="flex gap-3 mt-4">
+<button class="flex-1 py-3 border border-gray-200 dark:border-gray-800 rounded-xl text-xs font-bold hover:bg-background-light dark:hover:bg-white/5 transition-colors">Reschedule</button>
+<button class="flex-1 py-3 border border-red-100 text-red-500 dark:border-red-900/30 rounded-xl text-xs font-bold hover:bg-red-50 dark:hover:bg-red-900/10 transition-colors">Cancel</button>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+</div>
+</body></html>

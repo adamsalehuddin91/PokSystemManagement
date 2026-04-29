@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reorder Request Confirmation</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#80e619",
+                        "background-light": "#f7f8f6",
+                        "background-dark": "#192111",
+                        "calm-beige": "#F5F5F0",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-calm-beige dark:bg-background-dark min-h-screen text-[#141811] font-display">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#e0e5dc] bg-white dark:bg-background-dark dark:border-white/10 px-10 py-3">
+<div class="flex items-center gap-4 text-[#141811] dark:text-white">
+<div class="size-6 text-primary">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z"></path>
+</svg>
+</div>
+<h2 class="text-[#141811] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Muslimah Salon</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<nav class="flex items-center gap-9">
+<a class="text-[#141811] dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-primary text-sm font-bold leading-normal" href="#">Inventory</a>
+<a class="text-[#141811] dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Services</a>
+<a class="text-[#141811] dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Staff</a>
+</nav>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="Staff profile picture in a circle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD5NMkOWz9PcB1-iC6J8iXX0BzCepVvILtPzcobvnTGh_GpiTp1ydQuQgUHtJ0N3jsc-yzhJnuFtHfxg1QGTAtG6t5MgSy2w03kKAsRxyNR-KcE1HpQk3Cia5WeGaYxEVvJSYdiJ4AK_GGn44aIyVyzu8yvQ0Ycy1d-1U8E1VynI0OkILMpXcqsZJnIJZGmuHWMWcDSIreZcoUoYLragmq6oQ8jJAQWzG-X3m7MDolToa23lO-kU8yrePK_JuSVWdeNRQIzV6VFtv4O");'></div>
+</div>
+</header>
+<main class="max-w-[1000px] mx-auto px-6 py-10">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-2 mb-6">
+<a class="text-[#758863] dark:text-gray-400 text-sm font-medium" href="#">Inventory</a>
+<span class="text-[#758863] text-sm">/</span>
+<span class="text-[#141811] dark:text-white text-sm font-semibold">Reorder Request</span>
+</div>
+<!-- Page Heading -->
+<div class="mb-10">
+<h1 class="text-[#141811] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">Reorder Confirmation</h1>
+<p class="text-[#758863] dark:text-gray-400 text-lg font-normal">Review and confirm your replenishment order for essential salon supplies.</p>
+</div>
+<!-- Central White Card Wrapper -->
+<div class="bg-white dark:bg-background-dark/50 border border-[#e0e5dc] dark:border-white/10 rounded-xl shadow-sm overflow-hidden">
+<!-- Timeline / Stepper Header -->
+<div class="grid grid-cols-3 border-b border-[#e0e5dc] dark:border-white/10 bg-white/50 dark:bg-white/5">
+<div class="flex items-center gap-3 p-6 border-r border-[#e0e5dc] dark:border-white/10 bg-primary/10">
+<span class="material-symbols-outlined text-primary">inventory_2</span>
+<div>
+<p class="text-[#141811] dark:text-white text-sm font-bold">1. Review Items</p>
+<p class="text-[#758863] dark:text-gray-400 text-xs">Low stock detection</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-6 border-r border-[#e0e5dc] dark:border-white/10">
+<span class="material-symbols-outlined text-[#758863]">local_shipping</span>
+<div>
+<p class="text-[#141811] dark:text-white text-sm font-medium">2. Select Supplier</p>
+<p class="text-[#758863] dark:text-gray-400 text-xs">Preferred vendors</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-6">
+<span class="material-symbols-outlined text-[#758863]">payments</span>
+<div>
+<p class="text-[#141811] dark:text-white text-sm font-medium">3. Payment Method</p>
+<p class="text-[#758863] dark:text-gray-400 text-xs">Billing options</p>
+</div>
+</div>
+</div>
+<!-- Content Area -->
+<div class="p-8 space-y-12">
+<!-- Step 1: Review Low Stock Items -->
+<section>
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-[#141811] dark:text-white text-2xl font-bold tracking-tight">Step 1: Review Items</h2>
+<span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-xs font-bold uppercase">3 Items Urgent</span>
+</div>
+<div class="overflow-hidden border border-[#e0e5dc] dark:border-white/10 rounded-lg">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-[#f7f8f6] dark:bg-white/5 text-[#758863] text-xs font-bold uppercase">
+<th class="p-4">Product Name</th>
+<th class="p-4">Current Qty</th>
+<th class="p-4">Reorder Qty</th>
+<th class="p-4 text-right">Estimated Cost</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#e0e5dc] dark:divide-white/10">
+<tr>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="size-12 rounded-md bg-gray-100 bg-cover bg-center" data-alt="Bottle of organic hair oil" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCABYVBcp-rrFS_jrz4zwCPdYSRKN3vfgK4zHYSiU-wrzzoguQwoGGZZUiGJdOZa4y5syNDoDjbP09lym_6nz0cfIo7_vccBUr1VXOQ2epiWzv1U-G7mnKAh1g5FiUxOjwJE5QUCecrpYidMQqT3YifFsGChAk8pGisWyJFme_iwwTtGpwYlAsCfKgbvaePkOtFlvAUFQrLBcHu87Jk6rDbNdjSIyTeXqIEiICKKOq8hCCJ8to02TMB1p1swqinZOZcyq8_i0j0rXcS');"></div>
+<div>
+<p class="font-bold text-[#141811] dark:text-white text-sm">Organic Argan Oil (500ml)</p>
+<p class="text-xs text-[#758863]">Category: Hair Care</p>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="text-red-500 font-bold text-sm">2 units</span>
+</td>
+<td class="p-4">
+<input class="w-20 rounded border-[#e0e5dc] dark:border-white/20 dark:bg-white/5 text-sm" type="number" value="10"/>
+</td>
+<td class="p-4 text-right font-medium text-[#141811] dark:text-white">$240.00</td>
+</tr>
+<tr>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="size-12 rounded-md bg-gray-100 bg-cover bg-center" data-alt="Rose water facial mist bottle" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAnltM60bIATwmB6q5NIdsP95SrK0ga3t-ioy2moZD89cnCSAzStODV09oDIijl6qkKdxWD9LBJ-oZJIUCpbOVdHWZ-vO7vYcqTc-Izjw8vCr0pCYetDzFUIUI4f_zwK89Lkokz81VkuZZayi5WYv7vjA4mHvrtrf-r4tcnIwBwWYlkuuzC4LX2f6Dv7mgI3dhNUSzxkz1LPH2en_LJaLsvY3vAMsMwBm_1ysr7n8EXnCrxw8V7ZkZQEl8ZbeLR82klFQRJ86s-138B');"></div>
+<div>
+<p class="font-bold text-[#141811] dark:text-white text-sm">Rose Facial Mist</p>
+<p class="text-xs text-[#758863]">Category: Skincare</p>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="text-[#758863] text-sm">5 units</span>
+</td>
+<td class="p-4">
+<input class="w-20 rounded border-[#e0e5dc] dark:border-white/20 dark:bg-white/5 text-sm" type="number" value="20"/>
+</td>
+<td class="p-4 text-right font-medium text-[#141811] dark:text-white">$300.00</td>
+</tr>
+<tr>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="size-12 rounded-md bg-gray-100 bg-cover bg-center" data-alt="Silk hair treatment mask jar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAMCNM4viNdS6HRnjsRWgthj44kpKsYEg1-yrev4mKlpQJQWUnEN0Psw4K3QbIEwpyyKx6eh3dmYyz9fJLcHU6dWaS4xhjn7DLkZuynbbOV8tl9g50WN4fMM3Nigx5o4k9D-eN-7GDBY1ZqDCekGbLZBZl9LpmmVefPpclOubKDOav1f1YWLyTL4EeU5sOKa3PMtebsQzh84xxRiSlFelrp9fMgb9TCIw254C_RS8yS8FN2ec8FbWaRbXzvcytM_dVa-qfrWhFjgzNi');"></div>
+<div>
+<p class="font-bold text-[#141811] dark:text-white text-sm">Silk Mask Intensive</p>
+<p class="text-xs text-[#758863]">Category: Treatments</p>
+</div>
+</div>
+</td>
+<td class="p-4">
+<span class="text-red-500 font-bold text-sm">1 unit</span>
+</td>
+<td class="p-4">
+<input class="w-20 rounded border-[#e0e5dc] dark:border-white/20 dark:bg-white/5 text-sm" type="number" value="15"/>
+</td>
+<td class="p-4 text-right font-medium text-[#141811] dark:text-white">$450.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Step 2: Select Supplier -->
+<section>
+<h2 class="text-[#141811] dark:text-white text-2xl font-bold tracking-tight mb-6">Step 2: Supplier Selection</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-4">
+<label class="block text-sm font-bold text-[#141811] dark:text-white">Choose Preferred Vendor</label>
+<select class="w-full h-12 rounded-lg border-[#e0e5dc] dark:border-white/20 dark:bg-background-dark/30 focus:ring-primary focus:border-primary">
+<option>Pure Glow Cosmetics Ltd.</option>
+<option>Premium Salon Supplies</option>
+<option>Eco-Beauty Distribution</option>
+</select>
+</div>
+<div class="p-5 rounded-lg bg-primary/5 border border-primary/20 flex gap-4">
+<div class="p-3 bg-white dark:bg-background-dark rounded-full h-fit">
+<span class="material-symbols-outlined text-primary">contact_support</span>
+</div>
+<div>
+<p class="text-sm font-bold text-[#141811] dark:text-white">Pure Glow Cosmetics Ltd.</p>
+<p class="text-xs text-[#758863] mt-1">Rep: Maryam Yusuf</p>
+<p class="text-xs text-[#758863]">+971 4 555 0123</p>
+<p class="text-xs text-[#758863]">contact@pureglow.com</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Step 3: Payment/Order Method -->
+<section>
+<h2 class="text-[#141811] dark:text-white text-2xl font-bold tracking-tight mb-6">Step 3: Payment Method</h2>
+<div class="flex flex-wrap gap-4">
+<label class="flex-1 min-w-[200px] cursor-pointer group">
+<input checked="" class="hidden peer" name="payment" type="radio"/>
+<div class="p-5 border border-[#e0e5dc] dark:border-white/10 rounded-xl peer-checked:border-primary peer-checked:bg-primary/5 transition-all flex items-center gap-4">
+<span class="material-symbols-outlined text-[#758863] group-peer-checked:text-primary">payments</span>
+<div>
+<p class="font-bold text-[#141811] dark:text-white">Cash on Delivery</p>
+<p class="text-xs text-[#758863]">Pay upon arrival</p>
+</div>
+</div>
+</label>
+<label class="flex-1 min-w-[200px] cursor-pointer group">
+<input class="hidden peer" name="payment" type="radio"/>
+<div class="p-5 border border-[#e0e5dc] dark:border-white/10 rounded-xl peer-checked:border-primary peer-checked:bg-primary/5 transition-all flex items-center gap-4">
+<span class="material-symbols-outlined text-[#758863] group-peer-checked:text-primary">description</span>
+<div>
+<p class="font-bold text-[#141811] dark:text-white">Invoice</p>
+<p class="text-xs text-[#758863]">30-day billing cycle</p>
+</div>
+</div>
+</label>
+</div>
+</section>
+</div>
+<!-- Footer Summary & Action -->
+<div class="bg-[#f7f8f6] dark:bg-white/5 p-8 border-t border-[#e0e5dc] dark:border-white/10">
+<div class="flex flex-col md:flex-row justify-between items-end gap-6">
+<div class="space-y-1 text-right md:text-left">
+<p class="text-sm text-[#758863]">Total Estimated Order (45 items)</p>
+<p class="text-4xl font-black text-[#141811] dark:text-white tracking-tighter">$990.00</p>
+<p class="text-xs text-[#758863] italic">*Prices may vary slightly based on supplier shipping rates.</p>
+</div>
+<div class="flex gap-4 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-8 py-4 rounded-xl font-bold border border-[#e0e5dc] dark:border-white/10 text-[#758863] hover:bg-white dark:hover:bg-background-dark transition-colors">Save Draft</button>
+<button class="flex-1 md:flex-none px-12 py-4 rounded-xl font-bold bg-primary text-[#141811] shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform flex items-center justify-center gap-2">
+<span>Submit Order</span>
+<span class="material-symbols-outlined text-xl">send</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Note -->
+<p class="mt-8 text-center text-[#758863] text-sm">
+            Need help? Contact the inventory management support line at <span class="font-bold">1-800-SALON-PRO</span>
+</p>
+</main>
+</body></html>

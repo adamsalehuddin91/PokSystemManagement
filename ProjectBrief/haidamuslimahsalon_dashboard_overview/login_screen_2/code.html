@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Salonee Login | Muslimah Salon Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#84E22D",
+                        "background-light": "#F7F5F0",
+                        "background-dark": "#182111",
+                        "brand-gray": "#728863",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "sans": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "24px": "24px",
+                    },
+                    boxShadow: {
+                        "premium": "0 10px 40px -10px rgba(0, 0, 0, 0.08)",
+                    }
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .botanical-pattern {
+            background-image: radial-gradient(circle at 2px 2px, rgba(132, 226, 45, 0.04) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex items-center justify-center botanical-pattern p-4">
+<div class="layout-container flex h-full grow flex-col max-w-[1200px] w-full items-center">
+<div class="flex flex-1 justify-center items-center py-10 w-full">
+<div class="layout-content-container flex flex-col w-full max-w-[440px]">
+<div class="flex flex-col items-center gap-4 mb-10 text-center">
+<div class="bg-white dark:bg-zinc-800 p-4 rounded-full shadow-sm border border-primary/20">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="spa">spa</span>
+</div>
+<div>
+<h2 class="text-[#141811] dark:text-white text-3xl font-extrabold tracking-tight">Salonee</h2>
+<p class="text-brand-gray dark:text-zinc-400 text-sm font-medium uppercase tracking-widest mt-1">Management System</p>
+</div>
+</div>
+<div class="bg-white dark:bg-zinc-900 rounded-24px shadow-premium border border-[#e8e6df] dark:border-zinc-800 overflow-hidden">
+<div class="p-10">
+<div class="text-center mb-10">
+<h1 class="text-[#141811] dark:text-white tracking-tight text-2xl font-bold mb-2">Welcome Back</h1>
+<p class="text-brand-gray dark:text-zinc-400 text-sm font-normal">Please enter your credentials to continue</p>
+</div>
+<form class="space-y-6">
+<div class="flex flex-col gap-2">
+<label class="text-[#141811] dark:text-zinc-200 text-sm font-semibold ml-1">Email or Phone</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-brand-gray/60 text-xl">mail</span>
+<input class="form-input flex w-full rounded-2xl text-[#141811] dark:text-white focus:outline-0 focus:ring-4 focus:ring-primary/10 border border-[#e0e5dc] dark:border-zinc-700 bg-white dark:bg-zinc-800 focus:border-primary h-14 placeholder:text-brand-gray/40 pl-12 pr-4 text-base transition-all" placeholder="sister@salon.com" type="text"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center ml-1">
+<label class="text-[#141811] dark:text-zinc-200 text-sm font-semibold">Password</label>
+<a class="text-brand-gray hover:text-primary text-xs font-bold transition-colors" href="#">Forgot password?</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-brand-gray/60 text-xl">lock</span>
+<input class="form-input flex w-full rounded-2xl text-[#141811] dark:text-white focus:outline-0 focus:ring-4 focus:ring-primary/10 border border-[#e0e5dc] dark:border-zinc-700 bg-white dark:bg-zinc-800 focus:border-primary h-14 placeholder:text-brand-gray/40 pl-12 pr-12 text-base transition-all" placeholder="••••••••" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-brand-gray/60 hover:text-brand-gray" type="button">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-2 px-1">
+<input class="w-4 h-4 rounded border-[#e0e5dc] text-primary focus:ring-primary/30" id="remember" type="checkbox"/>
+<label class="text-sm text-brand-gray dark:text-zinc-400" for="remember">Keep me logged in</label>
+</div>
+<button class="w-full bg-[#84E22D] hover:shadow-lg hover:shadow-[#84E22D]/20 text-[#141811] font-extrabold text-base h-14 rounded-24px transition-all active:scale-[0.98] mt-4">
+                            Login to Dashboard
+                        </button>
+</form>
+</div>
+<div class="bg-[#f9f9f7] dark:bg-zinc-800/50 p-6 border-t border-[#e8e6df] dark:border-zinc-800 text-center">
+<p class="text-brand-gray dark:text-zinc-400 text-sm">
+                        Need assistance? <a class="text-[#141811] dark:text-white font-bold hover:underline" href="#">Contact Support</a>
+</p>
+</div>
+</div>
+<div class="mt-12 flex flex-col items-center opacity-30 pointer-events-none select-none">
+<div class="w-24 h-24 bg-center bg-no-repeat bg-contain" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDkq5teGhPPa9Y83yrrqRN_ahj35hMzHZeTScrlmEEeFsk5YwYVE-2RUmDzBbNNY5yayaSU8Ew1yd1tqpVFkIoN_WueBjQSMdDzFk0N2VbF7kkjo5qGYgOhZfH3torEHAkwo0vGfTCbVxGU2E8EiPuxKGvuuibba6NY58j_-iH_is6qyaIdpgnbIrHFz8iPXbqrvuFrvOg8Zqn_PA8kkYDvqfSkBtRTgfpz75jZz5bYno-sHQZjgx07tqkD_CA7cxX3_HxRrBXhUKfl");'></div>
+<p class="text-brand-gray text-[10px] uppercase tracking-[0.2em] mt-2">Premium Muslimah Care</p>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>

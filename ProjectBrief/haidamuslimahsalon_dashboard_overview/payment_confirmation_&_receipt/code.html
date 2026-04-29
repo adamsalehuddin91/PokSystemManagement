@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Payment Confirmation &amp; Receipt - Muslimah Salon</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#7de830",
+                        "background-light": "#fcfaf7", // Warm cream for feminine premium feel
+                        "background-dark": "#182111",
+                        "soft-text": "#728863",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .receipt-container {
+            position: relative;
+        }
+        /* Scalloped edge effect for receipt bottom */
+        .receipt-bottom {
+            background-image: radial-gradient(circle, transparent, transparent 50%, white 50%, white 100%), 
+                              radial-gradient(circle, transparent, transparent 50%, white 50%, white 100%);
+            background-size: 16px 16px;
+            background-position: 0 0, 8px 0;
+            background-repeat: repeat-x;
+            height: 8px;
+            width: 100%;
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+        }
+        .dark .receipt-bottom {
+            background-image: radial-gradient(circle, transparent, transparent 50%, #1c2615 50%, #1c2615 100%), 
+                              radial-gradient(circle, transparent, transparent 50%, #1c2615 50%, #1c2615 100%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-[#141811] dark:text-gray-100 font-display">
+<div class="layout-container flex flex-col min-h-screen">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-4 text-[#141811] dark:text-white">
+<div class="size-6 text-primary">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-tight">Muslimah Salon</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8 items-center">
+<nav class="hidden md:flex items-center gap-9">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Appointments</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Services</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Reports</a>
+</nav>
+<div class="flex items-center gap-3">
+<span class="text-xs font-semibold bg-primary/10 text-primary px-3 py-1 rounded-full">Staff Portal</span>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="Profile photo of salon staff member" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA5xddOpz5E-vXkEdbmTf7iDWuFdqUiUNt7fbhsdm1D8vBVP5F-Dl69rxcWuXL-im9CBibWSr6BUvrteazX6gRbqDuvAowSsi4ekmeCKK0gFHbzCX6M9W6gYV5fL7GNvqSvECPjCxUF3okfu-wAj95jXs9zG9rAK6V27DTlcp1MPRj-W60jGj1zHw0gOPFmhaaVapXBh4vPb_yjNQq8HAqY4v40Idfgpn35tYpjQLQZMBZ3Oz8O0vzZ8c6LPIT61LX4DuYDqSfxlVgB");'></div>
+</div>
+</div>
+</header>
+<main class="flex-grow flex flex-col items-center justify-center px-4 py-12">
+<!-- Success Status -->
+<div class="flex flex-col items-center mb-8">
+<div class="size-16 bg-primary rounded-full flex items-center justify-center mb-4 shadow-lg shadow-primary/30">
+<span class="material-symbols-outlined text-white text-4xl">check</span>
+</div>
+<h1 class="text-[#141811] dark:text-white tracking-tight text-3xl font-extrabold leading-tight text-center">Payment Successful</h1>
+<p class="text-soft-text dark:text-gray-400 text-sm font-normal mt-2">Transaction ID: #MS-8829 | Oct 24, 2023</p>
+</div>
+<!-- Receipt Card -->
+<div class="w-full max-w-[480px] bg-white dark:bg-[#1c2615] rounded-t-xl shadow-2xl relative receipt-container p-8 mb-12">
+<!-- Salon Info -->
+<div class="flex flex-col items-center text-center pb-6 border-b border-dashed border-gray-200 dark:border-gray-700">
+<div class="size-12 mb-3 bg-primary/5 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">spa</span>
+</div>
+<h3 class="text-xl font-bold">Muslimah Salon &amp; Spa</h3>
+<p class="text-soft-text dark:text-gray-400 text-xs">123 Elegant Way, Downtown Dubai</p>
+<p class="text-soft-text dark:text-gray-400 text-xs">+971 4 000 0000</p>
+</div>
+<!-- Staff & Customer -->
+<div class="flex justify-between py-4 text-xs font-medium border-b border-dashed border-gray-200 dark:border-gray-700">
+<div class="flex flex-col gap-1">
+<span class="text-soft-text uppercase tracking-widest text-[10px]">Staff</span>
+<span>Amina bint Rashid</span>
+</div>
+<div class="flex flex-col gap-1 text-right">
+<span class="text-soft-text uppercase tracking-widest text-[10px]">Customer</span>
+<span>Sarah Ahmed</span>
+</div>
+</div>
+<!-- Services List -->
+<div class="py-6 space-y-4">
+<div class="flex justify-between items-start">
+<div class="flex flex-col">
+<span class="text-sm font-semibold">Hair Treatment &amp; Steam</span>
+<span class="text-[10px] text-soft-text">Premium Argan Oil Mask</span>
+</div>
+<span class="text-sm font-medium">$85.00</span>
+</div>
+<div class="flex justify-between items-start">
+<div class="flex flex-col">
+<span class="text-sm font-semibold">Organic Henna Application</span>
+<span class="text-[10px] text-soft-text">Bridal Style - Hands</span>
+</div>
+<span class="text-sm font-medium">$45.00</span>
+</div>
+<div class="pt-4 mt-4 border-t border-gray-100 dark:border-gray-800 space-y-2">
+<div class="flex justify-between text-xs text-soft-text">
+<span>Subtotal</span>
+<span>$130.00</span>
+</div>
+<div class="flex justify-between text-xs text-soft-text">
+<span>Tax (5%)</span>
+<span>$6.50</span>
+</div>
+<div class="flex justify-between text-lg font-bold text-[#141811] dark:text-white pt-2">
+<span>Total</span>
+<span class="text-primary">$136.50</span>
+</div>
+</div>
+</div>
+<!-- Rewards / Loyalty -->
+<div class="bg-primary/5 dark:bg-primary/10 rounded-lg p-3 flex items-center justify-between border border-primary/20">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">stars</span>
+<span class="text-xs font-semibold text-primary">HijabPoints Earned</span>
+</div>
+<span class="text-sm font-bold text-primary">+50 pts</span>
+</div>
+<!-- Payment Method -->
+<div class="flex items-center justify-center gap-2 mt-6 pt-4 border-t border-dashed border-gray-200 dark:border-gray-700">
+<span class="material-symbols-outlined text-soft-text text-sm">qr_code_2</span>
+<span class="text-xs text-soft-text font-medium uppercase tracking-wider">Paid via QR Pay</span>
+</div>
+<!-- Scalloped edge decorative element -->
+<div class="receipt-bottom"></div>
+</div>
+<!-- Action Buttons -->
+<div class="w-full max-w-[480px] space-y-4">
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 h-12 rounded-xl bg-primary text-black font-bold text-sm shadow-md hover:opacity-90 transition-all">
+<span class="material-symbols-outlined text-lg">print</span>
+                        Print Receipt
+                    </button>
+<button class="flex items-center justify-center gap-2 h-12 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 font-bold text-sm shadow-sm hover:bg-gray-50 transition-all">
+<span class="material-symbols-outlined text-lg text-green-600">send</span>
+                        WhatsApp
+                    </button>
+</div>
+<button class="w-full flex items-center justify-center gap-2 h-12 rounded-xl bg-gray-100 dark:bg-gray-800/50 text-soft-text hover:text-primary transition-colors font-semibold text-sm">
+<span class="material-symbols-outlined text-lg">arrow_back</span>
+                    Back to Dashboard
+                </button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="py-8 text-center text-soft-text dark:text-gray-500 text-xs">
+<p>© 2023 Muslimah Salon Management System. All rights reserved.</p>
+</footer>
+</div>
+<!-- Background Pattern for Premium Feel -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.03] dark:opacity-[0.05] z-[-1]" style="background-image: radial-gradient(#7de830 1px, transparent 1px); background-size: 40px 40px;"></div>
+</body></html>
