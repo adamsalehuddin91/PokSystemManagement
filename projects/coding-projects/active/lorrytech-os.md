@@ -7,7 +7,7 @@ Fleet management system for Malaysian SME lorry owners. Centralizes Lalamove + s
 ## Project Details
 - **Status**: Active
 - **Created**: 2026-02-28
-- **Last Accessed**: 2026-04-07
+- **Last Accessed**: 2026-05-07
 - **Position**: #1
 
 ## Stack
@@ -39,6 +39,47 @@ php artisan serve && npm run dev
 - [x] Phase 7: Deploy — Hetzner+Coolify, PostgreSQL, Docker, Cloudflare DNS
 
 ## Progress Log
+### 2026-05-07 (Session 9 — Dashboard Overhaul + Multi-Company + Customers Module)
+- Project resumed (was position #9 → moved to #1).
+- `942ce3f` — Dashboard overhaul: MoM badges (revenue/expenses/trips/profit), collection rate KPI, driver leaderboard widget, top customers Semua/Bulan Ini toggle, quick actions strip, overdue invoices mini-list, profit bar in P&L chart
+- `21a0030` — Multi-company invoice/quotation: `company_setting_id` FK migration, CompanySelector.jsx shared component, injected into all 4 document forms (Invoices/Quotations Create+Edit), PdfService fallback
+- `ff8e205` — Customers module: CustomerController CRUD, Customers/Index+Create+Edit pages, `customers` resource route, "Pelanggan" sidebar nav item (between Pemandu & Perjalanan)
+- All pushed → Coolify auto-deployed ✅
+
+### 2026-04-12 (Session 8 — Dashboard Overhaul + Multi-Company Invoice/Quotation)
+
+**Dashboard — Full P1→P3 Improvement (no commits yet, local only):**
+- **Quick actions strip** — Buat Trip, Catat Belanja, Jana Invois, Sebut Harga, Pemandu (clickable shortcut buttons)
+- **MoM % badges** — Revenue, Expenses, Trips KPI cards sekarang tunjuk "↑ 12% vs lalu" / "↓ 8% vs lalu"
+- **Clickable KPI + mini cards** — semua link ke module berkaitan
+- **Collection Rate KPI** — mini card ke-5, color-coded (hijau ≥70%, kuning, merah)
+- **Profit bar dalam P&L chart** — bar ketiga (emerald/orange) + Y-axis labels (fmtK)
+- **Overdue invoices mini-list** — dalam Invoice Summary card, clickable ke invois
+- **Driver Leaderboard** — widget baru, top 5 pemandu bulan ini (trips + revenue + komisyen rate)
+- **Top Customers toggle** — butang "Semua / Bulan Ini" — topCustomersMonth field baru dari service
+- **DashboardService** — +MoM queries, +collection_rate, +getDriverLeaderboard(), +getTopCustomers(bool), +overdue_list in getInvoiceSummary()
+- **Screenshot generator** — fixed stale PHP workers (13 processes), now uses full path `/c/laragon/bin/php/.../php.exe`
+
+**Multi-Company Invoice/Quotation:**
+- Migration `2026_04_12_000001` — `company_setting_id` (nullable FK) on `invoices` + `quotations`
+- `Invoice` + `Quotation` models — `company_setting_id` in fillable + `companySetting()` relationship
+- `InvoiceService` + `QuotationService` — store/update `company_setting_id`
+- `InvoiceController` + `QuotationController` — validate + pass `companies` list to Create/Edit
+- `PdfService` — `$invoice->companySetting ?? CompanySetting::first()` (fallback safe)
+- `CompanySelector.jsx` — shared component: 1 company=info block, 2+=dropdown, 0=hidden
+- Injected into Invoices/Create, Invoices/Edit, Quotations/Create, Quotations/Edit
+
+**Known bug fixed:**
+- `create_leasing_tables` migration tidak recorded in migrations table → marked manually via tinker
+
+**Next steps:**
+- Commit + deploy (push to Hetzner/Coolify via git)
+- Add Company Settings management page (CRUD untuk company_settings)
+- Client demo scheduling
+- Screenshots untuk social media marketing (web-01 hingga web-06 + mobile-01 hingga mobile-03 done)
+
+---
+
 ### 2026-04-07 (Session 7 — Demo Readiness Review + Bug Fixes)
 - **Full system review** conducted — demo readiness check before client presentation
 - **3 issues found and fixed** (commits `d019c2e` + `e18772c`):

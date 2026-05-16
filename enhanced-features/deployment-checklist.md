@@ -75,6 +75,29 @@ Verify:
 - [ ] No uncommitted changes
 - [ ] Latest commit is what we expect to deploy
 
+### 6b. Coolify Frontend Pre-Deploy Gate (React/Vite)
+**Run this ONLY for frontend apps deploying to Coolify via Dockerfile.**
+
+```bash
+# Check all 4 must-haves exist in the app/ folder:
+ls app/.dockerignore    # MUST exist — prevents node_modules overwrite
+ls app/Dockerfile       # MUST exist — uses npm install (NOT npm ci)
+ls app/docker/nginx.conf  # MUST exist — must have /api proxy if needed
+cat app/package.json | grep -E "puppeteer|sharp|playwright"  # MUST be empty
+```
+
+**Checklist:**
+- [ ] `.dockerignore` exists — contains `node_modules`, `dist`, `screenshot`
+- [ ] `Dockerfile` uses `npm install` (NOT `npm ci`) — avoids Windows/Linux lock file mismatch
+- [ ] `package.json` has NO native tool deps (`puppeteer`, `sharp`, `playwright`) — local-only tools cause `@emnapi` crash on Linux build
+- [ ] `nginx.conf` has `/api` proxy block if frontend calls a backend API
+- [ ] Repo target is correct — double-check GitHub remote URL before push
+- [ ] **Next.js + Supabase:** `next.config.ts` has `typescript: { ignoreBuildErrors: true }` OR `src/types/supabase.ts` generated types exist — Supabase join queries return `any`, causes TS build failure without this (AP-015)
+
+If any check fails → fix before pushing to GitHub.
+
+---
+
 ### 7. Deploy
 Trigger deploy per platform:
 

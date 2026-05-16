@@ -5,9 +5,9 @@
 Aplikasi pengurusan aliran tunai domestik (family finance tracker) untuk pasangan (Abg & Ayg). Ganti rekod manual WhatsApp — bajet, komitmen bulanan, pengurangan hutang secara real-time. SaaS-ready architecture with multi-tenancy via family_id.
 
 ## Project Details
-- **Status**: 🟢 LIVE (Sprint 1-4 + Feature Expansion Done)
+- **Status**: 🟢 LIVE (SaaS-ready — v1.5, register modal + admin bulk email)
 - **Created**: 2026-03-13
-- **Last Accessed**: 2026-04-08
+- **Last Accessed**: 2026-05-06
 - **Position**: #1
 
 ## Stack
@@ -57,8 +57,40 @@ php artisan serve && npm run dev
 - [x] Month navigation (view previous months)
 - [x] Profile: Edit nama/email/password
 - [x] Profile: Financial Health Score (0-100 circular gauge)
+- [x] Google OAuth login (Socialite) — Login + Register pages
+- [x] Auto-create Family on Google signup
+- [x] Invite spouse flow — token-based, 7-day expiry, Accept/Invalid pages
+- [x] Feature gating — free vs paid (debt, savings, analytics, receipt, history, max 5 bills)
+- [x] Admin panel — /admin, search by email, upgrade/downgrade plan
+- [x] Google avatar display — profile, nav, family members
+- [x] Pro badge — profile for paid users
+- [x] SQLite backup on deploy (last 7 copies)
+- [x] families table: plan, plan_expires_at, subscribed_at
+- [x] Fix: auto-create Family on email/password registration
+- [x] Fix: OnboardingController — self-service family setup for stuck users
+- [x] Fix: komitmen tak padam (BillService is_active filter)
+- [x] Fix: Kemaskini button tunjuk Saving semasa delete (separate processing state)
+- [x] Onboarding screen WA button → wa.me/60132094577
+- [x] Onboarding mockup generator + WA Status card (1080×1920)
+- [x] Admin panel: Lanjut Tempoh (extend), Suspend, Padam Akaun, Send Email
+- [x] last_login_at tracking + backfill migration
+- [x] suspended_at on families + isSuspended() check
+- [x] Resend transactional email setup (resend/resend-laravel)
+- [x] Reply-To admin@swiftapps.my (Cloudflare Email Routing)
+- [x] Set MAIL_FROM_ADDRESS=noreply@swiftapps.my in Coolify + redeploy ✅
+- [x] IAB detection — BrowserGate Option A (overlay) + Option C (sticky banner) (`f0220f9`) ✅
+- [x] Fix upgrade modal WhatsApp link — correct number + pre-filled message (`31620ce`) ✅
+- [x] Register modal on Login page (email/password, no Google required)
+- [x] Forgot/Reset password redesign (Bahasa Melayu + SwiftMoney style)
+- [x] Dockerfile fix — Alpine → Debian (OOM resolved), artisan cache moved to entrypoint
+- [x] Admin bulk email — /admin/users with checkbox select + compose modal + blast send
+- [x] Admin clickable stat cards — Free/Pro/Suspended/All filter inline
+- [ ] Send Founding Member email to early registrants + upgrade Pro 1 year (use /admin/users bulk email)
+- [ ] Delete test account: test.onboard.[timestamp]@swiftmoney.test
 - [ ] Authorization policies (admin vs member)
 - [ ] Activate Laravel Reverb in production
+- [ ] iOS install guide modal
+- [ ] Payment integration (Billplz) — bila scale
 - [x] Personal/Family view toggle (Saya/Keluarga)
 - [x] Tappable Abg/Ayg badge to switch bill ownership
 - [x] Income edit (tap to edit source/amount, delete)
@@ -76,8 +108,9 @@ php artisan serve && npm run dev
 9. **Net Balance**: income - paid_bills — shows cash remaining in hand — DONE
 
 ## Schema Reference
-- families: id, name
-- users: id, family_id, name, email, password, role (admin/member)
+- families: id, name, plan (free/paid), plan_expires_at, subscribed_at, suspended_at
+- users: id, family_id, name, email, password, role (admin/member), google_id, avatar, last_login_at
+- family_invites: id, family_id, token, expires_at, used_at
 - incomes: id, family_id, user_id, source, amount, month_year, is_recurring
 - bill_templates: id, family_id, category, title, default_amount, assigned_to, debt_id (nullable), is_active
 - bill_records: id, bill_template_id, month_year, actual_amount, is_paid, paid_at, receipt_path
@@ -87,6 +120,139 @@ php artisan serve && npm run dev
 - debt_payments: id, debt_id, bill_record_id (nullable), amount_paid, payment_date
 
 ## Progress Log
+
+### 2026-05-06 (Session 12 — Register Modal + OOM Fix + Admin Bulk Email)
+
+**5 Commits**: `c4110e8` → `0546852` → `dc06e48` → `19b6b7c` → `51f7380`
+
+**Register Modal** (`c4110e8`):
+- Inline `RegisterModal` bottom-sheet on Login.jsx — no separate page needed
+- Submits to existing Breeze `POST /register` endpoint
+
+**Forgot/Reset Password Redesign** (`0546852`):
+- Full Bahasa Melayu labels + SwiftMoney style (slate/indigo)
+- ForgotPassword: success state hides form, shows green "Email dihantar" banner
+- ResetPassword: show/hide password toggle for both fields
+
+**Dockerfile OOM Fix** (`dc06e48`):
+- Root cause: Alpine php:8.3-fpm compiles mbstring from source → ~500MB RAM → Coolify VPS OOM kill
+- Fix: php:8.3-fpm-bookworm (Debian) — apt pre-compiled packages
+- Artisan cache commands moved Dockerfile → entrypoint.sh (APP_KEY only at runtime)
+- Nginx config path fixed for Debian: sites-enabled/ not http.d/
+
+**Admin Bulk Email** (`19b6b7c`):
+- New `/admin/users` page — checkbox select by user, filter by plan, search
+- Compose modal → POST /admin/bulk-email → per-user Mail::raw() with try/catch
+- Reports sent count + failed email list in flash
+
+**Admin Clickable Stat Cards** (`51f7380`):
+- StatCard → button with filter param via router.get()
+- AdminController::index() accepts filter (free/paid/suspended/all) with PHP 8 match()
+- "Blast Email" shortcut button added to dashboard header
+
+### 2026-05-07
+- Project resumed (was position #3)
+
+### 2026-04-22 (Session 11 — IAB Detection + UX Fixes)
+
+**2 Commits**: `f0220f9` → `31620ce`
+
+**IAB Detection — BrowserGate refactor**
+- `BrowserGate.jsx`: controller with 3 states — overlay (Option A) → banner (Option C) → hidden
+- `IABOverlay`: full-screen block on first IAB visit, platform-aware (iOS→Safari, Android→Chrome), animated arrow, URL copy hint, soft dismiss saves to localStorage
+- `IABBanner`: sticky orange bar at top, dismissible, appears on subsequent IAB visits
+- Covers: FBAN, FBAV, FB_IAB, Instagram, Messenger, TikTok, Twitter IAB + Android generic WebView
+- Already mounted: GuestLayout + Dashboard.jsx
+
+**WhatsApp upgrade link fix**
+- `Dashboard.jsx`: `wa.me/60132094577` + pre-filled "Hi Adam, saya nak upgrade SwiftMoney ke Pro plan"
+
+**Mockups generated**: `iab-mockup-output/` — 6 PNGs (IAB overlay android/ios, banner android/ios, upgrade modal, analytics locked)
+
+**Decisions**
+- Payment gateway: Manual (DuitNow → Adam upgrades in admin panel) for now. Billplz when scale.
+- Founding Member flow: email drafted, send via admin panel → upgrade 10 users to Pro 1 year
+
+**Next**:
+- Send Founding Member email + upgrade 10 users
+- Delete test account
+- Authorization policies
+- iOS install guide modal
+
+### 2026-04-21 (Session 10 — Admin Overhaul + Resend Email)
+
+**8 Commits**: `1a97286` → `a21e340` → `72244b4` → `a8722a3` → `ab5f8fb` → `4550d2a` → `f1b5e7d` → `5b46a2e`
+
+**Bug Fixes (3)**
+- Dynamic PIC selector: removed `in:Abg,Ayg` validation, `BillModal` dropdown uses real family member names from DB. `handleToggleAssign` cycles through `family_members` array.
+- Edit Profile email pre-fill: `DashboardController` now passes `'email' => $user->email` in user props.
+- Rename cascade: `ProfileController` detects `isDirty('name')`, cascades `bill_templates.assigned_to` update to new name.
+
+**Admin Panel Overhaul** (v1.7)
+- New actions: Lanjut Tempoh (extend from current expiry), Suspend/Unsuspend toggle, Padam Akaun (cascade delete), Send Email (per-user try/catch, error flash).
+- `LastActiveBadge`: 🟢<7d, 🟡7-30d, ⚫30d+, grey=never.
+- `families.suspended_at`, `users.last_login_at` — new columns + backfill migration.
+- Stats: 5 tiles including suspended count.
+- Admin routes: `extend`, `suspend`, `delete` (DELETE), `email` (POST).
+
+**Resend Email Setup**
+- `resend/resend-laravel` package installed.
+- `sendEmail()` wrapped in try/catch per user — no 500, shows error flash.
+- Reply-To: `admin@swiftapps.my` (Cloudflare Email Routing → Gmail).
+- **Pending**: Set `MAIL_FROM_ADDRESS=noreply@swiftapps.my` in Coolify env + redeploy.
+
+**Founding Member Plan**
+- 10 early users to be upgraded Pro 1 year via admin panel.
+- Email draft ready: "Terima kasih, 1 tahun free Pro, minta feedback".
+
+**Next steps**:
+- Set `MAIL_FROM_ADDRESS=noreply@swiftapps.my` in Coolify → redeploy → send Founding Member email + upgrade 10 users
+- Delete test account: `test.onboard.[timestamp]@swiftmoney.test`
+- Authorization policies (admin vs member)
+- iOS install guide modal
+
+### 2026-04-18 (Session 9 — Bug Fixes + Open Registration + Onboarding)
+
+**Bug Fixes (3)**
+- `RegisteredUserController`: email/password register sekarang auto-create `Family` + assign `family_id` + `role=admin`. Invite flow preserved via session `invite_token`. Commit `14b597f`
+- `BillService::getRecordsForMonth`: tambah `->where('is_active', true)` dalam `whereHas` — komitmen yang dah padam tak appear lagi. Commit `4a2560c`
+- `BillModal`: guna `router.delete()` + `deleting` state berasingan — submit button tak tukar ke "Saving..." masa delete. Commit `4a2560c`
+
+**Onboarding Overhaul**
+- `OnboardingController`: `POST /setup/family` — 8 stuck users boleh self-setup tanpa hubungi admin
+- `Dashboard.jsx` needsSetup block: form input nama rumahtangga + "Mula Sekarang" button
+- WA button "Hubungi Adam" → wa.me/60132094577 (pre-filled message). Commit `f980826`
+- `/preview/onboarding` temp route untuk screenshot. Commit `5d12ee4`
+
+**Mockup Generator**
+- `capture-onboarding.js` + `capture-static.js` — onboarding screen screenshots
+- Output: raw + phone mockup + square/portrait + `story-onboarding-wa-status.png` (1080×1920 WA Status ready)
+
+**Commits**: `14b597f` → `4a2560c` → `f980826` → `5d12ee4`
+**Next**: Delete test account, authorization policies, iOS install guide
+
+### 2026-04-10 (Session 7 — Mockup Generator)
+- **Multi-screen mockup generator**: `mockup-generator/generate-mockup.js` — Puppeteer + Sharp
+- **Login flow**: Auto-detect login redirect, fill credentials, wait for Inertia XHR navigation (URL change, not page load event)
+- **SVG mask fix**: Screen cutout uses SVG `<mask>` with black fill for transparency — was filled black covering screenshot
+- **8 phone screens**: home, komitmen scrolled, add-komitmen modal, analytics, simpan, profile, add-income modal, hutang section
+- **2 laptop screens**: analytics desktop, dashboard desktop
+- **Session cookie reuse**: Second page (laptop) skips re-login — same browser context shares cookies
+- **Env config**: `MOCKUP_URL`, `MOCKUP_EMAIL`, `MOCKUP_PASS` — override via env vars
+- **Output**: `mockup-generator/output/phone-0x-*.png` + `laptop-0x-*.png`
+- **Pending**: Run laptop mockups (interrupted), commit mockup-generator
+
+### 2026-04-10 (Session 6 — SaaS Foundation)
+- **Google OAuth**: Socialite integration, login + register pages, auto-create Family on signup
+- **Invite spouse**: token-based flow, 7-day expiry, Accept/Invalid pages, session-stored token → join on Google callback
+- **Feature gating**: free vs paid — debt tracker, savings goals, analytics, receipt upload, month history, max 5 bill templates
+- **Admin panel**: `/admin` (superadmin middleware), search by email/name, upgrade/downgrade with month selector
+- **Google avatar**: profile, nav, family members — fallback to initials
+- **Pro badge**: 👑 Pro badge on profile for paid users
+- **SQLite backup**: entrypoint.sh — last 7 copies before migrate
+- **Bug fixes**: User $fillable missing google_id/avatar, Carbon addMonths string type error
+- **Commits**: `f4cbb0a` → `3daffaf` → `a2756e0` → `40f88ab` → `c2fefff` → `c13e394`
+- **Next**: iOS install guide, authorization policies, Billplz payment integration
 
 ### 2026-04-08 (Session 5 — Full Review + Feature Expansion)
 - **Full code review**: MEDIUM + LOW performance issues fixed

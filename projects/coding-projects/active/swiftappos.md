@@ -5,9 +5,9 @@
 Internal business OS for Adam's SwiftApps freelance operation. Manages client projects (Drafting→Dev→UAT→Live), invoicing, quotations, receipts, and business analytics — all in one self-hosted dashboard. Single-user, password-gated.
 
 ## Project Details
-- **Status**: Active (Deploying to Coolify)
+- **Status**: Active (Deploying to Coolify — TS fixes in progress)
 - **Created**: 2026-02-18
-- **Last Accessed**: 2026-03-28
+- **Last Accessed**: 2026-05-06
 - **Position**: #1
 
 ## Stack
@@ -32,10 +32,51 @@ npm run dev
 - [x] Dockerfile + Next.js standalone mode for Coolify deployment
 - [x] Fix Docker build — prisma schema copy order
 - [x] Switch Neon → standard PostgreSQL adapter (pg + @prisma/adapter-pg) for self-hosted DB
-- [ ] Verify Coolify deploy succeeds — prisma migrate deploy fix pending
-- [ ] Set env vars in Coolify: DATABASE_URL, APP_PASSWORD
+- [x] Sequence upsert fix (no seed data on production)
+- [x] Billing: quotation→invoice stage selector (Deposit/Progress/Final/Monthly)
+- [x] Billing: mark as paid → generate receipt → PDF download
+- [x] Schema: Invoice.projectId made optional (String? + migration)
+- [x] Coolify deploy TS cascade fix — verified working ✅
+- [x] Login test after deploy: SwiftOS@Adam2026 ✅
+- [x] Milestone form — grouped presets + datalist autocomplete
+- [x] Delete invoice (any status, Paid shows warning)
+- [x] Delete quotation
+- [x] Company logo upload — Settings page + /api/settings/logo
+- [x] Logo in PDF — Image component, absolute URL, hide company name when logo set
+- [x] Dockerfile EACCES fix — chown uploads dir to nextjs user
+- [ ] Quick-fill presets: expense form
 
 ## Progress Log
+
+### 2026-05-05 (Session 4 — Billing Complete + Coolify TS Cascade Fixes)
+
+**Billing flow fully implemented:**
+- Quotation PDF T&C → amber left-border box (Nota & Syarat, split by `\n`)
+- Preset redesign: HMS removed → 6 system types (POS/CRM/Sekolah/Inventori/HR/Bisnes Full)
+- Billing actions from project page auto-load client details via `?projectId=` URL param
+- Convert quotation → invoice: stage selector UI (Deposit 50%, Progress 25%, Baki 50%, Bulanan)
+- Mark invoice paid → generate receipt → PDF download via `@react-pdf/renderer`
+- Receipt numbers in Payment History = clickable links to `/billing/receipts/:id`
+- Edit quotation description: Input → Textarea (min-h-[120px])
+
+**Prisma schema change — Invoice.projectId optional:**
+- `String` → `String?` in schema + migration `20260505000001`
+- `onDelete: Cascade` → `onDelete: SetNull`
+- Cascade TS fixes: `inv.project.name` → `inv.project?.name ?? "-"` in 3 files
+- `Invoice.project_id: string` → `project_id?: string` in types/index.ts
+- Mapper: `inv.projectId ?? undefined`
+
+**Coolify deploy — 5 TS errors fixed in sequence:**
+- `aa9ca80` → `8b78861` → `6016384` → `1b7053f` → `73452e0` → `3e10feb` → `c2def69` → `2eda4d9`
+- Root: each TS error hidden until previous one resolved (TypeScript compile stops at first file)
+- Latest push: `2eda4d9` — awaiting Coolify rebuild result
+
+**Commits this session**: `0863db7`, `aa9ca80`, `8b78861`, `6016384`, `1b7053f`, `73452e0`, `3e10feb`, `c2def69`, `2eda4d9`
+
+**Next steps:**
+- Verify Coolify build passes on `2eda4d9`
+- Login test: `SwiftOS@Adam2026`
+- If more TS errors → grep full codebase for remaining `inv.project` non-optional access
 
 ### 2026-03-28 (Session 2 — Coolify Docker Prisma Fixes)
 - **4 Dockerfile fixes** chasing Prisma v7 deploy errors:
@@ -58,9 +99,31 @@ npm run dev
 - **Neon → pg adapter** (commit `52d6440`): Replace `@neondatabase/serverless` + `@prisma/adapter-neon` with `@prisma/adapter-pg` + `pg` for self-hosted PostgreSQL compatibility
 - **Next step**: Deploy to Coolify, verify DB connection, set env vars
 
+### 2026-05-05 (Session 5 — Logo Upload + PDF + Delete Features)
+
+**Features shipped:**
+- Milestone name presets: 30+ grouped entries (Billing/Fasa/Modul/Support) + 40-item datalist autocomplete (`66d5fb2`)
+- Delete invoice — any status, Paid shows ⚠️ warning about cascading receipt delete (`bb9698b`)
+- Delete quotation — no status restriction (`08fd92e`)
+- Company logo file upload — Settings page: drag/click zone, preview, clear, fallback URL input
+- `/api/settings/logo` POST handler — validates type (JPG/PNG/WebP/SVG) + size (max 2MB), saves to `public/uploads/logo.{ext}` (`7c523e8`)
+- Dockerfile: `RUN mkdir -p /app/public/uploads && chown -R nextjs:nodejs` — fix EACCES on upload (`1aa9a32`)
+- PDF logo render — `Image` component from `@react-pdf/renderer`, absolute URL conversion (`b478d7e`)
+- Logo size tuned: 80×40 → 160×70 → 220×100 (`83a768d`, `8c91402`)
+- Company name hidden in PDF when logo exists (logo replaces name)
+- `validations.ts`: removed `.url()` from logoUrl so relative paths pass Zod
+
+**Key lessons:**
+- react-pdf renders in Web Worker — relative URLs don't resolve. Must convert to `window.location.origin + path` in page component (not in pdf-generator).
+- Coolify volume mount (`/app/public/uploads`) needed for logo to survive redeploy
+- Docker EACCES: `public/` copied as root → switch to `nextjs` user → uploads dir must be chowned before `USER nextjs`
+
+**Commits**: `66d5fb2`, `bb9698b`, `08fd92e`, `7c523e8`, `1aa9a32`, `b478d7e`, `83a768d`, `8c91402`
+**Latest**: `8c91402`
+
 ## Known Issues
-- Coolify deploy not yet verified — multiple Prisma Docker issues resolved, final fix pushed
-- Env vars to configure: `DATABASE_URL`, `APP_PASSWORD`
+- Expense form quick-fill presets — not yet built
+- Coolify volume `/app/public/uploads` should be set as persistent volume so logo survives redeploy
 
 ## Resources & References
 - Deploy: Hetzner VPS + Coolify, same pattern as LorryTech OS

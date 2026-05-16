@@ -1,7 +1,7 @@
 # Project List — Master Index
 
 *LRU Project Management — Tokwi v5.5*
-*Updated: 2026-04-11*
+*Updated: 2026-05-16*
 
 ---
 
@@ -9,16 +9,16 @@
 
 | # | Project | Status | Last Accessed | File |
 |---|---------|--------|---------------|------|
-| 1 | Qalbu | 🟡 Built (localhost) — deploy pending | 2026-04-11 | `active/qalbu.md` |
-| 2 | LorryTech OS | 🟢 LIVE (Demo-ready) | 2026-04-07 | `active/lorrytech-os.md` |
-| 3 | SwiftSalon | 🗓️ PLANNING | 2026-04-02 | `active/swift-salon.md` |
-| 4 | HMS Salon | 🟢 LIVE | 2026-03-31 | `active/hms-salon.md` |
-| 5 | SwiftApp OS | 🟡 Deploying to Coolify | 2026-03-28 | `active/swiftappos.md` |
-| 6 | SwiftMoney | 🟢 LIVE (SaaS-ready v1.3, real users) | 2026-04-11 | `active/swift-money.md` |
-| 7 | PokSystem | 🟡 LIVE (Railway pending) | 2026-02-23 | `active/pok-system.md` |
-| 8 | Stock Monitor | 🟢 LIVE | 2026-01-03 | `active/stock-monitor.md` |
-| 9 | SwiftStay | 🔵 MVP (localhost) | 2025-11 | `active/swiftstay.md` |
-| 10 | SwiftJiran | 🗓️ PLANNED (20%) | — | `active/swiftjiran.md` |
+| 1 | SwiftTaska | 🟡 DEMO READY — 18 pages built (admin + parent PWA), local only | 2026-05-16 | `active/swifttaska.md` |
+| 2 | MessyMates | 🔵 IN PROGRESS — 8 pages built, dev server running, Supabase pending | 2026-05-14 | `active/messymates.md` |
+| 3 | LorryTech OS | 🟢 LIVE — Customers + Dashboard + Multi-company deployed | 2026-05-07 | `active/lorrytech-os.md` |
+| 4 | SRITI School System | 🟢 LIVE — sritialfattah.swiftapps.my, user flow diagram saved | 2026-05-08 | `active/sriti-school.md` |
+| 5 | SwiftApp OS | 🟢 LIVE — billing fixes deployed, stat cards accurate | 2026-05-06 | `active/swiftappos.md` |
+| 6 | SwiftMoney | 🟢 LIVE (v1.7 — admin overhaul + Resend email) | 2026-05-06 | `active/swift-money.md` |
+| 7 | HMS Salon | 🟢 LIVE (Edit Resit pembantu + auditor void deployed) | 2026-05-05 | `active/hms-salon.md` |
+| 8 | Qalbu | 🟢 LIVE (frontend + API deployed) | 2026-04-19 | `active/qalbu.md` |
+| 9 | SwiftPOS | 🟡 MVP BUILT — deploy pending | 2026-04-18 | `active/swiftpos.md` |
+| 10 | Tokwi Homelab OS | 🔧 Phase 1-2 Done — Phase 3 on hold | 2026-04-17 | `active/tokwi-homelab-os.md` |
 
 **Slots available**: 0 of 10
 
@@ -30,6 +30,11 @@
 |---------|----------|--------|
 | MAAR Contractor | 2026-04-02 | Complete — slot freed for SwiftSalon |
 | SwiftKedai | 2026-04-11 | Planned (10%) — slot freed for Qalbu |
+| SwiftJiran | 2026-04-14 | Planned (20%) — slot freed for SwiftPOS |
+| SwiftSalon | 2026-05-06 | Planning only — slot freed for MessyMates |
+| SwiftStay | 2026-04-16 | MVP (localhost) — auto-archived, slot freed for Tokwi Homelab OS |
+| Stock Monitor | 2026-04-28 | Auto-archived (LRU #11) — slot freed for SRITI School System |
+| SwiftBiz | 2026-05-11 | Auto-archived (LRU #11) — slot freed for SwiftTaska |
 
 ---
 

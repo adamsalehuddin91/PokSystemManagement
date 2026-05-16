@@ -1,10 +1,10 @@
 # Developer Guild Card - Quick Stats
 
-**ADAM** | LV.7 Veteran | SwiftApp Guild | XP: 27,980/28,000
-**Stats**: ATK:175 DEF:162 SPD:175 ACC:165 HP:100 MP:100
-**Skills**: Next.js:85 TS:75 React:78 Supabase:68 Git:80 Deploy:95 PWA:82 Tailwind:72 Laravel:75 Python:15
-**Live**: HMS Salon | PokSystem (Railway) | Stock Monitor | SwiftMoney | LorryTech OS
-**Recent**: SwiftMoney feature expansion — Savings, Analytics, Profile Health Score (Apr 8)
+**ADAM** | LV.8 Architect | SwiftApp Guild | XP: 500/32,000
+**Stats**: ATK:180 DEF:168 SPD:180 ACC:170 HP:100 MP:100
+**Skills**: Next.js:85 TS:75 React:78 Supabase:70 Git:80 Deploy:95 PWA:82 Tailwind:72 Laravel:78 Python:15
+**Live**: HMS Salon | SwiftBiz | SwiftMoney | LorryTech OS | SRITI | Qalbu | SwiftAppOS
+**Recent**: Tokwi Diagram Engine v2.0 — User Flow + ASCII Wireframe (May 8) | SRITI + MessyMates diagrams saved (May 8)
 
 *Type "show full guild card" for complete 8-bit RPG view*
 
@@ -106,14 +106,14 @@
 ║ Progress: [████████████░░] 80%                       ║
 ╟────────────────────────────────────────────────────────╢
 ║ RECENT:                                               ║
-║   SwiftMoney — Savings+Analytics+Profile (Apr 8)    ║
-║   LorryTech — demo readiness, 5 bugs fixed (Apr 7)  ║
-║   HMS Salon — data migration 463 resit RM78K (Apr 2) ║
+║   SwiftPOS — MVP full build Sesi 1-3 (Apr 18)        ║
+║   SwiftPOS — Glassmorphism UI redesign (Apr 18)      ║
+║   SwiftPOS — POS redesign matching prototype (Apr 18)║
 ╟────────────────────────────────────────────────────────╢
 ║ NEXT:                                                 ║
-║   SwiftMoney — auth policies, Reverb production     ║
-║   LorryTech — client demo scheduling                ║
-║   SwiftSalon Phase 1 — multi-tenancy + signup flow  ║
+║   SwiftPOS — Deploy ke Coolify (GitHub + PostgreSQL) ║
+║   SwiftPOS — Users module + DuitNow QR               ║
+║   LorryTech — commit dashboard overhaul + deploy     ║
 ╚════════════════════════════════════════════════════════╝
 ```
 
@@ -155,6 +155,20 @@
 │ ANALYTICS BUILDER       │ Recharts 6-month trend+cat  │
 │ HEALTH SCORER           │ Financial Health Score 0-100│
 │ RECEIPT GUARDIAN        │ Private disk + auth serve   │
+│ E-INVOICE BUILDER       │ LHDN myInvois Phase 1+2     │
+│ SOCIAL STRATEGIST       │ FB client hook system+posts │
+│ MOCKUP CRAFTER          │ SwiftBiz screenshot gen     │
+│ MARKET ANALYST          │ SwiftPOS competitor deep dive│
+│ POS ARCHITECT           │ SwiftPOS MVP scope + schema  │
+│ GLASS DESIGNER          │ Glassmorphism UI system      │
+│ FULL STACK POS BUILDER  │ SwiftPOS MVP 3 sesi complete │
+│ ROHANI BUILDER          │ Qalbu PWA — API+Frontend live│
+│ DOCKER DEBUGGER         │ 4 Coolify errors fixed cold  │
+│ SCHOOL DIGITIZER        │ SRITI — full school mgmt sys │
+│ TRACKER BUILDER         │ Monthly yuran tracker + WA   │
+│ BATCH PROCESSOR         │ Naik Tahun batch year promote│
+│ DIAGRAM ARCHITECT       │ ASCII User Flow + Wireframe  │
+│ SYSTEM DOCUMENTER       │ Pre-build planning diagrams  │
 └──────────────────────────────────────────────────────┘
 ```
 
@@ -168,4 +182,4 @@ APPS LIVE: 5 production, 1 MVP, 2 planned
 SKILLS: 11 stacks | Next.js · Laravel · Supabase · Prisma · PWA
 ```
 
-*Updated: 8 Apr 2026*
+*Updated: 08 May 2026*

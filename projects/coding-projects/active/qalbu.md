@@ -1,9 +1,9 @@
 # Qalbu — Project File
 
-**Status**: 🟡 Built (localhost) — pending deploy
+**Status**: 🟢 FULLY LIVE — API + Frontend deployed | n8n pending test
 **Stack**: Laravel 11 + React + Vite + Tailwind + n8n
 **Started**: 2026-04-11
-**Last Accessed**: 2026-04-11
+**Last Accessed**: 2026-04-20
 
 ---
 
@@ -12,8 +12,8 @@
 PWA rohani minimalist — digital sanctuary untuk bacaan rohani harian.
 Decoupled architecture: Laravel headless API + React PWA + n8n automation pipeline.
 
-**Live URL**: TBD (deploy ke Coolify pending)
-**Repo**: `SwiftApp Dev/qalbu-api/` + `SwiftApp Dev/qalbu-app/`
+**Live URL**: https://qalbu-api.swiftapps.my (API ✅) | https://qalbu.swiftapps.my (Frontend ✅)
+**Repo**: `adamsalehuddin91/qalbu` (monorepo — `api/` + `app/`)
 
 ---
 
@@ -33,12 +33,19 @@ Decoupled architecture: Laravel headless API + React PWA + n8n automation pipeli
 - [x] Session 1 — Laravel backend (migration, model, service, controller, middleware, routes)
 - [x] Session 2 — React frontend (WisdomCard, App.jsx, ShareEngine, BookmarkDrawer, PWA)
 - [x] Session 3 — n8n workflow JSON (import-ready)
-- [ ] Deploy backend ke Coolify
-- [ ] Deploy frontend ke Coolify / Vercel
-- [ ] Import n8n workflow + set env vars
-- [ ] Add Gemini API credentials dalam n8n
-- [ ] Generate icon-192.png + icon-512.png (PWA icons)
+- [x] Splash screen + tagline "Siraman Rohani Harian"
+- [x] WisdomCard v2 — Arabic text + Maksud + Pengajaran
+- [x] Category filter (Tawakal/Sabar/Rezeki/Syukur)
+- [x] n8n — Sunnah.com + Al-Quran Cloud combo
+- [x] Screenshot generator (shots.so + social media formats)
+- [x] Facebook + Threads post drafts dengan hashtag
+- [x] Deploy backend ke Coolify — https://qalbu-api.swiftapps.my ✅
+- [x] Deploy frontend ke Coolify — https://qalbu.swiftapps.my ✅
+- [x] Generate icon-192.png + icon-512.png (PWA icons) ✅
+- [x] n8n workflow fixed — Gemini HTTP Request (bukan LangChain) ✅
+- [ ] Import n8n workflow ke https://n8n.atokcloud.com + set GEMINI_API_KEY + SUNNAH_API_KEY
 - [ ] Test end-to-end: n8n → Laravel → React
+- [ ] Post ke Facebook + Threads bila siap
 
 ---
 
@@ -125,8 +132,60 @@ QALBU_N8N_TOKEN=your-secret (sama dengan N8N_INGEST_TOKEN)
 - 409 duplicate handling built-in
 - `n8n/SETUP.md` guide
 
+### 2026-04-12 — Session 4 (marketing prep)
+
+**Tagline update**: "Santuan Jiwa Harian" → "Siraman Rohani Harian"
+**WisdomCard v2**: Arabic text + Maksud + Pengajaran sections
+**Category colours**: Tawakal=blue, Sabar=purple, Rezeki=green, Syukur=amber
+**n8n upgrade**: Sunnah.com API + Al-Quran Cloud (replace MuftiWP RSS)
+**Screenshot generator**: Puppeteer + Sharp, shots.so format (390×844) + social formats
+**Social posts**: Facebook + Threads drafts dengan hashtag siap
+**Tagline confirmed**: Qalbu — Siraman Rohani Harian
+
 **Next steps:**
-- Deploy ke Coolify
+- Deploy ke Coolify (backend + frontend)
 - Generate PWA icons (icon-192.png, icon-512.png)
-- Import n8n workflow + set env vars + Gemini credentials
-- Test full pipeline end-to-end
+- Import n8n workflow + Gemini credentials
+- Post ke Facebook + Threads bila live
+
+### 2026-04-20 — Session 6 (Frontend Deploy + n8n Fix)
+
+**Frontend LIVE ✅**
+- Dockerfile + nginx.conf + .dockerignore added to `app/`
+- PWA icons generated: icon-192.png + icon-512.png
+- 4 Coolify deploy errors fixed iteratively:
+  - `npm ci` → `npm install` (Windows/Linux lock file mismatch)
+  - Remove `puppeteer`/`sharp` dari devDeps (native packages, Linux @emnapi crash)
+  - Add `.dockerignore` (node_modules overwrite issue)
+- Frontend live: https://qalbu.swiftapps.my ✅
+
+**n8n Workflow Fixed ✅**
+- Old node `lmChatGoogleGemini` (LangChain) → replaced dengan HTTP Request ke Gemini REST API
+- Add `GEMINI_API_KEY` sebagai n8n Variable (sama dengan homelab key)
+- Commits: `6251945`, `ced38ca`, `9f64113`, `d4758eb`, `b6b6988`, `3a690e3`
+
+**Coolify Deploy Template Created**
+- `insights/templates/coolify-frontend-deploy.md` — template standard untuk semua future frontend deploys
+
+**Next steps:**
+- Import updated workflow JSON ke n8n.atokcloud.com
+- Set Variables: GEMINI_API_KEY + SUNNAH_API_KEY + QALBU_API_URL + QALBU_N8N_TOKEN
+- Test execute workflow → check wisdom masuk ke DB
+- Post ke Facebook + Threads
+
+### 2026-04-19–20 — Session 5 (Deploy Sprint)
+
+**Coolify Deploy — Backend API** ✅
+- Fixed 6 sequential errors: mkdir storage dirs, remove view:cache, domain rename, Traefik port 80, DB host UUID, opcache OOM
+- Domain renamed: `api.qalbu.swiftapps.my` → `qalbu-api.swiftapps.my` (Cloudflare wildcard coverage)
+- DB_HOST = `hgkcow04ogok8ggw8ocks48s` (Coolify internal UUID hostname)
+- N8N_INGEST_TOKEN = `JJchTy6EKrUSHZUPAC3NEQs_rEfobP6gBX2_H1mJJ1IHI9tqKSJSLzvT2-mZEQUl`
+- Added `/api/health` endpoint → `{"status":"ok"}` ✅
+- Commits: `16c83b6`, `29f6bc9`, `f4b1955`, `b7de2dd`
+- API live: https://qalbu-api.swiftapps.my/api/health ✅
+
+**Next steps:**
+- Deploy `app/` frontend ke Coolify (base dir = `app`, domain = `qalbu.swiftapps.my`)
+- Cloudflare DNS A record untuk `qalbu.swiftapps.my`
+- Import n8n workflow + set Gemini + Sunnah API credentials
+- Generate PWA icons (icon-192.png + icon-512.png)
