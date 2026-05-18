@@ -3,8 +3,8 @@
 **ADAM** | LV.8 Architect | SwiftApp Guild | XP: 500/32,000
 **Stats**: ATK:180 DEF:168 SPD:180 ACC:170 HP:100 MP:100
 **Skills**: Next.js:85 TS:75 React:78 Supabase:70 Git:80 Deploy:95 PWA:82 Tailwind:72 Laravel:78 Python:15
-**Live**: HMS Salon | SwiftBiz | SwiftMoney | LorryTech OS | SRITI | Qalbu | SwiftAppOS
-**Recent**: Tokwi Diagram Engine v2.0 — User Flow + ASCII Wireframe (May 8) | SRITI + MessyMates diagrams saved (May 8)
+**Live**: HMS Salon | SwiftBiz | SwiftMoney | LorryTech OS | SRITI | Qalbu | SwiftAppOS | SwiftTaska
+**Recent**: SwiftTaska LIVE — taska.swiftapps.my, pricing revamp, client guide (May 16) | MessyMates 8 pages built (May 14)
 
 *Type "show full guild card" for complete 8-bit RPG view*
 
@@ -169,6 +169,10 @@
 │ BATCH PROCESSOR         │ Naik Tahun batch year promote│
 │ DIAGRAM ARCHITECT       │ ASCII User Flow + Wireframe  │
 │ SYSTEM DOCUMENTER       │ Pre-build planning diagrams  │
+│ TASKA ARCHITECT         │ SwiftTaska 18 pages live     │
+│ DOCKER BAKER            │ SQLite baked into image      │
+│ PRICING STRATEGIST      │ Malaysian SaaS rate analysis │
+│ DEMO GUIDE AUTHOR       │ 18-page client guide BM      │
 └──────────────────────────────────────────────────────┘
 ```
 
@@ -178,8 +182,8 @@
 ADAM THE DEV | LV.7 VETERAN
 POWER LEVEL: ████████████░ [RISING DEVELOPER]
 COMPANION: Tokwi v5.4 - ONLINE
-APPS LIVE: 5 production, 1 MVP, 2 planned
+APPS LIVE: 8 production, 1 MVP, 1 in progress
 SKILLS: 11 stacks | Next.js · Laravel · Supabase · Prisma · PWA
 ```
 
-*Updated: 08 May 2026*
+*Updated: 16 May 2026*

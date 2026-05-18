@@ -1,7 +1,7 @@
 # SwiftTaska — Project File
 
-**Status**: 🟡 DEMO READY — 18 pages complete, local dev only
-**Last Accessed**: 2026-05-16
+**Status**: 🟢 LIVE — taska.swiftapps.my deployed, demo-ready
+**Last Accessed**: 2026-05-18
 **Path**: `SwiftApp Dev/SwiftTaska/`
 **Stack**: Next.js 15 + Tailwind CSS v4 + Prisma + SQLite + NextAuth v5
 **Demo URL**: http://localhost:3000
@@ -23,10 +23,16 @@ Target: demo kepada beberapa owner taska swasta dari satu URL showroom.
 
 ## Active Tasks
 
-- [ ] Deploy ke Coolify / Vercel untuk live demo URL (`taska.swiftapps.my`)
-- [ ] Commit semua changes baru (8 pages belum commit)
-- [ ] Fix pricing dalam demo: RM150/250/400 per bulan (brief actual) — sekarang demo tunjuk RM200/280/350
-- [ ] Integrate data realtime dari Prisma DB (sekarang static mock data)
+- [x] Deploy ke taska.swiftapps.my ✅ 2026-05-16 — Coolify + Docker standalone
+- [x] Commit semua changes baru (8 pages) ✅ 2026-05-16 — commit f4d6833
+- [x] Revise pricing — RM200/300/450 monthly + RM3K/5K/8K setup ✅ 2026-05-16
+- [x] Landing page BM + pricing cards ✅ 2026-05-16 — commit 538d39e
+- [x] Update indicator per student (rekod-harian + parent-update) ✅ 2026-05-16 — commit fb7a930
+- [x] Client guide page-by-page ✅ 2026-05-16 — ProjectBrief/SwiftTaska-Client-Guide.md
+- [x] PWA parent view — manifest + service worker + meta tags ✅ 2026-05-18
+- [x] Child switcher untuk parent PWA (parent ada >1 anak) ✅ 2026-05-18
+- [x] Filter by student dalam parent-update feed (filter tabs: Semua/Aktiviti/Makan/Tidur) ✅ 2026-05-18
+- [ ] Integrate real DB lepas demo phase
 - [x] Halaman Tetapan (settings page) ✅ 2026-05-12
 - [x] Test full flow parent PWA `/parent` ✅ 2026-05-12 — semua 5 tabs siap
 - [x] Student Details page (3 tabs) ✅ 2026-05-12
@@ -38,7 +44,44 @@ Target: demo kepada beberapa owner taska swasta dari satu URL showroom.
 
 ## Progress Log
 
-### 2026-05-16
+### 2026-05-18 — PWA + Child Switcher + Activity Filter
+- PWA: `public/manifest.json` + `public/sw.js` + SVG icons + meta tags in root layout
+- Child switcher: `child-context.tsx` (React context) + top bar dropdown, supports N children
+- Activity filter: per-child mock data + filter tabs (Semua / Aktiviti / Makan / Tidur)
+- All parent pages (home, aktiviti, kehadiran) now consume active child from context
+- Build clean ✅
+
+### 2026-05-16 — LIVE DEPLOY + Pricing Revamp + Client Guide SESSION SAVED
+
+**Pricing revamped:**
+- Monthly: RM200 / RM300 / RM450 (naik dari RM150/250/400)
+- Setup: RM3K / RM5K / RM8K (sejajar HMS Salon)
+- Payment: 3-fasa (50% → 30% → 20%), Premium boleh 3 ansuran
+
+**Landing page baru (BM):**
+- Hero + 6 features + 3 pricing cards + payment terms + CTA
+- commit 538d39e
+
+**Docker + Coolify deploy:**
+- Dockerfile multi-stage standalone + Prisma baked-in SQLite
+- Anti-pattern AP-017: jangan run prisma CLI dalam runner — bake DB masa build
+- Anti-pattern AP-018: private GitHub repo blocks Coolify — kena connect GitHub App
+- LIVE: https://taska.swiftapps.my ✅
+- commit c3cecf1, effbd44, 06d4ac7
+
+**Update indicator per student:**
+- Rekod Harian: progress bar + navigator dengan ✅/⭕ per anak + auto-jump selepas simpan
+- Parent Update: "Status Update Hari Ini" panel — nampak siapa dah/belum update
+- commit fb7a930
+
+**Client Guide:**
+- ProjectBrief/SwiftTaska-Client-Guide.md — 18 pages explained, hook ayat, demo urutan 25 min
+
+**Pending next session:**
+- Child switcher untuk parent PWA
+- Filter by student dalam parent-update
+- Real DB integration lepas demo phase
+
 - Project resumed (was position #2)
 
 ### 2026-05-12 — Missing Pages + Parent PWA Complete SESSION SAVED

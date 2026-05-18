@@ -177,6 +177,39 @@ condition ? <><A /><B /></> : <C />
 
 ---
 
+## Docker + Prisma + SQLite
+
+### AP-017 — Jangan run `prisma migrate` dalam Docker runner stage — guna bake approach
+**Salah:**
+```sh
+# startup.sh
+npx prisma migrate deploy   # ❌ prisma CLI tak ada dalam standalone runner
+node server.js
+```
+**Betul:**
+```dockerfile
+# Dalam builder stage — bake DB terus
+RUN DATABASE_URL="file:/app/data/database.db" npx prisma migrate deploy
+RUN DATABASE_URL="file:/app/data/database.db" node prisma/seed.mjs
+# Runner: copy baked DB, terus start
+COPY --from=builder /app/data ./data
+CMD ["node", "server.js"]
+```
+**Kenapa:** Next.js `output: standalone` copy subset node_modules untuk runtime sahaja — Prisma CLI (`prisma/build/index.js`) tak disertakan. `npx prisma` gagal sebab binary tak jumpa. Container crash → Docker restart → infinite loop.
+**Bila guna bake approach:** Demo systems, SQLite apps, mana-mana app yang data boleh reset on restart.
+**Bila perlu runtime migration:** Production apps dengan persistent volume — perlu startup script + copy prisma CLI explicitly dari builder.
+**Project:** SwiftTaska (2026-05-16)
+
+### AP-018 — Private GitHub repo blocks Coolify deployment tanpa GitHub App setup
+**Masalah:** Coolify cuba `git ls-remote https://github.com/...` untuk private repo — gagal dengan `fatal: could not read Username`.
+**Fix pilihan:**
+1. Coolify → Sources → GitHub App → Install → authorize repo (cara betul untuk production)
+2. `gh repo edit [repo] --visibility public` (cara cepat untuk demo/public projects)
+**Kenapa:** Coolify guna HTTPS clone tanpa credentials by default — private repos perlukan GitHub App token atau SSH key.
+**Project:** SwiftTaska (2026-05-16)
+
+---
+
 ## Format Entry Baru
 ```
 ### AP-XXX — [Nama Pendek]
@@ -187,4 +220,4 @@ condition ? <><A /><B /></> : <C />
 ```
 
 ---
-*Last updated: 2026-05-04 | Total anti-patterns: 13*
+*Last updated: 2026-05-16 | Total anti-patterns: 18*

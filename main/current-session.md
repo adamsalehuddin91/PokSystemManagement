@@ -4,10 +4,48 @@
 
 ## Session Status
 
-**Current Session**: MessyMates — Full Build (8 pages) — SESSION SAVED 2026-05-14
-**Session Date**: 2026-05-14
-**Last Saved**: 2026-05-14
-**Previous Session**: SwiftTaska — Missing Pages + Parent PWA Complete (18 pages) — SESSION SAVED 2026-05-12
+**Current Session**: SwiftTaska — LIVE Deploy + Pricing Revamp + Client Guide — SESSION SAVED 2026-05-16
+**Session Date**: 2026-05-16
+**Last Saved**: 2026-05-16
+**Previous Session**: MessyMates — Full Build (8 pages) — SESSION SAVED 2026-05-14
+
+---
+
+## Today's Achievements (2026-05-16) — SwiftTaska LIVE Deploy SESSION SAVED
+
+### SwiftTaska — Live di taska.swiftapps.my ✅
+
+**Pricing revamped:**
+- Monthly: RM200 / RM300 / RM450 (naik dari RM150/250/400)
+- Setup: RM3K / RM5K / RM8K (sejajar HMS Salon RM8K)
+- Payment: 3-fasa (50%→30%→20%), Premium boleh 3 ansuran
+- Reasoning: SwiftTaska ada 3 user roles + parent PWA = lebih value dari HMS Salon
+
+**Landing page baru (BM):** `538d39e`
+- Hero + 6 features + 3 pricing cards + payment terms + CTA WhatsApp
+- Full Malay UI untuk target Malaysian taska owners
+
+**Docker + Coolify deploy:** `c3cecf1` → `effbd44` → `06d4ac7`
+- Dockerfile multi-stage Next.js standalone
+- AP-017: jangan run prisma CLI dalam runner — bake SQLite DB masa build
+- AP-018: private GitHub repo → connect GitHub App atau public repo
+- LIVE: https://taska.swiftapps.my ✅
+
+**Update indicator per student:** `fb7a930`
+- Rekod Harian: progress bar + ✅/⭕ per anak + auto-jump selepas simpan
+- Parent Update: "Status Update Hari Ini" panel — cikgu nampak siapa dah/belum
+
+**Client Guide:** `ProjectBrief/SwiftTaska-Client-Guide.md`
+- 18 pages explained page-by-page dalam BM
+- Hook ayat untuk setiap page + urutan demo 25 minit
+
+**Anti-patterns registered:** AP-017, AP-018
+
+**PENDING next session:**
+- Child switcher untuk parent PWA (parent ada >1 anak)
+- Filter by student dalam parent-update feed
+- Real DB integration lepas demo phase
+- Pitch ke client guna Client Guide + live demo
 
 ---
 
