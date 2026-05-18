@@ -4,7 +4,7 @@
 **Stats**: ATK:180 DEF:168 SPD:180 ACC:170 HP:100 MP:100
 **Skills**: Next.js:85 TS:75 React:78 Supabase:70 Git:80 Deploy:95 PWA:82 Tailwind:72 Laravel:78 Python:15
 **Live**: HMS Salon | SwiftBiz | SwiftMoney | LorryTech OS | SRITI | Qalbu | SwiftAppOS | SwiftTaska
-**Recent**: SwiftTaska LIVE — taska.swiftapps.my, pricing revamp, client guide (May 16) | MessyMates 8 pages built (May 14)
+**Recent**: SwiftTaska PWA + child switcher + activity filter deployed (May 18) | FB post strategy drafted | Sidebar cleanup
 
 *Type "show full guild card" for complete 8-bit RPG view*
 
@@ -173,6 +173,9 @@
 │ DOCKER BAKER            │ SQLite baked into image      │
 │ PRICING STRATEGIST      │ Malaysian SaaS rate analysis │
 │ DEMO GUIDE AUTHOR       │ 18-page client guide BM      │
+│ PWA INSTALLER           │ SwiftTaska parent PWA live   │
+│ CHILD SWITCHER BUILDER  │ Multi-child context switcher │
+│ CONTENT STRATEGIST      │ FB storytelling 3-post system│
 └──────────────────────────────────────────────────────┘
 ```
 
@@ -186,4 +189,4 @@ APPS LIVE: 8 production, 1 MVP, 1 in progress
 SKILLS: 11 stacks | Next.js · Laravel · Supabase · Prisma · PWA
 ```
 
-*Updated: 16 May 2026*
+*Updated: 18 May 2026*

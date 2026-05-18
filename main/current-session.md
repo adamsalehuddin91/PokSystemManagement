@@ -4,10 +4,54 @@
 
 ## Session Status
 
-**Current Session**: SwiftTaska — LIVE Deploy + Pricing Revamp + Client Guide — SESSION SAVED 2026-05-16
-**Session Date**: 2026-05-16
-**Last Saved**: 2026-05-16
-**Previous Session**: MessyMates — Full Build (8 pages) — SESSION SAVED 2026-05-14
+**Current Session**: SwiftTaska — PWA + Child Switcher + Activity Filter + FB Posts — SESSION SAVED 2026-05-18
+**Session Date**: 2026-05-18
+**Last Saved**: 2026-05-18
+**Previous Session**: SwiftTaska — LIVE Deploy + Pricing Revamp + Client Guide — SESSION SAVED 2026-05-16
+
+---
+
+## Today's Achievements (2026-05-18) — SwiftTaska PWA + Child Switcher SESSION SAVED
+
+### SwiftTaska — PWA + Child Switcher + FB Posts ✅
+
+**PWA implemented:**
+- `public/manifest.json` — start_url /parent, theme #2563eb, SVG icons
+- `public/sw.js` — cache-first static, network-first API
+- `src/app/layout.tsx` — viewport export + apple-web-app meta tags
+- SW register dalam parent layout via useEffect
+
+**Child switcher:**
+- `child-context.tsx` — React context, 2 mock children (Nur Alia + Nur Haziq)
+- Top bar dropdown — tap nama → switch child → semua pages update
+- Parent home, aktiviti, kehadiran semua consume active child
+
+**Activity filter:**
+- Aktiviti page — filter tabs: Semua / Aktiviti / Makan / Tidur
+- Per-child mock data dengan data berbeza untuk setiap anak
+- Empty state bila filter kosong
+
+**Fixes:**
+- Viewport full-width fix — buang max-w-sm, guna w-full
+- Sidebar Pakej Semasa card removed
+- Build clean ✅ semua commits
+
+**Commits:**
+- `faa75bd` — feat: parent PWA + child switcher + activity filter
+- `df61136` — fix: parent PWA full-width + viewport meta
+- `de6358a` — fix: remove Pakej Semasa card from sidebar
+
+**Facebook posts drafted:**
+- Portfolio storytelling (3 versions)
+- Taska owner mencari system (3 versions)
+- Demo announcement week (3 versions)
+- Screenshot guide untuk posting
+
+**PENDING next session:**
+- Real DB integration lepas demo phase
+- Child switcher — data sebenar dari DB
+- Demo dengan owner taska (slot minggu ini)
+- MessyMates — Supabase setup + deploy
 
 ---
 
