@@ -1,0 +1,66 @@
+'use client'
+import { useState } from 'react'
+import Link from 'next/link'
+import { Menu, X } from 'lucide-react'
+
+export default function Navbar() {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <nav className="sticky top-0 z-50 bg-white border-b border-teal-50">
+      <div className="max-w-6xl mx-auto px-4 h-20 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-2">
+          <div className="font-extrabold text-2xl tracking-tight">
+            <span className="text-[#ef4444]">M</span>
+            <span className="text-[#3b82f6]">e</span>
+            <span className="text-[#ef4444]">s</span>
+            <span className="text-[#eab308]">s</span>
+            <span className="text-[#ef4444]">y</span>
+            <span className="text-[#3b82f6]">M</span>
+            <span className="text-[#ef4444]">a</span>
+            <span className="text-[#eab308]">t</span>
+            <span className="text-[#ef4444]">e</span>
+            <span className="text-[#3b82f6]">s</span>
+          </div>
+        </Link>
+
+        <div className="hidden md:flex items-center gap-8 text-[15px] font-medium text-gray-600">
+          <Link href="/#about" className="hover:text-orange-500 transition-colors">About Us</Link>
+          <Link href="/#programs" className="hover:text-orange-500 transition-colors flex items-center gap-1">Our Programs <span className="text-[10px]">▼</span></Link>
+          <Link href="/#parties" className="hover:text-orange-500 transition-colors">Parties</Link>
+          <Link href="/#shop" className="hover:text-orange-500 transition-colors">Shop SENSA</Link>
+          <Link href="/#blog" className="hover:text-orange-500 transition-colors">Blog</Link>
+          <Link href="/#contact" className="hover:text-orange-500 transition-colors">Contact</Link>
+          <Link
+            href="/booking"
+            className="bg-pink-500 text-white px-5 py-2.5 rounded-full hover:bg-pink-600 transition-colors font-semibold"
+          >
+            Book a Session
+          </Link>
+        </div>
+
+        <button className="md:hidden" onClick={() => setOpen(!open)}>
+          {open ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {open && (
+        <div className="md:hidden bg-white border-t border-teal-50 px-4 py-4 flex flex-col gap-4 text-sm font-medium">
+          <Link href="/#about" onClick={() => setOpen(false)} className="text-gray-700">About Us</Link>
+          <Link href="/#programs" onClick={() => setOpen(false)} className="text-gray-700">Our Programs</Link>
+          <Link href="/#parties" onClick={() => setOpen(false)} className="text-gray-700">Parties</Link>
+          <Link href="/#shop" onClick={() => setOpen(false)} className="text-gray-700">Shop SENSA</Link>
+          <Link href="/#blog" onClick={() => setOpen(false)} className="text-gray-700">Blog</Link>
+          <Link href="/#contact" onClick={() => setOpen(false)} className="text-gray-700">Contact</Link>
+          <Link
+            href="/booking"
+            onClick={() => setOpen(false)}
+            className="bg-pink-500 text-white px-4 py-2 rounded-full text-center font-semibold"
+          >
+            Book a Session
+          </Link>
+        </div>
+      )}
+    </nav>
+  )
+}
