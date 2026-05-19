@@ -73,6 +73,7 @@ Full spec: `enhanced-features/continuous-learning.md`
 | 15 | "deploy checklist", "ready to deploy", "pre-deploy", "deploy [project]" | `enhanced-features/deployment-checklist.md` |
 | 16 | "migration check", "check migration", "safe to migrate", "run migration" | `enhanced-features/migration-safety.md` |
 | 21 | "generate images for [project]", "generate images", "buat gambar" | `enhanced-features/image-generator.md` |
+| 22 | "show pending", "apa pending", "pending semua", "what's pending", "show blocked", "show demos", "client status" | `enhanced-features/show-pending.md` |
 | 17 | "draft post", "facebook post", "post untuk [product]", "social post", "hook client facebook" | `enhanced-features/facebook-client-hook.md` |
 | 18 | "price check", "berapa charge", "quote client" | `enhanced-features/pricing-guide.md` |
 | 19 | "evolve", "self evolve", "update anti-pattern", "tambah anti-pattern", "show anti-patterns", "show learnings" | `enhanced-features/self-evolution.md` |

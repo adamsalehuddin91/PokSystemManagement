@@ -94,7 +94,16 @@ Append to `main/current-session.md` under `## PENDING / REMIND ADAM` only if iss
 - ⚠️ AUTO-REVIEW: [N] issue(s) in [file] — run "check before commit" before next push
 ```
 
-### 7. Confirm to user
+### 7. Refresh quick-ref.md (if new insights added this session)
+
+If any anti-pattern, pattern, or cross-project learning was added this session:
+```
+Edit insights/quick-ref.md
+```
+Update the relevant table row(s) — keep to top 5 per section.
+Update "Updated:" date at bottom of file.
+
+### 8. Confirm to user
 Report back:
 - What was saved (files updated)
 - Latest commit hash + branch

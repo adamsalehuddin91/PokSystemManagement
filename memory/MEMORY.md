@@ -40,11 +40,19 @@
 
 ## Knowledge Registries (auto-growing)
 
-| File | Count | Auto-trigger |
-|------|-------|-------------|
-| `insights/error-registry.md` | 11 errors | Adam share error |
-| `insights/anti-patterns.md` | 11 patterns | Bug di-fix |
-| `insights/patterns.md` | 9 patterns | Pattern berjaya |
-| `insights/cross-project-learnings.md` | 12 lessons | Cross-project insight |
+| File | Auto-trigger | Quick access |
+|------|-------------|-------------|
+| `insights/error-registry.md` | Adam share error | Check before fixing bugs |
+| `insights/anti-patterns.md` | Bug di-fix | Check before commit |
+| `insights/patterns.md` | Pattern berjaya | Apply to new projects |
+| `insights/cross-project-learnings.md` | Cross-project insight | Session start |
+| `insights/quick-ref.md` | Auto-updated on "save" | **Session start — baca ini** |
 
 Full learning spec: `enhanced-features/continuous-learning.md`
+
+## Client & Project Tracking
+
+| File | Purpose |
+|------|---------|
+| `projects/client-status.md` | Client status, demos pending, blockers, deposits |
+| `projects/project-list.md` | LRU project list (10 active max) |

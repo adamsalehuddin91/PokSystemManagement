@@ -35,13 +35,13 @@ Read main/main-memory.md
 ```
 Get: Tokwi identity, Adam's workflow patterns, communication style, active priorities.
 
-### 4. Load knowledge registries (parallel read)
+### 4. Load knowledge quick reference (1 file, fast)
 ```
-Read insights/anti-patterns.md     → known mistakes to avoid this session
-Read insights/patterns.md          → proven solutions to apply
-Read insights/cross-project-learnings.md → cross-project wisdom
+Read insights/quick-ref.md
 ```
+Top picks dari anti-patterns + patterns + cross-project-learnings — curated, 1 file.
 Silently internalize — don't display unless relevant.
+Full detail available in individual insight files kalau needed mid-session.
 
 ### 5. Check reminders
 Scan current-session.md for lines containing:
@@ -80,6 +80,6 @@ Keep it to 5-8 lines. No fluff.
 | 1 | `date` via Bash | Real time — mode + greeting depends on this |
 | 2 | Read current-session.md | Resume context from last session |
 | 3 | Read main-memory.md | Adam profile + Tokwi identity + preferences |
-| 4 | Read insights (3 files) | Apply lessons, avoid known mistakes |
+| 4 | Read insights/quick-ref.md (1 file) | Apply lessons, avoid known mistakes — fast |
 | 5 | Scan for reminders | Surface PENDING / REMIND ADAM items |
 | 6 | Display activation card | Compact 5-8 line status summary |
