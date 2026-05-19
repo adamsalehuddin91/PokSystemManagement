@@ -5,9 +5,9 @@
 Boutique children's activity brand website + basic CRM. Public landing page showcasing sensory play, art classes, birthday packages, and SENSA products. Admin panel for inquiry/booking management, program CRUD, and product CRUD. Phase 1 MVP.
 
 ## Project Details
-- **Status**: 🔵 IN PROGRESS — 8 pages built, Supabase setup pending
+- **Status**: 🟡 ON HOLD — UI complete, waiting client assets
 - **Registered**: 2026-05-06
-- **Last Accessed**: 2026-05-14
+- **Last Accessed**: 2026-05-19
 - **Client**: MessyMates (children's activity brand)
 - **Quote**: RM1,500 (50% deposit RM750 before start)
 - **Timeline**: 10–14 working days after deposit received
@@ -87,4 +87,9 @@ Boutique children's activity brand website + basic CRM. Public landing page show
   - Project scaffolded: `SwiftApp Dev/messymates/` — Next.js 16 + Tailwind + Supabase + Recharts
   - Pages built: `/` + `/booking` + `/booking/checkout` + `/admin/login` + `/admin/inquiries` + `/admin/customers/[id]` + `/admin/programs` + `/admin/products`
   - Dev server running: http://localhost:3000 ✅
-  - Pending: Supabase setup + client assets + deploy
+- 2026-05-19: UI color refactor + image replacement complete. Commit `04bd88c`.
+  - Color palette: multi-color playful (orange hero, green CTA, pink nav, amber SENSA)
+  - All images: local ChatGPT-generated PNGs (zero Unsplash dependency)
+  - Status: ON HOLD — waiting client assets (logo, hero banner, domain)
+  - Domain setup plan: client domain → Cloudflare (Adam's account) → Vercel CNAME
+  - Pending: logo + hero banner + domain → then Supabase setup → admin wiring → deploy

@@ -10,7 +10,7 @@
 | # | Project | Status | Last Accessed | File |
 |---|---------|--------|---------------|------|
 | 1 | SwiftTaska | 🟢 LIVE — PWA installed, child switcher, activity filter, demo ready | 2026-05-18 | `active/swifttaska.md` |
-| 2 | MessyMates | 🔵 IN PROGRESS — 8 pages built, dev server running, Supabase pending | 2026-05-14 | `active/messymates.md` |
+| 2 | MessyMates | 🟡 ON HOLD — UI + images done, waiting client assets (logo, banner, domain) | 2026-05-19 | `active/messymates.md` |
 | 3 | LorryTech OS | 🟢 LIVE — Customers + Dashboard + Multi-company deployed | 2026-05-07 | `active/lorrytech-os.md` |
 | 4 | SRITI School System | 🟢 LIVE — sritialfattah.swiftapps.my, user flow diagram saved | 2026-05-08 | `active/sriti-school.md` |
 | 5 | SwiftApp OS | 🟢 LIVE — billing fixes deployed, stat cards accurate | 2026-05-06 | `active/swiftappos.md` |
