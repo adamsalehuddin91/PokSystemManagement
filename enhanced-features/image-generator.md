@@ -81,6 +81,43 @@ Generate them one by one:
 **Midjourney** — output individual prompts (one per `/imagine`).
 Ask Adam which tool before outputting if not specified.
 
+### 4b. Auto-generate PowerShell Rename Script
+
+Selepas batch prompt, **automatically output rename script** — Adam tak perlu manual rename.
+
+Format output:
+
+```
+═══════════════════════════════════════
+📋  RENAME SCRIPT — [Project Name]
+Save to Downloads folder, run after ChatGPT downloads complete
+═══════════════════════════════════════
+
+# Run in PowerShell dari folder Downloads:
+$folder = "$env:USERPROFILE\Downloads"
+$prefix = "ChatGPT Image"
+
+Rename-Item "$folder\${prefix}*.png" -NewName { ... } # auto-generated per project
+
+# Or manual map (safer):
+$map = @{
+  "*_(1)*" = "hero-banner.png"
+  "*_(2)*" = "program-sensory-play.png"
+  "*_(3)*" = "program-art-class.png"
+  # ... etc per image list
+}
+
+foreach ($pattern in $map.Keys) {
+  $file = Get-ChildItem $folder -Filter $pattern | Select-Object -First 1
+  if ($file) { Rename-Item $file.FullName (Join-Path $folder $map[$pattern]) }
+}
+
+Write-Host "Done! Move renamed files to: SwiftApp Dev\[project]\public\images\[project]\"
+```
+
+**Rule:** Script sequence number `(1)`, `(2)`, `(3)`... maps to image order dalam batch prompt.
+Output script sekali dengan batch prompt — satu copy-paste block untuk ChatGPT, satu untuk PowerShell.
+
 ### 5. After Adam generates images
 
 Adam saves images to: `public/images/[project-name]/`

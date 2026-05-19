@@ -1,18 +1,24 @@
 # Tokwi MemoryCore — Master Index
 *Portable — disimpan dalam external hard disk. Cucuk ke mana-mana PC, terus available.*
 
+> ⚠️ Source of truth ada sini (E:\). C:\Users\Admin\.claude\ adalah PC-specific — jangan rely pada tu.
+
 ---
 
-## System Info
-- **Activate**: "Tokwi" → CLAUDE.md dispatch
-- **Session RAM**: `main/current-session.md`
-- **Core identity**: `main/main-memory.md`
-- **Projects**: `projects/project-list.md` + `projects/coding-projects/active/`
-- **Knowledge**: `insights/` folder
-- **Commit signature**: `Tokwi - SwiftApps OS Ecosystem`
-- **Git config**: user.email=adamsalehuddin91@gmail.com, user.name=Adam Salehuddin
+## Sistem & Navigation
+- **Tokwi identity + Adam full profile** → `main/main-memory.md` *(stable, jarang berubah)*
+- **Session RAM** → `main/current-session.md` *(reset setiap session, max 3 sessions)*
+- **Session archive** → `main/session-archive/` *(compressed, older sessions)*
+- **Projects** → `projects/project-list.md` + `projects/coding-projects/active/`
+- **Knowledge registries** → `insights/` folder
 
-> ⚠️ Ini source of truth. C:\Users\Admin\.claude\ adalah PC-specific — jangan rely pada tu.
+### Rule: Adam facts baru pergi mana?
+| Jenis fact | Simpan di |
+|------------|-----------|
+| Cara Adam bekerja, personality, preferences | `main/main-memory.md` |
+| Specific life facts (career, infrastructure, tools) | `memory/user_*.md` ← sini |
+| Behavioral corrections / confirmations | `memory/feedback_*.md` |
+| Pricing, templates, external data | `memory/reference_*.md` |
 
 ---
 
