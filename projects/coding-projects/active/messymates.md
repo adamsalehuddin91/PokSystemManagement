@@ -7,7 +7,7 @@ Boutique children's activity brand website + basic CRM. Public landing page show
 ## Project Details
 - **Status**: 🟡 ON HOLD — UI complete, waiting client assets
 - **Registered**: 2026-05-06
-- **Last Accessed**: 2026-05-19
+- **Last Accessed**: 2026-05-20
 - **Client**: MessyMates (children's activity brand)
 - **Quote**: RM1,500 (50% deposit RM750 before start)
 - **Timeline**: 10–14 working days after deposit received
@@ -93,3 +93,5 @@ Boutique children's activity brand website + basic CRM. Public landing page show
   - Status: ON HOLD — waiting client assets (logo, hero banner, domain)
   - Domain setup plan: client domain → Cloudflare (Adam's account) → Vercel CNAME
   - Pending: logo + hero banner + domain → then Supabase setup → admin wiring → deploy
+- 2026-05-20 (AM): Resumed project. Refactored UI styling to a "Playful Boutique Premium" theme. Added Fredoka display font, sticky glassmorphism Navbar, float keyframe animations for bubbles/images, custom hover scaling on cards/CTAs, and soft glow shadows. Sanitized Supabase URL checking in lib/supabase.ts. Created the hardcoded interactive SENSA Shop page (app/shop/page.tsx) and its redirect route (/shop/playbooks). Refactored both the Booking Session selection page (app/booking/page.tsx) and the Booking Checkout page (app/booking/checkout/page.tsx) to align with the new visual aesthetic. Verifications passed (TypeScript typecheck 100% OK).
+- 2026-05-20 (Eve): Birthday package functional gaps fixed (6 issues). Parties page: dynamic date default (14d from now), time slot toggle UI, venue field, guest count warning with auto-upgrade button, deposit summary (Basic RM200 / Premium RM300). Checkout page: birthday-specific section (venue, arrival time, special requests), deposit breakdown in payment summary, conditional button label. Bonus: birthday banner link fixed. Changes uncommitted — pending commit.

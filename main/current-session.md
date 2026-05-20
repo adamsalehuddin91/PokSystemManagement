@@ -4,10 +4,81 @@
 
 ## Session Status
 
-**Current Session**: MessyMates Color Refactor + Tokwi Memory Improvements — SESSION SAVED 2026-05-19
-**Session Date**: 2026-05-19
-**Last Saved**: 2026-05-19
-**Previous Session**: SwiftTaska — PWA + Child Switcher + Activity Filter — 2026-05-18
+**Current Session**: MessyMates Birthday Package Refactor — SESSION SAVED 2026-05-20
+**Session Date**: 2026-05-20
+**Last Saved**: 2026-05-20
+**Previous Session**: MessyMates Development — 2026-05-20
+
+---
+
+## Today's Achievements (2026-05-20 Night) — SwiftStay v2 Scaffold + Landing Page
+
+### SwiftStay v2 — Full Scaffold Done ✅
+
+**Project registered** at LRU #1. Tokwi Homelab OS archived.
+
+**ERD + User Flow generated** — 7 tables, multi-tenant from day 1.
+
+**Wireframes screenshotted** — Puppeteer → 5 PNG files for Facebook posts.
+
+**Facebook posts drafted** — 3 versions for social media.
+
+**Full project scaffolded:**
+- `lib/supabase.ts` — URL guard pattern (same as MessyMates)
+- `app/page.tsx` — Landing page: Hero, Highlights, Gallery, Pricing, Calendar, Rules, CTA
+- `app/book/page.tsx` — Booking form with sticky summary
+- `app/confirmation/page.tsx` — Booking confirmed + WA button
+- `app/admin/login/page.tsx` — Supabase Auth login
+- `app/admin/page.tsx` — Dashboard KPIs + upcoming check-ins
+- `app/admin/bookings/` — List + detail with payment recording
+- `app/admin/guests/` — List + profile
+- `app/admin/calendar/page.tsx` — Month calendar + block dates
+- `app/admin/units/page.tsx` — Unit CRUD
+
+**Images generated (ChatGPT DALL-E 3) + renamed:**
+- `hero-exterior.jpg`, `interior-living.jpg`, `room-bilik-a.jpg`, `room-bilik-b.jpg`
+- `pool.jpg`, `kitchen.jpg`, `surroundings.jpg`, `og-image.jpg`
+
+**Gallery section added** to landing page — 7 images, hover zoom effect.
+
+**Calendar mini-fied** — compact display, teaser only with "Semak tarikh →" link.
+
+**Pattern saved:** P-010 — ChatGPT Image Batch one-by-one format.
+
+**Bug fixes:**
+- Supabase URL guard pattern: `rawUrl && rawUrl.startsWith('http') ? rawUrl : 'https://placeholder.supabase.co'`
+- `export const dynamic = 'force-dynamic'` on admin/login page
+- Cleared `.next` cache when turbopack served stale chunks
+
+**PENDING:**
+- Wire Supabase real data to all admin pages
+- Create Supabase project → fill `.env.local`
+- Run SQL schema in Supabase dashboard
+- Deploy to Coolify → stay.swiftapps.my
+- Add OG meta tag (`og-image.jpg`) to `layout.tsx`
+
+---
+
+## Today's Achievements (2026-05-20 Eve) — MessyMates Birthday Package Fixes
+
+### MessyMates — Birthday Package Refactor ✅
+
+**6 functional gaps fixed** in `app/parties/page.tsx` + `app/booking/checkout/page.tsx` + `app/booking/page.tsx`:
+
+| # | Fix | Detail |
+|---|-----|--------|
+| 1 | Date hardcoded → dynamic | Default 14 days from now, `min` blocks past dates |
+| 2 | Venue field added | Parties form + passed via URL to checkout |
+| 3 | Time slot UI | Toggle buttons (10AM/12PM/2PM/4PM) — state existed, no UI before |
+| 4 | Guest count warning | Basic + >15 kids → amber warning + quick upgrade button |
+| 5 | Birthday checkout section | Venue display, arrival time note (45min early), special requests textarea |
+| 6 | Deposit logic | Basic RM200 / Premium RM300, balance shown, button label updated |
+
+**Bonus:** Birthday banner in `/booking` link fixed `/#parties` → `/parties`
+
+**Uncommitted** — changes in working tree, not yet committed.
+
+**Decided:** No need to install `frontend-design` Claude plugin — Tokwi's context-aware approach more precise for existing codebase.
 
 ---
 
@@ -119,13 +190,17 @@
 
 ## Active Project
 
-**Name:** MessyMates (Position #2)
-**Status:** 🔵 ON HOLD — waiting client assets
-**Path:** `SwiftApp Dev/messymates/`
-**Dev:** http://localhost:3000
+**Name:** SwiftStay v2 (Position #1)
+**Status:** 🟡 IN PROGRESS — Landing page + admin scaffold done, Supabase wiring pending
+**Path:** `SwiftApp Dev/swiftstay-v2/`
+**Stack:** Next.js + Supabase (PostgreSQL) + Coolify
+**Concept:** CRM + landing page untuk homestay/rumah sewa owners Malaysia
+**Next:** Wire Supabase real data → create Supabase project → fill .env.local → deploy Coolify
+
+### MessyMates (Position #2 — ON HOLD)
 **Client:** Khairul Anuar | Deposit: RM750 received
 **Pending from client:** Logo + hero banner + domain
-**Next:** Supabase setup → admin wiring → Vercel deploy
+**Next (bila client respond):** Supabase setup → admin wiring → Vercel deploy
 
 ---
 

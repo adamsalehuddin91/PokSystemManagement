@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SwiftStay v2 Wireframes</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0f1117;
+    font-family: 'Courier New', 'Consolas', monospace;
+    color: #e2e8f0;
+    padding: 40px;
+  }
+  .page {
+    width: 900px;
+    margin: 0 auto 80px auto;
+    background: #1a1d27;
+    border: 1px solid #2d3148;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+  }
+  .page-header {
+    background: #12141f;
+    padding: 16px 24px;
+    border-bottom: 1px solid #2d3148;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot-red { background: #ff5f57; }
+  .dot-yellow { background: #febc2e; }
+  .dot-green { background: #28c840; }
+  .page-title {
+    margin-left: 12px;
+    font-size: 13px;
+    color: #64748b;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.5px;
+  }
+  .badge {
+    margin-left: auto;
+    background: #1e3a5f;
+    color: #60a5fa;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-family: sans-serif;
+  }
+  .wireframe {
+    padding: 32px 40px;
+    white-space: pre;
+    font-size: 13px;
+    line-height: 1.65;
+    color: #cbd5e1;
+    overflow-x: auto;
+  }
+  .section-label {
+    background: #0f1117;
+    text-align: center;
+    padding: 60px 0 20px 0;
+    font-family: sans-serif;
+    font-size: 11px;
+    color: #475569;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+  /* Syntax highlights */
+  .wireframe .highlight-blue { color: #60a5fa; }
+  .wireframe .highlight-green { color: #4ade80; }
+  .wireframe .highlight-orange { color: #fb923c; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: LANDING -->
+<div class="section-label">01 — Public Landing Page</div>
+<div class="page" id="page-landing">
+  <div class="page-header">
+    <div class="dot dot-red"></div>
+    <div class="dot dot-yellow"></div>
+    <div class="dot dot-green"></div>
+    <span class="page-title">swiftstay.my / (Landing Page)</span>
+    <span class="badge">Public · Guest</span>
+  </div>
+  <div class="wireframe">┌──────────────────────────────────────────────────────────────────────────┐
+│ 🏠 SwiftStay                                          [Owner Login]      │
+├──────────────────────────────────────────────────────────────────────────┤
+│                                                                          │
+│   ┌──────────────────────────────────────────────────────────────────┐   │
+│   │           [ HERO IMAGE — property exterior / interior ]          │   │
+│   │                                                                  │   │
+│   │        Vila Bayu Desaru                                          │   │
+│   │        Penginapan selesa untuk keluarga anda                     │   │
+│   │                                                                  │   │
+│   │        [  📅 Book Sekarang  ]     [  💬 WhatsApp Kami  ]        │   │
+│   └──────────────────────────────────────────────────────────────────┘   │
+│                                                                          │
+│   ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌───────────┐  │
+│   │  📶 WiFi     │  │  🚗 Parking  │  │  🏊 Pool     │  │ 👨‍👩‍👧 8 Pax │  │
+│   │  Percuma     │  │  Percuma     │  │  Kolam Renang│  │ Max Tetamu│  │
+│   └──────────────┘  └──────────────┘  └──────────────┘  └───────────┘  │
+│                                                                          │
+├──────────────────────────────────────────────────────────────────────────┤
+│  HARGA PENGINAPAN                                                        │
+│                                                                          │
+│  ┌───────────────────┐   ┌───────────────────┐   ┌───────────────────┐  │
+│  │  Isnin – Khamis   │   │  Jumaat – Ahad    │   │  Cuti Umum / Peak │  │
+│  │                   │   │                   │   │                   │  │
+│  │   RM 350 / malam  │   │   RM 450 / malam  │   │   RM 550 / malam  │  │
+│  └───────────────────┘   └───────────────────┘   └───────────────────┘  │
+│                                                                          │
+├──────────────────────────────────────────────────────────────────────────┤
+│  KETERSEDIAAN                                        [ ◄  Mei 2026  ► ] │
+│                                                                          │
+│   Isn    Sel    Rab    Kam    Jum    Sab    Ahad                        │
+│                                     1      2      3                     │
+│    4      5      6      7     8      9     10                           │
+│   (✓)    (✓)   (✗)    (✗)   (✓)    (✗)   (✗)                          │
+│   11     12     13     14    15     16     17                           │
+│   (✓)    (✓)    (✓)    (✓)   (✓)    (✗)   (✗)                          │
+│                                                                          │
+│   (✓) Tersedia    (✗) Ditempah / Disekat                               │
+│                                                                          │
+├──────────────────────────────────────────────────────────────────────────┤
+│  PERATURAN RUMAH                                                         │
+│  ✓ Check-in: 3PM    ✓ Check-out: 12PM                                   │
+│  ✓ Tiada haiwan peliharaan    ✓ Tiada majlis bising selepas 11PM        │
+│                                                                          │
+├──────────────────────────────────────────────────────────────────────────┤
+│  LOKASI                                                                  │
+│  ┌────────────────────────────────────────────────────────────────────┐  │
+│  │   [ Google Maps Embed ]                                            │  │
+│  │   Jalan Pantai 5, Desaru, Johor                                    │  │
+│  └────────────────────────────────────────────────────────────────────┘  │
+│                                                                          │
+│              [  📅 Book Sekarang — Tanya Ketersediaan  ]                │
+│                                                                          │
+├──────────────────────────────────────────────────────────────────────────┤
+│  © SwiftStay · Powered by SwiftApps                                     │
+└──────────────────────────────────────────────────────────────────────────┘</div>
+</div>
+
+<!-- PAGE 2: BOOKING FORM -->
+<div class="section-label">02 — Booking Inquiry Form</div>
+<div class="page" id="page-book">
+  <div class="page-header">
+    <div class="dot dot-red"></div>
+    <div class="dot dot-yellow"></div>
+    <div class="dot dot-green"></div>
+    <span class="page-title">swiftstay.my/book</span>
+    <span class="badge">Public · Guest</span>
+  </div>
+  <div class="wireframe">┌──────────────────────────────────────────────────────────────────────────┐
+│ 🏠 SwiftStay                                          [Owner Login]      │
+├──────────────────────────────────────────────────────────────────────────┤
+│                                                                          │
+│  ← Balik ke Laman Utama          BORANG TEMPAHAN                        │
+│                                                                          │
+│  ┌──────────────────────────────────────┐  ┌───────────────────────┐    │
+│  │  MAKLUMAT TETAMU                     │  │  RINGKASAN            │    │
+│  │                                      │  │  ─────────────────    │    │
+│  │  Nama Penuh *                        │  │  Vila Bayu Desaru     │    │
+│  │  [__________________________________]│  │                       │    │
+│  │                                      │  │  Check-in             │    │
+│  │  No. IC / Passport *                 │  │  15 Jun 2026          │    │
+│  │  [__________________________________]│  │                       │    │
+│  │                                      │  │  Check-out            │    │
+│  │  No. WhatsApp *                      │  │  17 Jun 2026          │    │
+│  │  [__________________________________]│  │                       │    │
+│  │                                      │  │  Bil Malam: 2         │    │
+│  │  Email (Pilihan)                     │  │  Bil Tetamu: 6        │    │
+│  │  [__________________________________]│  │  ─────────────────    │    │
+│  │                                      │  │  Anggaran Harga       │    │
+│  │  Tarikh Check-in *   Check-out *     │  │  2 × RM 450           │    │
+│  │  [📅 __________]     [📅 __________]│  │  = RM 900             │    │
+│  │                                      │  │                       │    │
+│  │  Bil Tetamu *                        │  │  * Harga boleh berubah│    │
+│  │  [ 1-2 ]  [ 3-4 ]  [ 5-6 ]  [ 7-8 ]│  │  Owner akan confirm   │    │
+│  │                                      │  │  via WhatsApp         │    │
+│  │  Catatan Khas (Pilihan)              │  └───────────────────────┘    │
+│  │  [__________________________________]│                               │
+│  │  [__________________________________]│                               │
+│  │                                      │                               │
+│  │       [   Hantar Pertanyaan   ]      │                               │
+│  │                                      │                               │
+│  │  🔒 Maklumat anda selamat & sulit   │                               │
+│  └──────────────────────────────────────┘                               │
+│                                                                          │
+└──────────────────────────────────────────────────────────────────────────┘</div>
+</div>
+
+<!-- PAGE 3: DASHBOARD -->
+<div class="section-label">03 — Owner Dashboard</div>
+<div class="page" id="page-dashboard">
+  <div class="page-header">
+    <div class="dot dot-red"></div>
+    <div class="dot dot-yellow"></div>
+    <div class="dot dot-green"></div>
+    <span class="page-title">swiftstay.my/admin</span>
+    <span class="badge">Owner · Admin</span>
+  </div>
+  <div class="wireframe">┌──────────────────────────────────────────────────────────────────────────┐
+│ 🏠 SwiftStay                       Vila Bayu Desaru        [Adam ▾]    │
+├──────────────┬───────────────────────────────────────────────────────────┤
+│              │                                                           │
+│  Dashboard   │  ┌────────────────┐  ┌────────────────┐  ┌────────────┐  │
+│  Tempahan    │  │ Tempahan       │  │ Pendapatan     │  │ Baki Belum │  │
+│  Tetamu      │  │ Bulan Ini      │  │ Bulan Ini      │  │ Dibayar    │  │
+│  Kalendar    │  │                │  │                │  │            │  │
+│  Unit        │  │    12  🟢      │  │   RM 4,800     │  │  RM 900    │  │
+│  Log Keluar  │  └────────────────┘  └────────────────┘  └────────────┘  │
+│              │  ┌────────────────┐                                       │
+│              │  │ Sedang         │                                       │
+│              │  │ Menginap       │                                       │
+│              │  │   3 Unit 🏠    │                                       │
+│              │  └────────────────┘                                       │
+│              │                                                           │
+│              │  CHECK-IN AKAN DATANG                                     │
+│              │  ┌──────────────────────────────────────────────────┐     │
+│              │  │  Tarikh   │  Tetamu        │  Unit  │  Status    │     │
+│              │  │  ─────────│────────────────│────────│────────────│     │
+│              │  │  21 Mei   │  Ahmad Zainal  │   A    │ 🟡 Confirm │     │
+│              │  │  22 Mei   │  Siti Rahimah  │   B    │ 🟡 Confirm │     │
+│              │  │  25 Mei   │  Rajan Muthu   │   A    │ ⚪ Pending  │     │
+│              │  └──────────────────────────────────────────────────┘     │
+│              │                                                           │
+│              │  BAKI BELUM DIBAYAR                                       │
+│              │  ┌──────────────────────────────────────────────────┐     │
+│              │  │  Tetamu        │  No. Tempahan  │  Baki          │     │
+│              │  │  Ahmad Zainal  │  #1026         │  RM 450        │     │
+│              │  │  Rajan Muthu   │  #1025         │  RM 350        │     │
+│              │  └──────────────────────────────────────────────────┘     │
+│              │                                                           │
+└──────────────┴───────────────────────────────────────────────────────────┘</div>
+</div>
+
+<!-- PAGE 4: BOOKING DETAIL -->
+<div class="section-label">04 — Booking Detail + Payment</div>
+<div class="page" id="page-booking-detail">
+  <div class="page-header">
+    <div class="dot dot-red"></div>
+    <div class="dot dot-yellow"></div>
+    <div class="dot dot-green"></div>
+    <span class="page-title">swiftstay.my/admin/bookings/1026</span>
+    <span class="badge">Owner · Admin</span>
+  </div>
+  <div class="wireframe">┌──────────────────────────────────────────────────────────────────────────┐
+│ 🏠 SwiftStay                       Vila Bayu Desaru        [Adam ▾]    │
+├──────────────┬───────────────────────────────────────────────────────────┤
+│              │  ← Senarai Tempahan       TEMPAHAN #1026                  │
+│  Dashboard   │                                                           │
+│  Tempahan ◄  │  ┌─────────────────────────────┐  ┌────────────────────┐ │
+│  Tetamu      │  │  BUTIRAN TEMPAHAN            │  │  TINDAKAN          │ │
+│  Kalendar    │  │                              │  │                    │ │
+│  Unit        │  │  Unit      : Bilik A         │  │  Status:           │ │
+│  Log Keluar  │  │  Check-in  : 21 Mei 2026     │  │  [ Pending      ▾] │ │
+│              │  │  Check-out : 23 Mei 2026     │  │                    │ │
+│              │  │  Bil Malam : 2               │  │  [💬 WhatsApp]     │ │
+│              │  │  Bil Tetamu: 4 orang         │  │  [✏️  Edit]        │ │
+│              │  │  Jumlah    : RM 900           │  │  [🗑  Batal]       │ │
+│              │  │                              │  └────────────────────┘ │
+│              │  │  Catatan:                    │                         │
+│              │  │  Ada bayi 8 bulan            │                         │
+│              │  └─────────────────────────────┘                         │
+│              │                                                           │
+│              │  ┌──────────────────────────────────────────────────┐     │
+│              │  │  MAKLUMAT TETAMU                                  │     │
+│              │  │  Ahmad Zainal                    ↗ Lihat Profil  │     │
+│              │  │  📱 011-2345678    📧 ahmad@gmail.com            │     │
+│              │  │  IC: 850112-01-1234                              │     │
+│              │  │  🔁 Kali ke-3 menginap di sini                  │     │
+│              │  └──────────────────────────────────────────────────┘     │
+│              │                                                           │
+│              │  ┌──────────────────────────────────────────────────┐     │
+│              │  │  REKOD PEMBAYARAN                    [+ Rekod]   │     │
+│              │  │                                                  │     │
+│              │  │  ✅  Deposit    RM 450   Bank Transfer  20/5/26  │     │
+│              │  │  ⬜  Baki       RM 450   —              Belum    │     │
+│              │  │  ─────────────────────────────────────────────   │     │
+│              │  │  Jumlah Dibayar :  RM 450  /  RM 900            │     │
+│              │  └──────────────────────────────────────────────────┘     │
+│              │                                                           │
+└──────────────┴───────────────────────────────────────────────────────────┘</div>
+</div>
+
+<!-- PAGE 5: CALENDAR -->
+<div class="section-label">05 — Availability Calendar</div>
+<div class="page" id="page-calendar">
+  <div class="page-header">
+    <div class="dot dot-red"></div>
+    <div class="dot dot-yellow"></div>
+    <div class="dot dot-green"></div>
+    <span class="page-title">swiftstay.my/admin/calendar</span>
+    <span class="badge">Owner · Admin</span>
+  </div>
+  <div class="wireframe">┌──────────────────────────────────────────────────────────────────────────┐
+│ 🏠 SwiftStay                       Vila Bayu Desaru        [Adam ▾]    │
+├──────────────┬───────────────────────────────────────────────────────────┤
+│              │  KALENDAR KETERSEDIAAN              [ ◄  Mei 2026  ► ]   │
+│  Dashboard   │                                                           │
+│  Tempahan    │  [ Semua Unit ▾ ]      [+ Sekat Tarikh]                  │
+│  Tetamu      │                                                           │
+│  Kalendar ◄  │  ┌────────────────────────────────────────────────────┐   │
+│  Unit        │  │   Isn    Sel    Rab    Kam    Jum    Sab    Ahad   │   │
+│  Log Keluar  │  │                                1      2      3     │   │
+│              │  │    4      5      6      7      8      9     10     │   │
+│              │  │   [A]    [A]    [ ]    [ ]    [B]    [AB]   [AB]  │   │
+│              │  │   11     12     13     14     15     16     17    │   │
+│              │  │   [ ]    [ ]    [A]    [A]    [A]    [AB]   [AB]  │   │
+│              │  │   18     19     20     21     22     23     24    │   │
+│              │  │   [✗]    [✗]    [A]    [A]    [B]    [AB]   [AB]  │   │
+│              │  │   25     26     27     28     29     30     31    │   │
+│              │  │   [ ]    [ ]    [ ]    [ ]    [ ]    [AB]   [AB]  │   │
+│              │  └────────────────────────────────────────────────────┘   │
+│              │                                                           │
+│              │  [A] Bilik A ditempah    [B] Bilik B ditempah            │
+│              │  [AB] Semua unit penuh   [✗] Disekat oleh owner          │
+│              │  [ ]  Tersedia                                            │
+│              │                                                           │
+└──────────────┴───────────────────────────────────────────────────────────┘</div>
+</div>
+
+</body>
+</html>

@@ -119,6 +119,30 @@ git subtree push --prefix="SwiftApp Dev/[project]" [remote] main
 
 ---
 
+## Image Generation
+
+### P-010 — ChatGPT Image Batch — One By One Format
+**Pattern:** Bila generate images untuk project, paste satu prompt besar ke ChatGPT. ChatGPT generate Image 1 dulu, Adam save, then type "next" untuk Image 2, dan seterusnya.
+**Bila guna:** Setiap kali Adam nak generate project images (landing page hero, rooms, OG banner, etc.)
+**Template:**
+```
+I need you to generate [N] images for [project name]. 
+Generate them ONE BY ONE in order. Start with Image 1 now.
+
+---
+
+Image 1 — [Name] ([filename])
+[prompt]
+
+Image 2 — [Name] ([filename])
+[prompt]
+
+...
+```
+**Project:** SwiftStay v2 (2026-05-20)
+
+---
+
 ## Format Entry Baru
 ```
 ### P-XXX — [Nama Pattern]
@@ -129,4 +153,4 @@ git subtree push --prefix="SwiftApp Dev/[project]" [remote] main
 ```
 
 ---
-*Last updated: 2026-04-30 | Total patterns: 9*
+*Last updated: 2026-05-20 | Total patterns: 10*
