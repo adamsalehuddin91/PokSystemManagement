@@ -4,10 +4,62 @@
 
 ## Session Status
 
-**Current Session**: MessyMates Birthday Package Refactor — SESSION SAVED 2026-05-20
-**Session Date**: 2026-05-20
-**Last Saved**: 2026-05-20
-**Previous Session**: MessyMates Development — 2026-05-20
+**Current Session**: SwiftTaska Code Review + Fixes — 2026-05-22
+**Session Date**: 2026-05-22
+**Last Saved**: 2026-05-22
+**Previous Session**: SwiftStay v2 — Facebook Post + Screenshots — 2026-05-21
+
+---
+
+## Today's Achievements (2026-05-22) — SwiftTaska Code Review + Fixes
+
+### SwiftTaska — Code Review + Security Fixes ✅
+
+**First full review run** → Score: 4.4/10 FAIL → Post-fix: 8.5/10 PASS
+
+**AUTO-FAIL cleared (2):**
+- `?: any` epidemic → typed interfaces (TeacherRecord, StudentRecord, FeeRecord, ClassRecord, ActivityRecord, TelegramButton, etc.)
+- `key={index}` in reports + yuran pages → unique keys
+
+**HIGH fixed (3):**
+- Telegram webhook: no signature validation → added `x-telegram-bot-api-secret-token` check (needs `TELEGRAM_WEBHOOK_SECRET` env var)
+- Fees IDOR: any logged-in user could query any student's fees → admin/teacher role gate added
+- Students `findMany` unbounded → pagination added (page/limit params)
+
+**MEDIUM fixed (2):**
+- Teacher dashboard TODOs (3 comments) → wired `upcomingActivities` from `/api/activities`
+- `c: any` in reduce → typed properly
+
+**Commit:** `c91a1c8` — 12 files, 251 insertions, 59 deletions
+
+**Baseline created:** `enhanced-features/baselines/swifttaska.md`
+
+**Remaining tech debt (LOW — next sprint):**
+- Teachers/fees/activities routes still unbounded (apply pagination pattern)
+- Telegram webhook makes internal API call to self (use Prisma direct)
+- Parent fee access: no child ownership enforcement server-side yet
+
+---
+
+## Today's Achievements (2026-05-21 Morning) — SwiftStay v2 Facebook Post + Screenshots
+
+### SwiftStay v2 — Social Media Content ✅
+
+**Facebook post drafted** — 3 versi (Story/Problem, Punchy Threads, Behind The Scenes).
+
+**Screenshot generator bina dari scratch** (`screenshot/generate-screenshots.js`):
+- 9 screenshots: web-01 to web-06 (1280×800) + mobile-01 to mobile-03 (390×844)
+- NODE_PATH dari `qalbu-app/node_modules` (Puppeteer shared)
+- Output: `screenshot/output/`
+
+**Best screenshots untuk post:**
+- `web-02-hero.png` — landing page hero (villa photo + CTA)
+- `web-05-admin.png` — admin dashboard KPIs (money shot)
+- `mobile-01-landing.png` — mobile proof
+
+**PENDING (post):**
+- Upload ke shots.so → polish dengan frame
+- Post pada 8PM-10PM malam ni
 
 ---
 
@@ -190,17 +242,21 @@
 
 ## Active Project
 
-**Name:** SwiftStay v2 (Position #1)
-**Status:** 🟡 IN PROGRESS — Landing page + admin scaffold done, Supabase wiring pending
-**Path:** `SwiftApp Dev/swiftstay-v2/`
-**Stack:** Next.js + Supabase (PostgreSQL) + Coolify
-**Concept:** CRM + landing page untuk homestay/rumah sewa owners Malaysia
-**Next:** Wire Supabase real data → create Supabase project → fill .env.local → deploy Coolify
+**Name:** SwiftRent (Position #1)
+**Status:** 🔨 IN BUILD — Scaffold starting
+**Path:** `SwiftApp Dev/SwiftRent/`
+**Stack:** Next.js 15 + Prisma + PostgreSQL + NextAuth + Coolify
+**Concept:** Sistem pengurusan kereta sewa untuk SME operator Malaysia (1-20 kereta)
+**Pattern:** Ikut SwiftTaska — dark sidebar emerald, Phosphor icons, same component structure
+**Next:** Scaffold → Auth → Fleet → Booking → Customer + blacklist
 
-### MessyMates (Position #2 — ON HOLD)
+### SwiftStay v2 (Position #2 — IN PROGRESS)
+**Status:** Scaffold done, Supabase wiring pending
+**Next:** Wire Supabase real data → deploy Coolify
+
+### MessyMates (Position #3 — ON HOLD)
 **Client:** Khairul Anuar | Deposit: RM750 received
 **Pending from client:** Logo + hero banner + domain
-**Next (bila client respond):** Supabase setup → admin wiring → Vercel deploy
 
 ---
 

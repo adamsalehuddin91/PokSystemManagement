@@ -1,7 +1,7 @@
 # SwiftTaska — Project File
 
 **Status**: 🟢 LIVE — taska.swiftapps.my deployed, demo-ready
-**Last Accessed**: 2026-05-18 (saved)
+**Last Accessed**: 2026-05-22 (saved)
 **Path**: `SwiftApp Dev/SwiftTaska/`
 **Stack**: Next.js 15 + Tailwind CSS v4 + Prisma + SQLite + NextAuth v5
 **Demo URL**: http://localhost:3000
@@ -13,9 +13,10 @@
 ## Project Brief
 
 Taska Management System untuk taska swasta Malaysia. 3 pakej:
-- **Basic** RM200/bln — pelajar, kehadiran, parent update
-- **Standard** RM280/bln — + yuran, rekod harian, pengumuman
-- **Premium** RM350/bln — + multi-taska, HR, laporan advanced
+- **Basic** RM2,500 setup + RM180/bln (≤30 pelajar)
+- **Standard** RM3,500 setup + RM280/bln (≤80 pelajar) ⭐
+- **Premium** RM5,500 setup + RM400/bln (unlimited)
+- Annual billing option: jimat 2 bulan (RM1,800 / RM2,800 / RM4,000/thn)
 
 Target: demo kepada beberapa owner taska swasta dari satu URL showroom.
 
@@ -32,7 +33,14 @@ Target: demo kepada beberapa owner taska swasta dari satu URL showroom.
 - [x] PWA parent view — manifest + service worker + meta tags ✅ 2026-05-18
 - [x] Child switcher untuk parent PWA (parent ada >1 anak) ✅ 2026-05-18
 - [x] Filter by student dalam parent-update feed (filter tabs: Semua/Aktiviti/Makan/Tidur) ✅ 2026-05-18
+- [x] Code review — clear AUTO-FAIL, HIGH, MEDIUM issues ✅ 2026-05-22 — commit c91a1c8
+- [x] Theme A Sage Warm — emerald UI overhaul ✅ 2026-05-22 — commit 3f50256
+- [x] Phosphor icons swap in Sidebar ✅ 2026-05-22 — commit 1b3a0c6
+- [x] Pricing update + Monthly/Tahunan toggle ✅ 2026-05-22 — commit d65e83d
 - [ ] Integrate real DB lepas demo phase
+- [ ] PWA push notification (web-push + FCM)
+- [ ] JKM laporan auto-generate PDF
+- [ ] Add TELEGRAM_WEBHOOK_SECRET ke .env.local
 - [x] Halaman Tetapan (settings page) ✅ 2026-05-12
 - [x] Test full flow parent PWA `/parent` ✅ 2026-05-12 — semua 5 tabs siap
 - [x] Student Details page (3 tabs) ✅ 2026-05-12
@@ -43,6 +51,40 @@ Target: demo kepada beberapa owner taska swasta dari satu URL showroom.
 ---
 
 ## Progress Log
+
+### 2026-05-22 — Code Review + Theme A + Pricing Revamp SESSION SAVED
+
+**Code Review (4.4/10 → 8.5/10 PASS):**
+- AUTO-FAIL cleared: `?: any` epidemic → typed interfaces (TeacherRecord, StudentRecord, FeeRecord, etc.), `key={index}` → semantic keys
+- HIGH fixed: Telegram webhook missing signature validation, Fees API IDOR, Students findMany unbounded
+- MEDIUM fixed: Teacher dashboard TODO stubs wired, `c: any` typed
+- Baseline created: `enhanced-features/baselines/swifttaska.md`
+- Commit: `c91a1c8` — 12 files, 251 insertions, 59 deletions
+
+**Theme A "Sage Warm" — full UI overhaul:**
+- Primary: emerald-600 (`#059669`), Accent: amber-500, Bg: `#FAFAF8` warm cream
+- Dark slate-900 sidebar, emerald active states, amber notification dot
+- Files: globals.css, layout.tsx, dashboard/layout.tsx, Sidebar.tsx, TopBar.tsx, dashboard/page.tsx, page.tsx (landing)
+- Commit: `3f50256` — 7 files
+
+**Phosphor icons → Sidebar:**
+- Installed `@phosphor-icons/react`
+- Active: weight=bold, Inactive: weight=regular — premium feel
+- SquaresFour, ChatText, ClipboardText, GearSix, CaretRight, Question
+- Commit: `1b3a0c6`
+
+**Pricing revamp + Monthly/Tahunan toggle:**
+- New: Basic RM2,500+RM180, Standard RM3,500+RM280, Premium RM5,500+RM400
+- Annual: RM1,800 / RM2,800 / RM4,000 (jimat 2 bulan)
+- Toggle pill UI, strikethrough old price, savings badge animated
+- `PricingSection.tsx` extracted as client component, page.tsx stays server
+- Commit: `d65e83d`
+
+**Pending next session:**
+- PWA push notification (web-push + FCM)
+- JKM laporan auto-generate PDF
+- Add TELEGRAM_WEBHOOK_SECRET ke .env.local
+- Real DB integration lepas demo phase
 
 ### 2026-05-18 — PWA + Child Switcher + Activity Filter
 - PWA: `public/manifest.json` + `public/sw.js` + SVG icons + meta tags in root layout
